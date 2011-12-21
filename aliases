@@ -1,0 +1,55 @@
+# Archiving
+alias unp="tar -xvf"
+
+# Directory Navigation:
+alias cd..="cd ../../"
+alias cd...="cd ../../../"
+alias cd....="cd ../../../../"
+
+# Git
+alias gi='git init'
+alias ga='git add'
+alias gp='git push'
+alias gl='git log'
+alias gs='git status'
+alias gd='git diff'
+alias gc='git commit -m'
+alias gma='git commit -am'
+alias gb='git branch'
+alias gch='git checkout'
+alias gra='git remote add'
+alias grr='git remote rm'
+alias gpu='git pull'
+alias gcl='git clone'
+alias gsi='git submodule init'
+alias gsa='git submodule add'
+alias gsu='git submodule update'
+alias guc='git reset --soft HEAD'
+
+# Apt
+alias agi="sudo apt-get install"
+alias agr="sudo apt-get remove"
+alias as="apt-cache search"
+alias agg="sudo apt-get upgrade"
+alias agu="sudo apt-get update"
+
+# Pacman 
+alias pacin="sudo pacman -S"
+alias pacf="pacman -Ss"
+alias pacrm="sudo pacman -R"
+alias pacs="sudo pacman -Syy"
+alias pacup="sudo pacman -Syu"
+
+# Local apache and stuff
+alias startls="sudo /opt/lampp/lampp start"
+alias stopls="sudo /opt/lampp/lampp stop"
+alias htdocs="cd ~/htdocs"
+alias mysqlroot="mysql -u 'root' -p"
+alias apached="sudo /etc/rc.d/httpd"
+alias mysqled="sudo /etc/rc.d/mysqld"
+
+# Other
+alias opn="nautilus ."
+alias genssh="ssh-keygen -t rsa -C"
+alias m="man"
+alias short="cat ~/.aliases | grep" # Quickly see aliases that I want
