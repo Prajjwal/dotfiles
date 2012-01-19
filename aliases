@@ -36,7 +36,8 @@ alias agu="sudo apt-get update"
 # Pacman 
 alias pacin="sudo pacman -S"
 alias pacf="pacman -Ss"
-alias pacrm="sudo pacman -R"
+alias pacrm="sudo pacman -Rns"
+alias pacor="pacman -Qdt"
 alias pacs="sudo pacman -Syy"
 alias pacup="sudo pacman -Syu"
 

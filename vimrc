@@ -5,11 +5,18 @@ source $VIMRUNTIME/vimrc_example.vim
 autocmd!
 filetype off
 call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
 
 syntax on
-" Sets the default colorscheme to desert
-colorscheme desert
+
+" Use 256 colors in the terminal
+set t_Co=256
+
+" Set colorscheme
+if ( has("gui_running") )
+	colorscheme desert
+else
+	colorscheme desert256
+endif
 
 " General Settings [[
 set number						" Always show line numbers
