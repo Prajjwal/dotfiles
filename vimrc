@@ -1,5 +1,4 @@
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
 
 " Pathogen
 autocmd!
@@ -37,11 +36,12 @@ set magic						" Set magic on for Regular Expressions
 set cindent						" Better indentation
 set nowrap						" Do not wrap anything
 set lazyredraw					" Dont update display while executing macros
+set guioptions-=T				" Don't show toolbars in gvim
 " ]]
 
 " Vim Behaviour [[
 set hidden						" Hide buffers instead of closing them
-set history=50					" Save 50 lines of history
+set history=1000				" Save 1000 lines of history
 set noerrorbells				" Never beep, its annoying
 set nobackup					" Dont backup my files
 set nowritebackup 
@@ -52,6 +52,11 @@ set wildmenu					" More Useful command line completion
 set wildmode=list:longest		" Show the longest list of matches
 set cursorline					" Underline the current line
 set spell spelllang=en_us		" Spellchecker
+" ]]
+
+" Custom Indentation [[
+	" Ruby
+	autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
 " ]]
 
 " When vimrc is edited, reload it
