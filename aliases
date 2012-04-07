@@ -54,3 +54,4 @@ alias opn="nautilus ."
 alias genssh="ssh-keygen -t rsa -C"
 alias m="man"
 alias short="cat ~/.aliases | grep" # Quickly see aliases that I want
+alias lshort="cat ~/.localrc | grep" # Quickly grep from the localrc

@@ -57,6 +57,8 @@ set spell spelllang=en_us		" Spellchecker
 " Custom Indentation [[
 	" Ruby
 	autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
+	" JavaScript
+	autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
 " ]]
 
 " When vimrc is edited, reload it
