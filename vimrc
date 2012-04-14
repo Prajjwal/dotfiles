@@ -139,10 +139,7 @@ abbrev gedit :!gedit %:p<cr>
 
 " NERDTree
 
-" So I dont have to type it all over again
-nmap ,n :NERDTreeToggle<return>
-" Cause NERDTree to show hidden files as well
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden=1 " Cause NERDTree to show hidden files as well
 
 " Zencoding
 
@@ -151,3 +148,15 @@ imap ,e <C-y>,
 " SnipMate
 
 let g:snippets_dir = "~/.vim/snippets/"
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_check_on_open=1 " Check for errors when a file is opened
+let g:syntastic_echo_current_error=1
+let g:syntastic_enable_balloons=1 " Display error messages in balloons on hover
+let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_jump=1 " Automatically jump to the first error in file
+
+" ]]
