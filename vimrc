@@ -54,6 +54,36 @@ set cursorline					" Underline the current line
 set spell spelllang=en_us		" Spellchecker
 " ]]
 
+" Window Management [[
+	" Switch using , + h|j|k|l
+	noremap <silent> ,h :wincmd h<cr>
+	noremap <silent> ,j :wincmd j<cr>
+	noremap <silent> ,k :wincmd k<cr>
+	noremap <silent> ,l :wincmd l<cr>
+
+	" c(lose) h|j|k|l
+	noremap <silent> ,ch :wincmd h<CR>:close<CR>
+	noremap <silent> ,cj :wincmd j<CR>:close<CR>
+	noremap <silent> ,ck :wincmd k<CR>:close<CR>
+	noremap <silent> ,cl :wincmd l<CR>:close<CR>
+
+	" c(lose) c(urrent)
+	noremap <silent> ,cc :close<CR>
+	noremap <silent> ,cw :cclose<CR>
+
+	" m(ove) h|j|k|l
+	noremap <silent> ,mh <C-W>H
+	noremap <silent> ,mj <C-W>J
+	noremap <silent> ,mk <C-W>K
+	noremap <silent> ,ml <C-W>L
+
+	" [w(idth) | h(eight)] [i(ncrease) | d(ecrease)]
+	noremap <silent> ,wi <C-W>5>
+	noremap <silent> ,wd <C-W>5<
+	noremap <silent> ,hi <C-W>5+
+	noremap <silent> ,hd <C-W>5-
+" ]]
+
 " Custom Indentation [[
 	" Ruby
 	autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
@@ -102,6 +132,8 @@ nmap <f8> :! nautilus .<return>
 imap ,c <C-x><C-o>
 " Open a new tab
 nmap ,nt :tabnew
+" Close tab
+nmap ,tc :tabc<cr>
 " To quickly edit the font size for screencasts:
 nmap ,sf :set guifont=Consolas:h
 " Map rails autocomplete to ,rc
@@ -159,4 +191,7 @@ let g:syntastic_enable_balloons=1 " Display error messages in balloons on hover
 let g:syntastic_auto_loc_list=1
 let g:syntastic_auto_jump=1 " Automatically jump to the first error in file
 
+" Ctrlp
+let g:ctrlp_switch_buffer = 2
+let g:ctrlp_clear_cache_on_exit = 1
 " ]]
