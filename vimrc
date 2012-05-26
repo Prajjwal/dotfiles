@@ -18,77 +18,115 @@ else
 endif
 
 " General Settings [[
-set number						" Always show line numbers
-set tabstop=4					" Set a tab to four spaces
-set shiftwidth=4				" Use four spaces while autoindenting
+
+set encoding=utf-8
+set number
+set tabstop=4
+set shiftwidth=4
 set showmatch
-set ruler						" Show Ruler
-set showmode					" Always show what mode were currently in
+set ruler
+set showmode
+set showcmd
 set ignorecase
 set smartcase
-set incsearch					" Use incremental search
+set incsearch
 set autochdir
+set autoread
 set numberwidth=4
-set ai							" Auto Indent
-set si							" Smart Indent
+set ai
+set si
 set matchtime=5
-set magic						" Set magic on for Regular Expressions
-set cindent						" Better indentation
-set nowrap						" Do not wrap anything
-set lazyredraw					" Dont update display while executing macros
-set guioptions-=T				" Don't show toolbars in gvim
+set magic
+set cindent
+set nowrap
+set lazyredraw
+set guioptions-=T
+set hidden
+set history=1000
+set noerrorbells
+set nobackup
+set nowritebackup 
+set noswapfile
+set viminfo='20,\"80
+set undolevels=500
+set cursorline
+set spell spelllang=en_us
 " ]]
 
-" Vim Behaviour [[
-set hidden						" Hide buffers instead of closing them
-set history=1000				" Save 1000 lines of history
-set noerrorbells				" Never beep, its annoying
-set nobackup					" Dont backup my files
-set nowritebackup 
-set noswapfile					" Dont use swapfiles
-set viminfo='20,\"80			" The viminfo shouldnt store more than 80 lines of registers
-set undolevels=500				" Use 500 levels of undo
-set wildmenu					" More Useful command line completion
-set wildmode=list:longest		" Show the longest list of matches
-set cursorline					" Underline the current line
-set spell spelllang=en_us		" Spellchecker
+" Wildmenu completion [[
+
+" Stolen from: https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
+set wildmenu
+set wildmode=list:longest
+
+set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
+set wildignore+=*.spl                            " compiled spelling word lists
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.DS_Store                       " OSX bullshit
+
+set wildignore+=*.luac                           " Lua byte code
+
+set wildignore+=migrations                       " Django migrations
+set wildignore+=*.pyc                            " Python byte code
+
+set wildignore+=*.orig                           " Merge resolution files
+" ]]
+
+" Line Return [[
+
+" Make sure Vim returns to the same line when you reopen a file.
+" Stolen from: https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
+augroup line_return
+    au!
+    au BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \     execute 'normal! g`"zvzz' |
+        \ endif
+augroup END
 " ]]
 
 " Window Management [[
-	" Switch using , + h|j|k|l
-	noremap <silent> ,h :wincmd h<cr>
-	noremap <silent> ,j :wincmd j<cr>
-	noremap <silent> ,k :wincmd k<cr>
-	noremap <silent> ,l :wincmd l<cr>
 
-	" c(lose) h|j|k|l
-	noremap <silent> ,ch :wincmd h<CR>:close<CR>
-	noremap <silent> ,cj :wincmd j<CR>:close<CR>
-	noremap <silent> ,ck :wincmd k<CR>:close<CR>
-	noremap <silent> ,cl :wincmd l<CR>:close<CR>
+" Switch using , + h|j|k|l
+noremap <silent> ,h :wincmd h<cr>
+noremap <silent> ,j :wincmd j<cr>
+noremap <silent> ,k :wincmd k<cr>
+noremap <silent> ,l :wincmd l<cr>
 
-	" c(lose) c(urrent)
-	noremap <silent> ,cc :close<CR>
-	noremap <silent> ,cw :cclose<CR>
+" c(lose) h|j|k|l
+noremap <silent> ,ch :wincmd h<CR>:close<CR>
+noremap <silent> ,cj :wincmd j<CR>:close<CR>
+noremap <silent> ,ck :wincmd k<CR>:close<CR>
+noremap <silent> ,cl :wincmd l<CR>:close<CR>
 
-	" m(ove) h|j|k|l
-	noremap <silent> ,mh <C-W>H
-	noremap <silent> ,mj <C-W>J
-	noremap <silent> ,mk <C-W>K
-	noremap <silent> ,ml <C-W>L
+" c(lose) c(urrent)
+noremap <silent> ,cc :close<CR>
+noremap <silent> ,cw :cclose<CR>
 
-	" [w(idth) | h(eight)] [i(ncrease) | d(ecrease)]
-	noremap <silent> ,wi <C-W>5>
-	noremap <silent> ,wd <C-W>5<
-	noremap <silent> ,hi <C-W>5+
-	noremap <silent> ,hd <C-W>5-
+" m(ove) h|j|k|l
+noremap <silent> ,mh <C-W>H
+noremap <silent> ,mj <C-W>J
+noremap <silent> ,mk <C-W>K
+noremap <silent> ,ml <C-W>L
+
+" [w(idth) | h(eight)] [i(ncrease) | d(ecrease)]
+noremap <silent> ,wi <C-W>5>
+noremap <silent> ,wd <C-W>5<
+noremap <silent> ,hi <C-W>5+
+noremap <silent> ,hd <C-W>5-
 " ]]
 
+
 " Custom Indentation [[
-	" Ruby
-	autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
-	" JavaScript
-	autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
+
+" Ruby
+autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
+
+" JavaScript
+autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
 " ]]
 
 " When vimrc is edited, reload it
@@ -105,17 +143,18 @@ filetype plugin on
 filetype indent on
 
 " Enable syntax completion
-if has("autocmd") && exists("+omnifunc")
-	 autocmd Filetype *
-    \ if &omnifunc == "" |
-    \ setlocal omnifunc=syntaxcomplete#Complete |
-    \ endif
-    endif
+set ofu=syntaxcomplete#Complete
 
-" Shortcut Mappings and Abbreviations [[
+" Mappings and Abbreviations [[
 
 " Change the default dir
 cd ~/
+
+" Unfuck my screen
+nnoremap <leader>u :syntax sync fromstart<cr>:redraw!<cr>
+
+" Clean trailing whitespace
+nnoremap ,w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " Use space instead of a colon (saves me hours)
 map <space> :
@@ -182,9 +221,6 @@ imap ,e <C-y>,
 let g:snippets_dir = "~/.vim/snippets/"
 
 " Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 let g:syntastic_check_on_open=1 " Check for errors when a file is opened
 let g:syntastic_echo_current_error=1
 let g:syntastic_enable_balloons=1 " Display error messages in balloons on hover
@@ -194,4 +230,5 @@ let g:syntastic_auto_jump=1 " Automatically jump to the first error in file
 " Ctrlp
 let g:ctrlp_switch_buffer = 2
 let g:ctrlp_clear_cache_on_exit = 1
+let g:ctrlp_max_height = 15
 " ]]

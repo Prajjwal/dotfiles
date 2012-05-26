@@ -32,6 +32,7 @@ alias agr="sudo apt-get remove"
 alias as="apt-cache search"
 alias agg="sudo apt-get upgrade"
 alias agu="sudo apt-get update"
+alias agc="sudo apt-get autoclean"
 
 # Pacman 
 alias pacin="sudo pacman -S"
