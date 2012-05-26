@@ -37,6 +37,7 @@ set cindent
 set nowrap
 set lazyredraw
 set guioptions-=T
+set guioptions-=m
 set hidden
 set history=1000
 set noerrorbells
@@ -217,6 +218,9 @@ imap ,e <C-y>,
 let g:snippets_dir = "~/.vim/snippets/"
 
 " Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_check_on_open=1 " Check for errors when a file is opened
 let g:syntastic_echo_current_error=1
 let g:syntastic_enable_balloons=1 " Display error messages in balloons on hover
