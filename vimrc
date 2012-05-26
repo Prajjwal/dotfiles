@@ -11,11 +11,7 @@ syntax on
 set t_Co=256
 
 " Set colorscheme
-if ( has("gui_running") )
-	colorscheme desert
-else
-	colorscheme desert256
-endif
+colorscheme badwolf
 
 " General Settings [[
 
