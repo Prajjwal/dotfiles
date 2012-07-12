@@ -164,8 +164,6 @@ map <f9> :tabedit $MYVIMRC<cr>
 map <f12> ggVGg?
 " Open the current directory in nautilus
 nmap <f8> :! nautilus .<return>
-" Map Code completion to ,c
-imap ,c <C-x><C-o>
 " Open a new tab
 nmap ,nt :tabnew
 " Close tab
@@ -180,6 +178,11 @@ nmap ,tt :bn<return>
 " Make the arrow keys useful
 map <left> <esc>:NERDTreeToggle<return>
 map <right> <esc>:tabnew<return>
+
+" Completion
+imap ,c <C-x><C-o>
+imap ,ca <C-p>
+imap ,cl <C-x><C-l>
 
 " Yank to and paste from the OS clipboard:
 nmap ,y "+y
