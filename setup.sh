@@ -4,6 +4,10 @@
 
 dotfiles=( aliases bashrc gitconfig vim vimrc )
 
+echo "Initializing and updating submodules"
+git submodule init
+git submodule update
+
 echo "Setting up your dotfiles, master."
 
 for dotfile in ${dotfiles[@]}; do
