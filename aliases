@@ -52,6 +52,7 @@ alias apached="sudo /etc/rc.d/httpd"
 alias mysqled="sudo /etc/rc.d/mysqld"
 
 # Other
+alias ls='ls --color=auto'
 alias opn="nautilus ."
 alias genssh="ssh-keygen -t rsa -C"
 alias m="man"
