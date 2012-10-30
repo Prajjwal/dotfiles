@@ -40,3 +40,6 @@
 [submodule "vim/bundle/badwolf"]
 	path = vim/bundle/badwolf
 	url = git://github.com/sjl/badwolf.git
+[submodule "vim/bundle/slimv"]
+	path = vim/bundle/slimv
+	url = git://github.com/vim-scripts/slimv.vim.git

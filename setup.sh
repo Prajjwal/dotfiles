@@ -2,6 +2,7 @@
 
 # Sets up my dotfiles
 
+currentDir=`pwd`
 dotfiles=( aliases bashrc gitconfig vim vimrc )
 
 echo "Initializing and updating submodules"
@@ -15,7 +16,7 @@ for dotfile in ${dotfiles[@]}; do
 		echo "~/.$dotfile already exists."
 	else
 		echo "Creating symlink to $dotfile"
-		ln -s `pwd`/$dotfile ~/.$dotfile
+		ln -s $currentDir/$dotfile ~/.$dotfile
 	fi
 done
 
