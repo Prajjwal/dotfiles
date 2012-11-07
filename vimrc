@@ -1,7 +1,7 @@
 set nocompatible
 
 " Pathogen
-autocmd!
+au!
 filetype off
 call pathogen#runtime_append_all_bundles()
 
@@ -17,8 +17,6 @@ colorscheme badwolf
 
 set encoding=utf-8
 set number
-set tabstop=4
-set shiftwidth=4
 set showmatch
 set ruler
 set showmode
@@ -117,17 +115,18 @@ noremap <silent> ,hd <C-W>5-
 " ]]
 
 
-" Custom Indentation [[
+" Indentation [[
 
-" Ruby
-autocmd FileType ruby setlocal shiftwidth=2 softtabstop=2
+set tabstop=4
+set shiftwidth=4
 
-" JavaScript
-autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
+au FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+au FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
+au FileType python setlocal expandtab shiftwidth=4 tabstop=4
 " ]]
 
 " When vimrc is edited, reload it
-autocmd bufwritepost .vimrc source $MYVIMRC
+au bufwritepost .vimrc source $MYVIMRC
 
 " Folding
 set foldenable
@@ -234,4 +233,9 @@ let g:syntastic_auto_jump=1 " Automatically jump to the first error in file
 let g:ctrlp_switch_buffer = 2
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_max_height = 15
+
+" slimv
+let g:slimv_impl = 'clisp'
+let g:swank_log = 1
+let g:slimv_swank_cmd = 'call SlimvSwankCommand()'
 " ]]
