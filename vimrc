@@ -171,8 +171,6 @@ nmap ,tc :tabc<cr>
 nmap ,sf :set guifont=Consolas:h
 " Map rails autocomplete to ,rc
 imap ,rc <C-x><C-u>
-" Map buffer toggle :bn to ,tt
-nmap ,tt :bn<return>
 
 " Make the arrow keys useful
 map <left> <esc>:NERDTreeToggle<return>
