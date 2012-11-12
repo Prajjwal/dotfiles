@@ -45,7 +45,7 @@ set noswapfile
 set viminfo='20,\"80
 set undolevels=500
 set cursorline
-set spell spelllang=en_us
+set nospell
 " ]]
 
 " Wildmenu completion [[
@@ -235,5 +235,7 @@ let g:ctrlp_max_height = 15
 " slimv
 let g:slimv_impl = 'clisp'
 let g:swank_log = 1
-let g:slimv_swank_cmd = 'call SlimvSwankCommand()'
+let g:slimv_swank_cmd = '! xterm -e clisp ~/.vim/bundle/slimv/slime/start-swank.lisp &'
+let g:slimv_swank_scheme = '! xterm -e scheme --load ~/.vim/bundle/slimv/slime/contrib/swank-mit-scheme.scm &'
+let g:slimv_keybindings = 2
 " ]]
