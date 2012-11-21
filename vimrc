@@ -206,15 +206,12 @@ abbrev gedit :!gedit %:p<cr>
 " Plugins [[
 
 " NERDTree
-
 let NERDTreeShowHidden=1 " Cause NERDTree to show hidden files as well
 
 " Zencoding
-
 imap ,e <C-y>,
 
 " SnipMate
-
 let g:snippets_dir = "~/.vim/snippets/"
 
 " Syntastic
@@ -234,7 +231,6 @@ let g:ctrlp_max_height = 15
 
 " slimv
 let g:slimv_impl = 'clisp'
-let g:swank_log = 1
 let g:slimv_swank_cmd = '! xterm -e clisp ~/.vim/bundle/slimv/slime/start-swank.lisp &'
 let g:slimv_swank_scheme = '! xterm -e scheme --load ~/.vim/bundle/slimv/slime/contrib/swank-mit-scheme.scm &'
 let g:slimv_keybindings = 2
