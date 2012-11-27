@@ -173,8 +173,10 @@ nmap ,sf :set guifont=Consolas:h
 imap ,rc <C-x><C-u>
 
 " Make the arrow keys useful
-map <left> <esc>:NERDTreeToggle<return>
-map <right> <esc>:tabnew<return>
+map <up> <esc>:tabm<return>
+map <down> <esc>:NERDTreeToggle<return>
+map <left> gT
+map <right> gt
 
 " Completion
 imap ,c <C-x><C-o>
