@@ -233,8 +233,8 @@ let g:ctrlp_max_height = 15
 
 " slimv
 let g:slimv_impl = 'clisp'
-let g:slimv_swank_cmd = '! xterm -e clisp ~/.vim/bundle/slimv/slime/start-swank.lisp &'
+let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp &'
 let g:scheme_builtin_swank = 1
-let g:slimv_swank_scheme = '! xterm -e scheme --eval "(start-swank)" &'
+let g:slimv_swank_scheme = '! xterm -e scheme --eval "(let loop() (start-swank) (loop))" &'
 let g:slimv_keybindings = 2
 " ]]
