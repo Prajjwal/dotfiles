@@ -7,30 +7,47 @@ alias cd...="cd ../../../"
 alias cd....="cd ../../../../"
 
 # Git
-alias gi='git init'
-alias ga='git add'
-alias gp='git push'
-alias gl='git log'
-alias gs='git status'
-alias gd='git diff --color'
-alias gc='git commit'
-alias gcm='git commit -m'
-alias gma='git commit -am'
-alias gca='git commit --amend'
-alias gb='git branch'
-alias gbd='git branch -d'
-alias gch='git checkout'
-alias gcb='git checkout -b'
-alias gm='git merge'
-alias gra='git remote add'
-alias grr='git remote rm'
-alias gpu='git pull'
-alias gcl='git clone'
-alias gsi='git submodule init'
-alias gsa='git submodule add'
-alias gsu='git submodule update'
-alias gus='git submodule foreach git pull origin master'
-alias guc='git reset --soft HEAD'
+alias gi="git init"
+alias ga="git add"
+alias gp="git push"
+alias gl="git log"
+alias gs="git status"
+alias gd="git diff --color"
+alias gc="git commit"
+alias gcm="git commit -m"
+alias gma="git commit -am"
+alias gca="git commit --amend"
+alias gb="git branch"
+alias gbd="git branch -d"
+alias gch="git checkout"
+alias gcb="git checkout -b"
+alias gm="git merge"
+alias gra="git remote add"
+alias grr="git remote rm"
+alias gpu="git pull"
+alias gcl="git clone"
+alias gsi="git submodule init"
+alias gsa="git submodule add"
+alias gsu="git submodule update"
+alias gus="git submodule foreach git pull origin master"
+alias guc="git reset --soft HEAD"
+
+# Ruby/Rails stuff
+alias rh="rbenv rehash"
+
+alias be="bundle exec"
+alias bi="bundle install"
+alias wp="bi --without production"
+
+alias r="be rake"
+alias dbm="r db:migrate"
+alias drb="r db:rollback"
+alias dtp="r db:test:prepare"
+alias dr="r db:reset"
+
+alias hl="heroku logs"
+alias ho="heroku open"
+alias hr="heroku run"
 
 # Apt
 alias agi="sudo apt-get install"
@@ -41,10 +58,7 @@ alias agu="sudo apt-get update"
 alias agc="sudo apt-get autoclean"
 alias aga="sudo apt-get autoremove"
 
-# Rails
-alias be="bundle exec"
-
-# Pacman 
+# Pacman
 alias pacin="sudo pacman -S"
 alias pacf="pacman -Ss"
 alias pacrm="sudo pacman -Rns"
@@ -52,20 +66,12 @@ alias pacor="pacman -Qdt"
 alias pacs="sudo pacman -Syy"
 alias pacup="sudo pacman -Syu"
 
-# Local apache and stuff
-alias startls="sudo /opt/lampp/lampp start"
-alias stopls="sudo /opt/lampp/lampp stop"
-alias htdocs="cd ~/htdocs"
-alias mysqlroot="mysql -u 'root' -p"
-alias apached="sudo /etc/rc.d/httpd"
-alias mysqled="sudo /etc/rc.d/mysqld"
-
 # Other
-alias ls='ls --color=auto'
-alias opn="nautilus ."
+alias ls="ls --color=auto"
+alias filemanager="nemo"
+alias opn="filemanager ." # Override 'filemanager' in your .localrc, nemo by default
 alias genssh="ssh-keygen -t rsa -C"
 alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
 alias lshort="< ~/.localrc grep" # Quickly grep from the localrc
 alias fsnip="cat ~/.vim/snippets/* | grep" # Quickly look for snippets
-alias rh="rbenv rehash"
