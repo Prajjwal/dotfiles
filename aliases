@@ -29,6 +29,7 @@ alias gcl='git clone'
 alias gsi='git submodule init'
 alias gsa='git submodule add'
 alias gsu='git submodule update'
+alias gus='git submodule foreach git pull origin master'
 alias guc='git reset --soft HEAD'
 
 # Apt
@@ -39,6 +40,9 @@ alias agg="sudo apt-get upgrade"
 alias agu="sudo apt-get update"
 alias agc="sudo apt-get autoclean"
 alias aga="sudo apt-get autoremove"
+
+# Rails
+alias be="bundle exec"
 
 # Pacman 
 alias pacin="sudo pacman -S"
@@ -64,3 +68,4 @@ alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
 alias lshort="< ~/.localrc grep" # Quickly grep from the localrc
 alias fsnip="cat ~/.vim/snippets/* | grep" # Quickly look for snippets
+alias rh="rbenv rehash"
