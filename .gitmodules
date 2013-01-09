@@ -33,7 +33,7 @@
 	url = git://github.com/scrooloose/syntastic.git
 [submodule "vim/snippets"]
 	path = vim/snippets
-	url = git://github.com/Prajjwal/snipmate-snippets.git
+	url = git@github.com:Prajjwal/snipmate-snippets.git
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
