@@ -27,6 +27,7 @@ set incsearch
 set autochdir
 set autoread
 set numberwidth=4
+set textwidth=80
 set ai
 set si
 set matchtime=5
@@ -118,11 +119,13 @@ noremap <silent> ,hd <C-W>5-
 " Indentation [[
 
 set tabstop=4
+set softtabstop=4
 set shiftwidth=4
+set noexpandtab
 
-au FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
-au FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
-au FileType python setlocal expandtab shiftwidth=4 tabstop=4
+au FileType ruby,coffee,cucumber,eruby,haml,sass,scss,yaml,markdown,vim,handlebars,jade,javascript setlocal expandtab tabstop=2 shiftwidth=2
+au FileType python,perl setlocal expandtab
+au FileType gitcommit set textwidth=72
 " ]]
 
 " When vimrc is edited, reload it
@@ -134,9 +137,11 @@ set foldenable
 " Fold on the marker
 set foldlevel=100 " Dont autofold
 
-" Enable Filetype Detection
+" Filetypes
 filetype plugin on
 filetype indent on
+
+autocmd BufNewFile,BufRead *.html.erb set filetype=eruby.html
 
 " Enable syntax completion
 set ofu=syntaxcomplete#Complete
