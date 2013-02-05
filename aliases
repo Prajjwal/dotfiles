@@ -44,10 +44,23 @@ alias dbm="r db:migrate"
 alias drb="r db:rollback"
 alias dtp="r db:test:prepare"
 alias dr="r db:reset"
+alias dsl="r db:schema:load"
 
 alias hl="heroku logs"
 alias ho="heroku open"
 alias hr="heroku run"
+
+alias rg="rails generate"
+alias rii="rg rspec:install"
+alias rgc="rg controller"
+alias rgm="rg model"
+alias rgmig="rg migration"
+
+alias rd="rails destroy"
+alias rdii="rd rspec:install"
+alias rdgc="rd controller"
+alias rdgm="rd model"
+alias rdgmig="rd migration"
 
 # Apt
 alias agi="sudo apt-get install"

@@ -115,6 +115,11 @@ noremap <silent> ,hi <C-W>5+
 noremap <silent> ,hd <C-W>5-
 " ]]
 
+" Filetypes
+filetype plugin on
+filetype indent on
+
+autocmd BufNewFile,BufRead *.html.erb set filetype=eruby.html
 
 " Indentation [[
 
@@ -136,12 +141,6 @@ set foldenable
 " set foldmethod={,}
 " Fold on the marker
 set foldlevel=100 " Dont autofold
-
-" Filetypes
-filetype plugin on
-filetype indent on
-
-autocmd BufNewFile,BufRead *.html.erb set filetype=eruby.html
 
 " Enable syntax completion
 set ofu=syntaxcomplete#Complete
@@ -166,8 +165,6 @@ imap ,s <esc>
 map <f9> :tabedit $MYVIMRC<cr>
 " ROT13 fun!
 map <f12> ggVGg?
-" Open the current directory in nautilus
-nmap <f8> :! nautilus .<return>
 " Open a new tab
 nmap ,nt :tabnew
 " Close tab
@@ -242,4 +239,7 @@ let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/bundle/slimv/slime/start-
 let g:scheme_builtin_swank = 1
 let g:slimv_swank_scheme = '! xterm -e scheme --eval "(let loop() (start-swank) (loop))" &'
 let g:slimv_keybindings = 2
+let g:slimv_browser_cmd = 'firefox'
+let g:slimv_browser_cmd_suffix = ''
+let g:slimv_clhs_root = 'file:///usr/local/doc/HyperSpec/Body/'
 " ]]
