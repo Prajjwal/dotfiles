@@ -3,7 +3,7 @@
 # Sets up my dotfiles
 
 currentDir=`pwd`
-dotfiles=( aliases bashrc gitconfig vim vimrc )
+dotfiles=( aliases bashrc gitconfig vim vimrc devilspie )
 
 echo "Initializing and updating submodules"
 git submodule init
