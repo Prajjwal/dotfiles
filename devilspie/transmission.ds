@@ -1,0 +1,5 @@
+(if
+ (is (application_name) "Transmission")
+ (begin
+  (set_workspace 3)
+  (minimize)))
