@@ -1,7 +1,9 @@
-# Archiving
-alias unp="tar -xvf"
+# Tar
+alias pk="tar cvfa"
+alias unpk="tar xvfa"
 
 # Directory Navigation:
+alias cd.="cd ../"
 alias cd..="cd ../../"
 alias cd...="cd ../../../"
 alias cd....="cd ../../../../"

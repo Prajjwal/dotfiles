@@ -1,0 +1,5 @@
+(if
+ (is (application_name) "Pidgin")
+ (begin
+  (set_workspace 2)
+  (if (not (is (window_name) "Buddy List")) (maximize))))
