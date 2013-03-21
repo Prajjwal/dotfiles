@@ -20,7 +20,7 @@ let mapleader = ","
 " General Settings [[
 
 set encoding=utf-8
-set number
+set relativenumber
 set showmatch
 set ruler
 set showmode
@@ -206,6 +206,10 @@ nnoremap <leader>P "+P
 nnoremap <tab> %
 vnoremap <tab> %
 
+" Make H and L useful in normal mode
+nnoremap H 0
+nnoremap L $
+
 " Shortcut for building Helptags when I install a plugin:
 abbrev buildht :helptags ~/.vim/doc
 
@@ -215,6 +219,9 @@ abbrev ff :!firefox %:p<cr>
 abbrev chrome :!chrome %:p<cr>
 " Open the current file in Gedit
 abbrev gedit :!gedit %:p<cr>
+
+" Insert my email address quickly
+iabbrev @@ prajjwal.singh@gmail.com
 
 " ]]
 
