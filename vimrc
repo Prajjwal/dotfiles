@@ -13,6 +13,10 @@ set t_Co=256
 " Set colorscheme
 colorscheme badwolf
 
+" Set Leader [[
+let mapleader = ","
+" ]]
+
 " General Settings [[
 
 set encoding=utf-8
@@ -87,32 +91,32 @@ augroup END
 " Window Management [[
 
 " Switch using , + h|j|k|l
-noremap <silent> ,h :wincmd h<cr>
-noremap <silent> ,j :wincmd j<cr>
-noremap <silent> ,k :wincmd k<cr>
-noremap <silent> ,l :wincmd l<cr>
+noremap <silent> <leader>h :wincmd h<cr>
+noremap <silent> <leader>j :wincmd j<cr>
+noremap <silent> <leader>k :wincmd k<cr>
+noremap <silent> <leader>l :wincmd l<cr>
 
 " c(lose) h|j|k|l
-noremap <silent> ,ch :wincmd h<CR>:close<CR>
-noremap <silent> ,cj :wincmd j<CR>:close<CR>
-noremap <silent> ,ck :wincmd k<CR>:close<CR>
-noremap <silent> ,cl :wincmd l<CR>:close<CR>
+noremap <silent> <leader>ch :wincmd h<CR>:close<CR>
+noremap <silent> <leader>cj :wincmd j<CR>:close<CR>
+noremap <silent> <leader>ck :wincmd k<CR>:close<CR>
+noremap <silent> <leader>cl :wincmd l<CR>:close<CR>
 
 " c(lose) c(urrent)
-noremap <silent> ,cc :close<CR>
-noremap <silent> ,cw :cclose<CR>
+noremap <silent> <leader>cc :close<CR>
+noremap <silent> <leader>cw :cclose<CR>
 
 " m(ove) h|j|k|l
-noremap <silent> ,mh <C-W>H
-noremap <silent> ,mj <C-W>J
-noremap <silent> ,mk <C-W>K
-noremap <silent> ,ml <C-W>L
+noremap <silent> <leader>mh <C-W>H
+noremap <silent> <leader>mj <C-W>J
+noremap <silent> <leader>mk <C-W>K
+noremap <silent> <leader>ml <C-W>L
 
 " [w(idth) | h(eight)] [i(ncrease) | d(ecrease)]
-noremap <silent> ,wi <C-W>5>
-noremap <silent> ,wd <C-W>5<
-noremap <silent> ,hi <C-W>5+
-noremap <silent> ,hd <C-W>5-
+noremap <silent> <leader>wi <C-W>5>
+noremap <silent> <leader>wd <C-W>5<
+noremap <silent> <leader>hi <C-W>5+
+noremap <silent> <leader>hd <C-W>5-
 " ]]
 
 " Filetypes
@@ -154,42 +158,49 @@ cd ~/
 nnoremap <leader>u :syntax sync fromstart<cr>:redraw!<cr>
 
 " Clean trailing whitespace
-nnoremap ,w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+nnoremap <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " Use space instead of a colon (saves me hours)
-map <space> :
-" Map escape to ,s
-imap ,s <esc>
+noremap <space> :
+" Map escape to <leader>s
+inoremap <leader>s <esc>
 
 " Quickly open vimrc in a new tab
-map <f9> :tabedit $MYVIMRC<cr>
+noremap <f9> :tabedit $MYVIMRC<cr>
 " ROT13 fun!
-map <f12> ggVGg?
+noremap <f12> ggVGg?
 " Open a new tab
-nmap ,nt :tabnew
+nnoremap <leader>nt :tabnew
 " Close tab
-nmap ,tc :tabc<cr>
+nnoremap <leader>tc :tabc<cr>
 " To quickly edit the font size for screencasts:
-nmap ,sf :set guifont=Consolas:h
-" Map rails autocomplete to ,rc
-imap ,rc <C-x><C-u>
+nnoremap <leader>sf :set guifont=Consolas:h
+" Map rails autocomplete to <leader>rc
+inoremap <leader>rc <C-x><C-u>
 
-" Make the arrow keys useful
-map <up> <esc>:tabm<return>
-map <down> <esc>:NERDTreeToggle<return>
-map <left> gT
-map <right> gt
+" Make the arrow keys useful:
+" Move lines up and down in both normal and insert mode with the up/down arrows.
+nnoremap <up> ddkP
+inoremap <up> <esc>ddkPi
+nnoremap <down> ddp
+inoremap <down> <esc>ddpi
+" Move b/w tabs with the l/r arrows in normal mode.
+nnoremap <left> gT
+nnoremap <right> gt
+" Indent current line left or right with l/r arrows in insert mode.
+inoremap <left> <esc><<i
+inoremap <right> <esc>>>i
 
 " Completion
-imap ,c <C-x><C-o>
-imap ,ca <C-p>
-imap ,cl <C-x><C-l>
+inoremap <leader>c <C-x><C-o>
+inoremap <leader>ca <C-p>
+inoremap <leader>cl <C-x><C-l>
 
 " Yank to and paste from the OS clipboard:
-nmap ,y "+y
-nmap ,Y "+yy
-nmap ,p "+p
-nmap ,P "+P
+nnoremap <leader>y "+y
+nnoremap <leader>Y "+yy
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
 
 " Jump to matching pairs with Tab
 nnoremap <tab> %
@@ -213,7 +224,7 @@ abbrev gedit :!gedit %:p<cr>
 let NERDTreeShowHidden=1 " Cause NERDTree to show hidden files as well
 
 " Zencoding
-imap ,e <C-y>,
+inoremap <leader>e <C-y>,
 
 " SnipMate
 let g:snippets_dir = "~/.vim/snippets/"

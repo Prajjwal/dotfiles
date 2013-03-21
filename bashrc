@@ -7,6 +7,8 @@
 
 PS1='[\u@\h \W]\$ '
 
+set -o vi
+
 # Source aliases:
 source ~/.aliases
 
