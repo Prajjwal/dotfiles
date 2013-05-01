@@ -51,6 +51,7 @@ set viminfo='20,\"80
 set undolevels=500
 set cursorline
 set nospell
+set autochdir
 " ]]
 
 " Wildmenu completion [[
@@ -167,7 +168,7 @@ inoremap <leader>s <esc>
 
 " Quickly open vimrc in a new tab
 noremap <f9> :tabedit $MYVIMRC<cr>
-" ROT13 fun!
+" ROT13 entire buffer
 noremap <f12> ggVGg?
 " Open a new tab
 nnoremap <leader>nt :tabnew
@@ -179,17 +180,14 @@ nnoremap <leader>sf :set guifont=Consolas:h
 inoremap <leader>rc <C-x><C-u>
 
 " Make the arrow keys useful:
-" Move lines up and down in both normal and insert mode with the up/down arrows.
+" Move lines up and down in both normal and insert mode with the up/down arrows
 nnoremap <up> ddkP
 inoremap <up> <esc>ddkPi
 nnoremap <down> ddp
 inoremap <down> <esc>ddpi
-" Move b/w tabs with the l/r arrows in normal mode.
+" Move b/w tabs with the l/r arrows
 nnoremap <left> gT
 nnoremap <right> gt
-" Indent current line left or right with l/r arrows in insert mode.
-inoremap <left> <esc><<i
-inoremap <right> <esc>>>i
 
 " Completion
 inoremap <leader>c <C-x><C-o>
@@ -231,7 +229,7 @@ iabbrev @@ prajjwal.singh@gmail.com
 let NERDTreeShowHidden=1 " Cause NERDTree to show hidden files as well
 
 " Zencoding
-inoremap <leader>e <C-y>,
+inoremap <leader>e <C-Y>,
 
 " SnipMate
 let g:snippets_dir = "~/.vim/snippets/"

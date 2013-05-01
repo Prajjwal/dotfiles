@@ -94,3 +94,4 @@ alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
 alias lshort="< ~/.localrc grep" # Quickly grep from the localrc
 alias fsnip="cat ~/.vim/snippets/* | grep" # Quickly look for snippets
+alias serve="python -m SimpleHTTPServer"
