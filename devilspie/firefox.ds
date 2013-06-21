@@ -1,7 +1,0 @@
-(if
- (is (application_name) "Firefox")
- (begin
-  (focus)
-  (undecorate)
-  (set_workspace 1)
-  (maximize)))
