@@ -6,3 +6,8 @@ DISABLE_AUTO_UPDATE=true
 source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
+
+source ~/.rbenv/completions/rbenv.zsh
+
+# Source localrc for system specific config
+[ -f ~/.localrc ] && source ~/.localrc
