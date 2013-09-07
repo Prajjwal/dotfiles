@@ -208,9 +208,6 @@ vnoremap <tab> %
 nnoremap H 0
 nnoremap L $
 
-" Shortcut for building Helptags when I install a plugin:
-abbrev buildht :helptags ~/.vim/doc
-
 " Open the current file in firefox
 abbrev ff :!firefox %:p<cr>
 " Open the current file in chrome
@@ -250,7 +247,7 @@ let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_max_height = 15
 
 " slimv
-let g:slimv_impl = 'clisp'
+let g:slimv_impl = 'sbcl'
 let g:slimv_swank_cmd = '! xterm -e sbcl --load ~/.vim/bundle/slimv/slime/start-swank.lisp &'
 let g:scheme_builtin_swank = 1
 let g:slimv_swank_scheme = '! xterm -e scheme --eval "(let loop() (start-swank) (loop))" &'

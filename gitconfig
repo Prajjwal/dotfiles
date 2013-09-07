@@ -3,3 +3,7 @@
 	email = sin@prajjwal.com
 [core]
 	autocrlf = input
+[push]
+	default = simple
+[help]
+	autocorrect = 1
