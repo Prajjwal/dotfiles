@@ -28,10 +28,9 @@ if (get_application_name() == "Pidgin") then
 
 end
 
--- Transmission
-if (get_application_name() == "Transmission") then
+-- Transmission & qBittorrent
+if (get_application_name() == "Transmission" or string.match(get_application_name(), "qBittorrent")) then
 	
 	set_window_workspace(3);
-	minimize();
 
 end

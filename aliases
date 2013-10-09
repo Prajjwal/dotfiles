@@ -1,6 +1,6 @@
 # Tar
-alias pk="tar cvfa"
-alias unpk="tar xvfa"
+alias ctar="tar cvfa"
+alias xtar="tar xvfa"
 
 # Directory Navigation:
 alias cd.="cd ../"
