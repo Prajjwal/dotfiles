@@ -9,5 +9,7 @@ source ~/.aliases
 
 source ~/.rbenv/completions/rbenv.zsh
 
+set -o vi
+
 # Source localrc for system specific config
 [ -f ~/.localrc ] && source ~/.localrc
