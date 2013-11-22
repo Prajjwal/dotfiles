@@ -45,7 +45,7 @@ set hidden
 set history=1000
 set noerrorbells
 set nobackup
-set nowritebackup 
+set nowritebackup
 set noswapfile
 set viminfo='20,\"80
 set undolevels=500
@@ -228,8 +228,10 @@ let NERDTreeShowHidden=1 " Cause NERDTree to show hidden files as well
 " Zencoding
 inoremap <leader>e <C-Y>,
 
-" SnipMate
-let g:snippets_dir = "~/.vim/snippets/"
+" UltiSnips
+let g:UltiSnipsSnippetDirectories=["snippets", "UltiSnips"]
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " Syntastic
 set statusline+=%#warningmsg#

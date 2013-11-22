@@ -1,0 +1,36 @@
+snippet m "main"
+int main(${1:int argc, const char* argv[]})
+{
+	${0}
+	return 0;
+}
+endsnippet
+
+snippet incc
+#include <${1:stdio.h}>
+endsnippet
+
+snippet i "if"
+if (${1:/* condition */}) {
+	${0}
+}
+endsnippet
+
+snippet el "else"
+else {
+	${0}
+}
+endsnippet
+
+snippet f "function"
+${1:int} ${2:my_function}(${3})
+{
+	${0}
+}
+endsnippet
+
+snippet phile "file handler"
+FILE *${1:f} = fopen("${2}", "${3:r}");
+${4:/* code */}
+fclose(f);
+endsnippet
