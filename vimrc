@@ -63,6 +63,7 @@ set wildmode=list:longest
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.mp4,*.webm,*.flv               " Video
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
@@ -211,12 +212,12 @@ nnoremap L $
 " Open the current file in firefox
 abbrev ff :!firefox %:p<cr>
 " Open the current file in chrome
-abbrev chrome :!chrome %:p<cr>
+abbrev chrome :!google-chrome %:p<cr>
 " Open the current file in Gedit
 abbrev gedit :!gedit %:p<cr>
 
 " Insert my email address quickly
-iabbrev @@ prajjwal.singh@gmail.com
+iabbrev @@ sin@prajjwal.com
 
 " ]]
 
