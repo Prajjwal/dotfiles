@@ -230,9 +230,10 @@ let NERDTreeShowHidden=1 " Cause NERDTree to show hidden files as well
 inoremap <leader>e <C-Y>,
 
 " UltiSnips
-let g:UltiSnipsSnippetDirectories=["snippets", "UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["snippets"]
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+au FileType scss UltiSnipsAddFiletypes scss.css
 
 " Syntastic
 set statusline+=%#warningmsg#

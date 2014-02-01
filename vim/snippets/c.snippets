@@ -6,11 +6,19 @@ int main(${1:int argc, const char* argv[]})
 }
 endsnippet
 
+snippet mn "main"
+int main(void)
+{
+	${0}
+	return 0;
+}
+endsnippet
+
 snippet incc
 #include <${1:stdio.h}>
 endsnippet
 
-snippet i "if"
+snippet if "if"
 if (${1:/* condition */}) {
 	${0}
 }
@@ -23,7 +31,7 @@ else {
 endsnippet
 
 snippet f "function"
-${1:int} ${2:my_function}(${3})
+${1:int} ${2:myfunction}(${3})
 {
 	${0}
 }
