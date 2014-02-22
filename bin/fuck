@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# More satisfying way to kill -9 a process. 
+# Got the idea here: https://twitter.com/louroboros/status/412913768998268928
+
+# USAGE:
+# Make this script executable & stick it somewhere in your $PATH. Then:
+#
+# fuck you <process>
+
+# TODO:
+# Add support for signals other than KILL
+
+if killall -9 "$2"; then
+    echo
+	echo "(╯°□°）╯︵$(echo "$2" | toilet -f term -F rotate)"
+	echo
+fi

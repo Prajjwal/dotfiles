@@ -3,6 +3,8 @@ ZSH_THEME="norm"
 
 DISABLE_AUTO_UPDATE=true
 
+export PATH=~/dotfiles/bin:$PATH
+
 source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
