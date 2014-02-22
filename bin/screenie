@@ -1,0 +1,15 @@
+#!/bin/sh
+
+# Share a screenshot on Dropbox.
+
+# Requirements:
+# gnome-screenshot
+
+# TODO:
+# Handle errors better.
+
+filename="/tmp/`date +%s`.png"
+[ -n "$1" ] && filename="/tmp/$1"
+
+gnome-screenshot --area --file=$filename &&
+boxdrop $filename

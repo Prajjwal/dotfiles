@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Share a file publicly on Dropbox.
+
+# Requirements:
+#
+# Expects Dropbox to be installed and syncing ~/Dropbox.
+#
+# Expects xclip to be installed.
+#
+# Uses a variable called $puburl to generate url, if set. This is a
+# url like https://dl.dropboxusercontent.com/u/<uid>. You can figure out
+# yours by generating a public link for a file in your Dropbox/public folder.
+# This is faster and more reliable than requesting the dropbox daemon for a url.
+# It doesn't always respond.
+
+# Usage:
+# boxdrop <filename> <destination_filename>
+#
+# <destination_filename> is optional. Only use it if you want to set a different
+# name for the public file.
+
+[ -z "$1" ] && echo "No filename given." && exit 1
+
+bname=`basename $1`
+puburl="https://dl.dropboxusercontent.com/u/11202614"
+success="Link copied to clipboard."
+
+# Set destination
+dest="$HOME/Dropbox/public"
+[ -z "$2" ] || dest = "$dest/$2"
+
+# Copy file to Dropbox/public & yank url to clipboard
+cp $1 $dest &&
+echo "$puburl/$bname" | xclip -selection c
+
+# TODO:
+# Pop up a notification if notify-send is installed.
+
+echo $success
