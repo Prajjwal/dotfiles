@@ -1,7 +1,11 @@
 #!/bin/sh
 
-# More satisfying way to kill -9 a process. 
+# Proc fucker upper.
+# Infinitely more satisfying kill -9.
 # Got the idea here: https://twitter.com/louroboros/status/412913768998268928
+
+# Requirements:
+# Expects toilet to be installed.
 
 # USAGE:
 # Make this script executable & stick it somewhere in your $PATH. Then:
