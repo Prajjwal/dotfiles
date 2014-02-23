@@ -16,7 +16,7 @@
 # Add support for signals other than KILL
 
 if killall -9 "$2"; then
-    echo
+	echo
 	echo "(╯°□°）╯︵$(echo "$2" | toilet -f term -F rotate)"
 	echo
 fi
