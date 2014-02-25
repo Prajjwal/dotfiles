@@ -25,6 +25,11 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+if hash xclip 2> /dev/null; then
+	echo "xclip is not installed."
+	exit 1
+fi
+
 bname=`basename $1`
 puburl="https://dl.dropboxusercontent.com/u/11202614"
 success="Link copied to clipboard."
