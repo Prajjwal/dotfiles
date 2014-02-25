@@ -25,7 +25,7 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
-if hash xclip 2> /dev/null; then
+if ! hash xclip 2> /dev/null; then
 	echo "xclip is not installed."
 	exit 1
 fi
@@ -39,7 +39,7 @@ dest="$HOME/Dropbox/public"
 [ -z "$2" ] || dest = "$dest/$2"
 
 # Copy file to Dropbox/public & yank url to clipboard
-(cp $1 $dest &&	echo "$puburl/$bname" | xclip -election c) ||
+(cp $1 $dest &&	echo "$puburl/$bname" | xclip -selection c) ||
 	exit 1
 
 # Pop up a notification if notify-send is installed.
