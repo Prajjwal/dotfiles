@@ -5,11 +5,20 @@
 # Requirements:
 # gnome-screenshot
 
-# TODO:
-# Handle errors better.
+# Usage:
+# screenie <filename>
+#
+# <filename> is optional, will use <timestamp>.png if not specified.
 
-filename="/tmp/`date +%s`.png"
-[ -n "$1" ] && filename="/tmp/$1"
+if hash gnome-screenshot 2> /dev/null; then
+	filename="`date +%s`"
+	[ -n "$1" ] && filename="$1"
 
-gnome-screenshot --area --file=$filename &&
-boxdrop $filename
+	filename="/tmp/$filename.png"
+
+	gnome-screenshot --area --file=$filename &&
+	boxdrop $filename
+else
+	echo "gnome-screenshot not installed"
+	exit 1
+fi

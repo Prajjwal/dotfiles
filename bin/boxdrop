@@ -20,7 +20,10 @@
 # <destination_filename> is optional. Only use it if you want to set a different
 # name for the public file.
 
-[ -z "$1" ] && echo "No filename given." && exit 1
+if [ -z "$1" ]; then
+	echo "No filename given."
+	exit 1
+fi
 
 bname=`basename $1`
 puburl="https://dl.dropboxusercontent.com/u/11202614"
@@ -31,10 +34,12 @@ dest="$HOME/Dropbox/public"
 [ -z "$2" ] || dest = "$dest/$2"
 
 # Copy file to Dropbox/public & yank url to clipboard
-cp $1 $dest &&
-echo "$puburl/$bname" | xclip -selection c
+(cp $1 $dest &&	echo "$puburl/$bname" | xclip -election c) ||
+	exit 1
 
-# TODO:
 # Pop up a notification if notify-send is installed.
-
-echo $success
+if hash notify-send 2> /dev/null; then
+	notify-send "$success"
+else
+	echo $success
+fi
