@@ -1,0 +1,8 @@
+#!/bin/sh
+
+# Rageflip.
+
+# Requirements:
+# Expects toilet to be installed.
+
+echo "(╯°□°）╯︵$(echo "$1" | toilet -f term -F rotate)"

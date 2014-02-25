@@ -5,7 +5,7 @@
 # Got the idea here: https://twitter.com/louroboros/status/412913768998268928
 
 # Requirements:
-# Expects toilet to be installed.
+# rageflip: https://github.com/Prajjwal/dotfiles/blob/master/bin/rageflip
 
 # USAGE:
 # Make this script executable & stick it somewhere in your $PATH. Then:
@@ -17,6 +17,6 @@
 
 if killall -9 "$2"; then
 	echo
-	echo "(╯°□°）╯︵$(echo "$2" | toilet -f term -F rotate)"
+	rageflip $2
 	echo
 fi
