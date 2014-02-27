@@ -1,13 +1,14 @@
-# Required files
+# Files & Directories
+music_directory    "~/Music"
 db_file            "~/.mpd/database"
 log_file           "~/.mpd/log"
-
-# Optional
-music_directory    "~/Music"
 playlist_directory "~/.mpd/playlists"
 pid_file           "~/.mpd/pid"
 state_file         "~/.mpd/state"
 sticker_file       "~/.mpd/sticker.sql"
+
+# Start paused. Don't resume playing what was being played last.
+restore_paused "yes"
 
 audio_output {
         type            "pulse"

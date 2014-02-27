@@ -1,0 +1,18 @@
+# Directories & Files
+ncmpcpp_directory = "~/.ncmpcpp"
+lyrics_directory = "~/.lyrics"
+mpd_music_dir = "~/music"
+
+# Connection settings
+mpd_host = "localhost"
+mpd_port = "6600"
+mpd_connection_timeout = "5"
+
+# Misc.
+execute_on_song_change = "notify-send \"`ncmpcpp --now-playing`\""
+seek_time = "2"
+startup_screen = "2"
+display_bitrate = "yes"
+regular_expressions = "extended"
+allow_physical_files_deletion = "no"
+allow_physical_directories_deletion = "no"

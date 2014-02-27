@@ -16,6 +16,7 @@ devilspie2 ~/.config/devilspie2
 snes9x.xml ~/.snes9x/snes9x.xml
 gemrc ~/.gemrc
 mpdconf ~/.mpdconf
+ncmpcpp ~/.ncmpcpp
 )
 
 dotDir=`pwd`
