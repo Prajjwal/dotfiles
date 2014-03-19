@@ -1,9 +1,10 @@
 set nocompatible
+runtime bundle/pathogen/autoload/pathogen.vim
 
 " Pathogen
 au!
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#infect()
 
 syntax on
 
