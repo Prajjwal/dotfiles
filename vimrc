@@ -80,15 +80,8 @@ set wildignore+=*.orig                           " Merge resolution files
 
 " Line Return [[
 
-" Make sure Vim returns to the same line when you reopen a file.
-" Stolen from: https://bitbucket.org/sjl/dotfiles/src/tip/vim/vimrc
-augroup line_return
-    au!
-    au BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \     execute 'normal! g`"zvzz' |
-        \ endif
-augroup END
+" Move the cursor to it's last position in the buffer when it was last closed.
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 " ]]
 
 " Window Management [[
