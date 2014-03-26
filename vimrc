@@ -220,9 +220,6 @@ iabbrev @@ sin@prajjwal.com
 " NERDTree
 let NERDTreeShowHidden=1 " Cause NERDTree to show hidden files as well
 
-" Zencoding
-inoremap <leader>e <C-Y>,
-
 " UltiSnips
 let g:UltiSnipsSnippetDirectories=["snippets"]
 let g:UltiSnipsJumpForwardTrigger="<tab>"
