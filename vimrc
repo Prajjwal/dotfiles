@@ -217,9 +217,6 @@ iabbrev @@ sin@prajjwal.com
 
 " Plugins [[
 
-" NERDTree
-let NERDTreeShowHidden=1 " Cause NERDTree to show hidden files as well
-
 " UltiSnips
 let g:UltiSnipsSnippetDirectories=["snippets"]
 let g:UltiSnipsJumpForwardTrigger="<tab>"
