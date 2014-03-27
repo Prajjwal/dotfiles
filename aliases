@@ -100,3 +100,4 @@ alias fsnip="cat ~/.vim/snippets/* | grep" # Quickly look for snippets
 alias serve="python -m SimpleHTTPServer"
 alias grepsel="dpkg --get-selections | grep"
 alias copy="xclip -selection c"
+alias epath="echo $PATH | tr ':' '\n'"
