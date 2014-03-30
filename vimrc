@@ -218,7 +218,7 @@ iabbrev @@ sin@prajjwal.com
 " Plugins [[
 
 " UltiSnips
-let g:UltiSnipsSnippetDirectories=["snippets"]
+let g:UltiSnipsSnippetDirectories=["ultisnippets", "bundle/vim2hs/UltiSnips"]
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 au FileType scss UltiSnipsAddFiletypes scss.css
