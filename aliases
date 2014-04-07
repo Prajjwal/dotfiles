@@ -2,12 +2,6 @@
 alias ctar="tar cvfa"
 alias xtar="tar xvfa"
 
-# Directory Navigation:
-alias cd.="cd ../"
-alias cd..="cd ../../"
-alias cd...="cd ../../../"
-alias cd....="cd ../../../../"
-
 # Git
 alias gi="git init"
 alias ga="git add"
@@ -96,7 +90,6 @@ alias genssh="ssh-keygen -t rsa -C"
 alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
 alias lshort="< ~/.localrc grep" # Quickly grep from the localrc
-alias fsnip="cat ~/.vim/snippets/* | grep" # Quickly look for snippets
 alias serve="python -m SimpleHTTPServer"
 alias grepsel="dpkg --get-selections | grep"
 alias copy="xclip -selection c"
