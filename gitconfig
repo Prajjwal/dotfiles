@@ -3,6 +3,7 @@
 	email = sin@prajjwal.com
 [core]
 	autocrlf = input
+	excludesfile = /home/prajjwal/.globalignore
 [push]
 	default = simple
 [help]
