@@ -15,3 +15,17 @@
 
 # Caches
 .sass-cache
+
+# C
+*.o
+*.obj
+*.out
+*.so
+*.dll
+*.exe
+*.lib
+*.a
+
+# Haskell
+*.hi
+*.chi
