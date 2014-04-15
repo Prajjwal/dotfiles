@@ -52,3 +52,6 @@
 [submodule "vim/bundle/vim2hs"]
 	path = vim/bundle/vim2hs
 	url = https://github.com/dag/vim2hs.git
+[submodule "vim/bundle/emmet"]
+	path = vim/bundle/emmet
+	url = https://github.com/mattn/emmet-vim.git
