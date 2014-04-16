@@ -247,4 +247,8 @@ let g:slimv_keybindings = 2
 let g:slimv_browser_cmd = 'firefox'
 let g:slimv_browser_cmd_suffix = ''
 let g:slimv_clhs_root = 'file:///usr/local/doc/HyperSpec/Body/'
+
+" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
 " ]]
