@@ -1,5 +1,5 @@
 # Files & Directories
-music_directory    "~/Music"
+music_directory    "~/music"
 db_file            "~/.mpd/database"
 log_file           "~/.mpd/log"
 playlist_directory "~/.mpd/playlists"
