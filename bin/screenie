@@ -1,23 +1,25 @@
 #!/bin/sh
 
-# Share a screenshot on Dropbox.
+# Save a screenshot to /tmp/<timestamp>.png & write the filename to stdout.
+# Useful when you pipe the filename to various file sharing scripts, such as
+# imgurbash or a dropbox-uploader script.
+#
+# Invokes gnome-screenshot with all parameters plus a default filename of
+# <timestamp>.png. Will break in terrifying ways if you pass in the copy
+# to clipboard (-c) option.
 
 # Requirements:
 # gnome-screenshot
 
 # Usage:
-# screenie <filename>
+# screenie <gnome-screenshot-options>
 #
-# <filename> is optional, will use <timestamp>.png if not specified.
+# Run `gnome-screenshot --help` for help on what you can pass in.
 
 if hash gnome-screenshot 2> /dev/null; then
-	filename="`date +%s`"
-	[ -n "$1" ] && filename="$1"
-
-	filename="/tmp/$filename.png"
-
-	gnome-screenshot --area --file=$filename &&
-	boxdrop $filename
+	filename="/tmp/`date +%s`.png"
+	gnome-screenshot $@ --file=$filename &&
+	echo $filename
 else
 	echo "gnome-screenshot not installed"
 	exit 1
