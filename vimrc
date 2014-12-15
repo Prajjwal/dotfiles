@@ -22,6 +22,7 @@ let mapleader = ","
 
 set encoding=utf-8
 set relativenumber
+set number
 set showmatch
 set ruler
 set showmode
@@ -173,6 +174,8 @@ nnoremap <leader>tc :tabc<cr>
 nnoremap <leader>sf :set guifont=Consolas:h
 " Map rails autocomplete to <leader>rc
 inoremap <leader>rc <C-x><C-u>
+" Make 'gf' open a new file if the name under the cursor doesn't exist
+nnoremap gf :e <cfile><CR>
 
 " Make the arrow keys useful:
 " Move lines up and down in both normal and insert mode with the up/down arrows
