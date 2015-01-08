@@ -16,3 +16,4 @@ display_bitrate = "yes"
 regular_expressions = "extended"
 allow_physical_files_deletion = "no"
 allow_physical_directories_deletion = "no"
+playlist_disable_highlight_delay = 0
