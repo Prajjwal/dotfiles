@@ -70,6 +70,7 @@ set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.hi                             " GHC interface files
 
 set wildignore+=*.luac                           " Lua byte code
 
@@ -132,6 +133,7 @@ set noexpandtab
 au FileType ruby,coffee,cucumber,eruby,haml,sass,scss,yaml,markdown,vim,handlebars,jade,javascript setlocal expandtab tabstop=2 shiftwidth=2
 au FileType python,perl setlocal expandtab
 au FileType gitcommit set textwidth=72
+au FileType haskell setlocal expandtab
 " ]]
 
 " When vimrc is edited, reload it
