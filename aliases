@@ -42,7 +42,7 @@ alias bi="bundle install"
 alias bu="bundle update"
 alias wp="bi --without production"
 
-alias r="be rake"
+alias r="bin/rake"
 alias dbm="r db:migrate && r db:migrate RAILS_ENV=test"
 alias drb="r db:rollback"
 alias dtp="r db:test:prepare"
@@ -53,13 +53,13 @@ alias hl="heroku logs"
 alias ho="heroku open"
 alias hr="heroku run"
 
-alias rg="rails generate"
+alias rg="bin/rails generate"
 alias rri="rg rspec:install"
 alias rgc="rg controller"
 alias rgm="rg model"
 alias rgmig="rg migration"
 
-alias rd="rails destroy"
+alias rd="bin/rails destroy"
 alias rdii="rd rspec:install"
 alias rdgc="rd controller"
 alias rdgm="rd model"
@@ -94,3 +94,6 @@ alias serve="python -m SimpleHTTPServer"
 alias grepsel="dpkg --get-selections | grep"
 alias copy="xclip -selection c"
 alias epath='echo $PATH | tr ":" "\n"'
+alias xo='xclip -o'
+alias xi='xclip -i'
+alias xc='xclip -selection c'
