@@ -94,6 +94,4 @@ alias serve="python -m SimpleHTTPServer"
 alias grepsel="dpkg --get-selections | grep"
 alias copy="xclip -selection c"
 alias epath='echo $PATH | tr ":" "\n"'
-alias xo='xclip -o'
-alias xi='xclip -i'
 alias xc='xclip -selection c'
