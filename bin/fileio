@@ -21,12 +21,12 @@ BASE_URL="https://file.io"
 while getopts ":t:" opt; do
   case $opt in
     t)
-	  TTL=$OPTARG
+      TTL=$OPTARG
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
       ;;
-	:)
+    :)
       echo "Option -$OPTARG requires an argument" >&2
       ;;
   esac
@@ -37,8 +37,8 @@ key=$(echo $response | jq '.["key"]' | cut -d '"' -f2)
 error=$(echo $response | jq '.["error"]')
 
 if [[ "$key" == "null" ]]; then
-	echo $error
-	exit 1
+    echo $error
+    exit 1
 else
-	echo "$BASE_URL/$key"
+    echo "$BASE_URL/$key"
 fi
