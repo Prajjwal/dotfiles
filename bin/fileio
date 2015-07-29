@@ -4,6 +4,8 @@
 
 # Dependencies: jq
 
+# Optional Dependencies: xclip
+
 # Usage:
 # fileio -t TTL [FILE]
 #
