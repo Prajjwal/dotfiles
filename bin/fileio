@@ -12,7 +12,6 @@
 
 # TODO:
 # * Add support for multiple files
-# * Copy output to clipboard if xclip is installed
 # * Show help
 
 TTL=2 # Files live for two days by default
@@ -40,5 +39,10 @@ if [[ "$key" == "null" ]]; then
     echo $error
     exit 1
 else
-    echo "$BASE_URL/$key"
+    URL="$BASE_URL/$key"
+
+    # Copy url to clipboard if xclip is installed
+    hash xclip 2> /dev/null && echo $URL | xclip -selection c
+
+    echo $URL
 fi
