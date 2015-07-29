@@ -6,45 +6,80 @@
 
 # Optional Dependencies: xclip
 
-# Usage:
-# fileio -t TTL [FILE]
-#
-# TTL is a positive integer representing the number of days the file lives on
-# the server before being purged.
-
-# TODO:
-# * Add support for multiple files
-# * Show help
-
-TTL=2 # Files live for two days by default
+TTL="1d" # Files live for 1 day by default
 BASE_URL="https://file.io"
 
-while getopts ":t:" opt; do
+usage() {
+cat <<EOF
+Usage: fileio [OPTIONS] [FILES]
+
+Options:
+
+-t      Specify TTL of file in [d]ays, [w]eeks, [m]onths, or [y]ears.
+
+Examples:
+
+fileio -t 2d file.txt file-2.txt
+
+fileio -t 1y file.txt
+EOF
+
+exit 1
+}
+
+while getopts ":t:h" opt; do
   case $opt in
     t)
       TTL=$OPTARG
+      ;;
+    h)
+      usage
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
       ;;
     :)
       echo "Option -$OPTARG requires an argument" >&2
+      usage
       ;;
   esac
 done
 
-response=$(curl -s -F "file=@${@: -1}" "$BASE_URL/?expires=${TTL}d")
-key=$(echo $response | jq '.["key"]' | cut -d '"' -f2)
-error=$(echo $response | jq '.["error"]')
+# Get all files after options
+files=(${@:$OPTIND})
+file_count=${#files[@]}
 
-if [[ "$key" == "null" ]]; then
-    echo $error
-    exit 1
-else
-    URL="$BASE_URL/$key"
+# Print usage & quit if no files were specified
+[ $file_count -eq 0 ] && usage
 
-    # Copy url to clipboard if xclip is installed
-    hash xclip 2> /dev/null && echo $URL | xclip -selection c
+urls=""
 
-    echo $URL
-fi
+# Upload a file to file.io, and append resulting url to $urls
+function upload() {
+    response=$(curl -s -F "file=@$1" "$BASE_URL/?expires=$TTL")
+    key=$(echo $response | jq '.["key"]' | cut -d '"' -f2)
+    error=$(echo $response | jq '.["error"]')
+
+    if [[ "$key" == "null" ]]; then
+		echo $error
+		exit 1
+    else
+        url="$BASE_URL/$key"
+
+        if [ -z $urls ]; then
+            urls=$url
+        else
+            urls="$urls\n$url"
+        fi
+    fi
+}
+
+# Upload each input file
+for file in $files; do
+	upload $file
+done
+
+# Copy url to clipboard if xclip is installed
+hash xclip 2> /dev/null && echo $urls | xclip -selection c
+
+echo $urls
