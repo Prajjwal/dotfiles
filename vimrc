@@ -208,6 +208,9 @@ vnoremap <tab> %
 nnoremap H 0
 nnoremap L $
 
+" Insert current date
+nnoremap <f5> "=strftime("%b %d, %Y")<cr>P
+
 " Open the current file in firefox
 abbrev ff :!firefox %:p<cr>
 " Open the current file in chrome
