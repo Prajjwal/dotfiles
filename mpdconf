@@ -11,6 +11,15 @@ sticker_file       "~/.mpd/sticker.sql"
 restore_paused "yes"
 
 audio_output {
-        type            "pulse"
-        name            "pulse audio"
+    type    "pulse"
+    name    "pulse audio"
+}
+
+audio_output {
+	type    "httpd"
+	name    "http stream"
+	encoder "vorbis"
+	port    "8000"
+	bitrate "256"
+	format  "44100:16:2"
 }
