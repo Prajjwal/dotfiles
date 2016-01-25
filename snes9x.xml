@@ -15,8 +15,8 @@
   <option name="force_inverted_byte_order" value="0"/>
   <option name="multithreading" value="0"/>
   <option name="last_directory" value="/media/lulz/Games/SNES"/>
-  <option name="sram_directory" value="/home/prajjwal/Dropbox/snes9x-saves"/>
-  <option name="savestate_directory" value="/home/prajjwal/Dropbox/snes9x-saves"/>
+  <option name="sram_directory" value="/home/prajjwal/Dropbox/savegame/snes9x"/>
+  <option name="savestate_directory" value="/home/prajjwal/Dropbox/savegame/snes9x"/>
   <option name="cheat_directory" value="/home/prajjwal/Dropbox/snes9x-saves"/>
   <option name="patch_directory" value="/home/prajjwal/Dropbox/snes9x-saves"/>
   <option name="export_directory" value="/home/prajjwal/Dropbox/snes9x-saves"/>
@@ -88,7 +88,7 @@
    <binding name="Start" binding="268500749"/>
    <binding name="Select" binding="268435571"/>
    <binding name="A" binding="268435572"/>
-   <binding name="B" binding="268435566"/>
+   <binding name="B" binding="268435488"/>
    <binding name="X" binding="268435575"/>
    <binding name="Y" binding="268435574"/>
    <binding name="L" binding="268435560"/>

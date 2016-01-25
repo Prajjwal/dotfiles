@@ -9,8 +9,8 @@ mpd_port = "6600"
 mpd_connection_timeout = "5"
 
 # Misc.
-execute_on_song_change = "notify-send \"`ncmpcpp --now-playing`\""
 seek_time = "2"
 display_bitrate = "yes"
 regular_expressions = "extended"
 playlist_disable_highlight_delay = 0
+ask_before_clearing_playlists = "no"

@@ -3,6 +3,8 @@ ZSH_THEME="norm"
 
 DISABLE_AUTO_UPDATE=true
 
+plugins=(git)
+
 export PATH=~/dotfiles/bin:$PATH
 
 source $ZSH/oh-my-zsh.sh
