@@ -232,8 +232,7 @@ iabbrev @@ sin@prajjwal.com
 
 " UltiSnips
 let g:UltiSnipsSnippetDirectories=["ultisnippets", "bundle/vim2hs/UltiSnips"]
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsExpandTrigger="<c-e>"
 au FileType scss UltiSnipsAddFiletypes scss.css
 
 " Syntastic
@@ -271,6 +270,8 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 5
 let g:neocomplete#enable_auto_select = 1
+
+inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
