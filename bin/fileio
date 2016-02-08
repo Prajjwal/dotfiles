@@ -53,24 +53,22 @@ file_count=${#files[@]}
 # Print usage & quit if no files were specified
 [ $file_count -eq 0 ] && usage
 
-urls=""
+links=""
 
 # Upload a file to file.io, and append resulting url to $urls
 function upload() {
     response=$(curl -s -F "file=@$1" "$BASE_URL/?expires=$TTL")
-    key=$(echo $response | jq '.["key"]' | cut -d '"' -f2)
+    link=$(echo $response | jq '.["link"]' | cut -d '"' -f2)
     error=$(echo $response | jq '.["error"]')
 
-    if [[ "$key" == "null" ]]; then
+    if [[ "$link" == "null" ]]; then
         echo $error
         exit 1
     else
-        url="$BASE_URL/$key"
-
-        if [ -z $urls ]; then
-            urls=$url
+        if [ -z $links ]; then
+            links=$link
         else
-            urls="$urls\n$url"
+            links="$links\n$link"
         fi
     fi
 }
@@ -81,6 +79,6 @@ for file in $files; do
 done
 
 # Copy url to clipboard if xclip is installed
-hash xclip 2> /dev/null && echo $urls | xclip -selection c
+hash xclip 2> /dev/null && echo $links | xclip -selection c
 
-echo $urls
+echo $links
