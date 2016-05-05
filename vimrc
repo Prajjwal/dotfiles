@@ -54,6 +54,7 @@ set undolevels=500
 set cursorline
 set nospell
 set autochdir
+set guifont=Hack
 " ]]
 
 " Wildmenu completion [[
@@ -65,12 +66,14 @@ set wildmode=list:longest
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
-set wildignore+=*.mp4,*.webm,*.flv               " Video
+set wildignore+=*.mp4,*.webm,*.flv,*.mkv         " Video
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.hi                             " GHC interface files
+set wildignore+=*.jar                            " Java nonsense
+set wildignore+=*.pdf,*.odt,*.ods
 
 set wildignore+=*.luac                           " Lua byte code
 
@@ -251,6 +254,7 @@ let g:syntastic_auto_jump=1 " Automatically jump to the first error in file
 let g:ctrlp_switch_buffer = 2
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_max_height = 15
+let g:ctrlp_custom_ignore = 'node_modules'
 
 " slimv
 let g:slimv_impl = 'sbcl'
