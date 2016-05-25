@@ -1,0 +1,35 @@
+#!/bin/zsh
+
+# Share a screenshot on imgur.com
+
+# Dependencies:
+# - https://github.com/RanyAlbegWein/Imgur
+# - gnome-screenshot
+
+# Optional Dependencies:
+# - xclip
+# - notify-send
+# - imagemagick
+
+# TODO:
+# Add option for JPG conversion
+
+if hash gnome-screenshot 2> /dev/null; then
+	filename=$(mktemp /tmp/screenshot-XXXXXXX.png)
+	gnome-screenshot $@ --file=$filename &&
+	url=$(imgur -f $filename)
+	rm $filename
+else
+	echo "gnome-screenshot not installed"
+	exit 1
+fi
+
+if hash xclip 2> /dev/null; then
+	echo "$url" | xclip -selection c
+else
+	echo $url
+fi
+
+if hash notify-send 2> /dev/null; then
+	notify-send "URL Copied to clipboard!"
+fi
