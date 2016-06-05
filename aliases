@@ -36,6 +36,11 @@ alias rdgc="rd controller"
 alias rdgm="rd model"
 alias rdgmig="rd migration"
 
+# Maven
+# Please, just strangle me and get it over with.
+alias mi="mvn install"
+alias sbr="mvn spring-boot:run"
+
 # Apt
 alias agi="sudo apt-get install"
 alias agr="sudo apt-get remove"
