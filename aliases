@@ -8,10 +8,7 @@ alias gus="git submodule foreach git pull origin master"
 # Ruby/Rails stuff
 alias rh="rbenv rehash"
 
-alias be="bundle exec"
-alias bi="bundle install"
-alias bu="bundle update"
-alias wp="bi --without production"
+alias biwp="bundle install --without production"
 
 alias r="bin/rake"
 alias dbm="r db:migrate && r db:migrate RAILS_ENV=test"

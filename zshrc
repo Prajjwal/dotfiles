@@ -3,7 +3,7 @@ ZSH_THEME="norm"
 
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git rsync torrent extract)
+plugins=(git rsync torrent extract bundler)
 
 export PATH=~/dotfiles/bin:$PATH
 
