@@ -137,6 +137,7 @@ au FileType ruby,coffee,cucumber,eruby,haml,sass,scss,yaml,markdown,vim,handleba
 au FileType python,perl setlocal expandtab
 au FileType gitcommit set textwidth=72
 au FileType haskell setlocal expandtab
+au FileType html setlocal textwidth=0
 " ]]
 
 " When vimrc is edited, reload it
