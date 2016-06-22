@@ -61,3 +61,6 @@
 [submodule "vim/bundle/vim-pug"]
 	path = vim/bundle/vim-pug
 	url = git://github.com/digitaltoad/vim-pug.git
+[submodule "vim/bundle/slimv"]
+	path = vim/bundle/slimv
+	url = https://github.com/kovisoft/slimv.git
