@@ -72,8 +72,8 @@ set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.hi                             " GHC interface files
-set wildignore+=*.jar                            " Java nonsense
-set wildignore+=*.pdf,*.odt,*.ods
+set wildignore+=*.jar,*.class                    " Java nonsense
+set wildignore+=*.pdf,*.odt,*.ods,*.mobi,*.epub
 
 set wildignore+=*.luac                           " Lua byte code
 
