@@ -18,6 +18,7 @@ mpdconf ~/.mpdconf
 ncmpcpp ~/.ncmpcpp
 globalignore ~/.globalignore
 Xresources ~/.Xresources
+xmonad.hs ~/.xmonad/xmonad.hs
 )
 
 dotDir=`pwd`
