@@ -17,6 +17,7 @@ gemrc ~/.gemrc
 mpdconf ~/.mpdconf
 ncmpcpp ~/.ncmpcpp
 globalignore ~/.globalignore
+Xresources ~/.Xresources
 )
 
 dotDir=`pwd`
