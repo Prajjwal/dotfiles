@@ -70,3 +70,5 @@ alias epath='echo $PATH | tr ":" "\n"'
 alias xc='xclip -selection c'
 alias xargsi='xargs -0 -I{}'
 alias bazs='basename -azs'
+alias aesenc="openssl enc -aes-256-cbc -salt"
+alias aesdec="openssl enc -d -aes-256-cbc"
