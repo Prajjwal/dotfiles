@@ -50,3 +50,11 @@ URxvt*color12: #94bff3
 URxvt*color13: #ec93d3
 URxvt*color14: #93e0e3
 URxvt*color15: #ffffff
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintslight
+Xft.hinting: 1
+Xft.dpi: 96
+Xft.antialias: 1
+Xft.rgba: rgb
