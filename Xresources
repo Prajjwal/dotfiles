@@ -3,6 +3,7 @@ XTerm*locale: true
 XTerm*metaSendsEscape: true
 XTerm*saveLines: 4096
 XTerm*faceName: Inconsolata:size=12:antialias=true
+Xterm*selectToClipboard: true
 
 XTerm*background: #3f3f3f
 XTerm*foreground: #dcdccc
