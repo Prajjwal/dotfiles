@@ -4,23 +4,19 @@
 
 # Dependencies:
 # - https://github.com/RanyAlbegWein/Imgur
-# - gnome-screenshot
+# - scrot
 
 # Optional Dependencies:
 # - xclip
 # - notify-send
-# - imagemagick
 
-# TODO:
-# Add option for JPG conversion
-
-if hash gnome-screenshot 2> /dev/null; then
-	filename=$(mktemp /tmp/screenshot-XXXXXXX.png)
-	gnome-screenshot $@ --file=$filename &&
+if hash scrot 2> /dev/null; then
+	filename=$(mktemp /tmp/screenshot-XXXXXXX.jpg)
+	scrot $@ $filename &&
 	url=$(imgur -f $filename)
 	rm $filename
 else
-	echo "gnome-screenshot not installed"
+	echo "scrot not installed"
 	exit 1
 fi
 
