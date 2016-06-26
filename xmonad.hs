@@ -1,6 +1,9 @@
 import XMonad
+import XMonad.Hooks.DynamicLog
 
-main = xmonad defaultConfig
-    { terminal = "xterm"
+main = xmonad =<< xmobar myConfig
+
+myConfig = defaultConfig
+    { terminal = "urxvt"
     , borderWidth = 3
     }
