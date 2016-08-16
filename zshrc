@@ -3,7 +3,7 @@ ZSH_THEME="norm"
 
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git rsync torrent extract bundler)
+plugins=(git rsync torrent extract bundler colored-man-pages)
 
 export PATH=~/dotfiles/bin:$PATH
 
