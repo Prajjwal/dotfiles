@@ -54,7 +54,7 @@ set undolevels=500
 set cursorline
 set nospell
 set autochdir
-set guifont=Hack
+set guifont=Hack\ 11
 " ]]
 
 " Wildmenu completion [[
