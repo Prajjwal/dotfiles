@@ -157,6 +157,9 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" Enable autoformat by default for markdown files
+autocmd FileType markdown setlocal fo+=a
+
 " Mappings and Abbreviations [[
 
 " Change the default dir
@@ -229,6 +232,10 @@ abbrev gedit :!gedit %:p<cr>
 
 " Insert my email address quickly
 iabbrev @@ sin@prajjwal.com
+
+" Turn autoformat on/off for local buffer
+nnoremap <f1> :setlocal fo+=a<cr>
+nnoremap <f2> :setlocal fo-=a<cr>
 
 " ]]
 
