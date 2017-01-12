@@ -4,7 +4,14 @@
 [core]
 	autocrlf = input
 	excludesfile = /home/prajjwal/.globalignore
+	editor = vim
 [push]
 	default = simple
 [help]
 	autocorrect = 1
+[commit]
+	verbose = true
+[submodule]
+	fetchJobs = 4
+[rebase]
+	autostash = true
