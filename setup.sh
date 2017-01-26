@@ -20,6 +20,7 @@ globalignore ~/.globalignore
 Xresources ~/.Xresources
 xmonad.hs ~/.xmonad/xmonad.hs
 xmobarrc ~/.xmobarrc
+railsrc ~/.railsrc
 )
 
 dotDir=`pwd`
