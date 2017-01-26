@@ -24,7 +24,7 @@ XTerm*color13: #ec93d3
 XTerm*color14: #93e0e3
 XTerm*color15: #ffffff
 
-URxvt*font: xft:Hack:size=10.5:antialias=true
+URxvt*font: xft:Hack:size=12:antialias=true
 URxvt*scrollBar: false
 URxvt*depth: 32
 URxvt*cursorBlink: true
@@ -55,6 +55,6 @@ Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintslight
 Xft.hinting: 1
-Xft.dpi: 102
+Xft.dpi: 89
 Xft.antialias: 1
 Xft.rgba: none
