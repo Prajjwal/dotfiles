@@ -42,10 +42,10 @@
 	url = git://github.com/hail2u/vim-css3-syntax.git
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
-	url = git@github.com:vim-scripts/UltiSnips.git
+	url = https://github.com/vim-scripts/UltiSnips.git
 [submodule "vim/bundle/pathogen"]
 	path = vim/bundle/pathogen
-	url = git@github.com:tpope/vim-pathogen.git
+	url = https://github.com/tpope/vim-pathogen.git
 [submodule "vim/bundle/vim2hs"]
 	path = vim/bundle/vim2hs
 	url = https://github.com/dag/vim2hs.git
