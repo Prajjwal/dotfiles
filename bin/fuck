@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 # Proc fucker upper.
 # Infinitely more satisfying kill -9.
@@ -15,7 +15,7 @@
 # TODO:
 # Add support for signals other than KILL
 
-source "include/check_dependencies.sh"
+source "${0%/*}/include/check_dependencies.sh"
 
 ensure_presence_of rageflip
 

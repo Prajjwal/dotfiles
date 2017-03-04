@@ -10,7 +10,7 @@
 # - xclip
 # - notify-send
 
-source "include/check_dependencies.sh"
+source "${0%/*}/include/check_dependencies.sh"
 
 ensure_presence_of imgur scrot
 
