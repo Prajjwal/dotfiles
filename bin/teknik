@@ -110,11 +110,11 @@ function teknik_log {
 }
 
 function upload {
-	curl_form_data="genDeletionKey=true&doNotTrack=true&file=@$1"
+	curl_form_data="genDeletionKey=true&doNotTrack=true"
 
 	alias curl_with_options="curl $CURL_OPTIONS"
 
-	response=$(curl_with_options -F $curl_form_data "$BASE_API_URL/Upload")
+	response=$(curl_with_options -F $curl_form_data -F "file=@$1" "$BASE_API_URL/Upload")
 	result=$(echo $response | jq '.["result"]')
 	url=$(echo $result | jq -r '.["url"]')
 	fileName=$(echo $result | jq -r '.["fileName"]')
@@ -208,5 +208,6 @@ else
 fi
 
 # Yank URLS to clipboard if xclip is installed.
+URLS=$(echo $URLS | grep -ve '^$')
 is_installed xclip && echo $URLS | xclip -selection c
 echo $URLS
