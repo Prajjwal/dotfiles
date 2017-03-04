@@ -7,9 +7,10 @@
 
 # Optional Dependencies:
 # - xdg-open
+# - xclip
 
 # TODO:
-# - Yank urls to clipboard automatically.
+# - Add anonymous mode.
 
 source "${0%/*}/include/util.sh"
 
@@ -25,7 +26,7 @@ Options:
 -a      Authenticate user.
 -s      Specify lexer to use for syntax hightlighting.
 -e      Set paste expiry in <units>.
--u      Set paste expiry units.
+-u      Set paste expiry units(view, minute, hour, day, month, year).
 -v      Set paste expiry in # of views.
 -w      Set paste password.
 -o      Open file in browser when done.
@@ -33,8 +34,26 @@ Options:
 
 Examples:
 
-teknik -p test.rb
-echo "test" | teknik -p -
+# Paste test1.rb, test2.rb with ruby syntax hightlighting.
+$ teknik -p -s ruby test1.rb test2.rb
+
+# Paste from STDIN
+$ cat test1.rb | teknik -s ruby -p -
+
+# Make paste expire after 10 views.
+$ teknik -p -v 10 test1.rb
+
+# Make paste expire after 1 year.
+$ teknik -p -e 1 -u year test1.rb
+
+# Make paste expire after 14 hours, and open it in the browser.
+$ teknik -p -o -e 14 test1.rb
+
+# Paste with a password.
+$ teknik -p -w "supersecret" secrets.yml
+
+# Interactively authenticate account.
+$ teknik -a <username>
 
 EOF
 
@@ -47,12 +66,14 @@ OPEN=false
 SETTINGS_URL="https://user.teknik.io/Settings"
 AUTH_FILE=~/.teknik
 CURL_OPTIONS="--silent "
+URLS=""
 
 IS_PASTE=false
 EXPIRE_UNIT=hour
 EXPIRE_LENGTH=24
 PASSWORD=""
 
+# Interactively authenticate a user
 function authenticate {
 	echo "Trying to open your browser."
 	echo "If it doesn't work, manually navigate to:"
@@ -60,7 +81,7 @@ function authenticate {
 	echo "Generate an authentication token under the 'Security' tab and enter it
 	here."
 
-    open_file $SETTINGS_URL
+	open_file $SETTINGS_URL
 	read token
 
 	echo "Saving details to $AUTH_FILE"
@@ -85,7 +106,7 @@ function upload {
 
 	$OPEN && open_file $url
 
-	echo $url
+	URLS+="\n$url"
 }
 
 function paste {
@@ -104,9 +125,10 @@ function paste {
 
 	$OPEN && open_file $url
 
-	echo $url
+	URLS+="\n$url"
 }
 
+# If user has been authenticated, load details.
 if [ -f ~/.teknik ]; then
   source ~/.teknik
   CURL_OPTIONS+="-u $USER:$TOKEN "
@@ -158,3 +180,7 @@ else
 	  upload $file
 	done
 fi
+
+# Yank URLS to clipboard if xclip is installed.
+is_installed xclip && echo $URLS | xclip -selection c
+echo $URL
