@@ -7,6 +7,10 @@
 
 # Optional Dependencies: xclip
 
+source "include/check_dependencies.sh"
+
+ensure_presence_of jq
+
 TTL="1d" # Files live for 1 day by default
 BASE_URL="https://file.io"
 
@@ -79,6 +83,6 @@ for file in $files; do
 done
 
 # Copy url to clipboard if xclip is installed
-hash xclip 2> /dev/null && echo $links | xclip -selection c
+is_installed xclip && echo $links | xclip -selection c
 
 echo $links
