@@ -66,6 +66,9 @@ $ teknik -p -w "supersecret" secrets.yml
 # Interactively authenticate account.
 $ teknik -a <username>
 
+# Post something anonymously.
+$ teknik -n green.txt
+
 EOF
 
 exit 1
@@ -107,7 +110,11 @@ function teknik_log {
 }
 
 function upload {
-	response=$(eval "curl $CURL_OPTIONS -F \"genDeletionKey=true\" -F \"doNotTrack=true\" -F \"file=@$1\" \"$BASE_API_URL/Upload\"")
+	curl_form_data="genDeletionKey=true&doNotTrack=true&file=@$1"
+
+	alias curl_with_options="curl $CURL_OPTIONS"
+
+	response=$(curl_with_options -F $curl_form_data "$BASE_API_URL/Upload")
 	result=$(echo $response | jq '.["result"]')
 	url=$(echo $result | jq -r '.["url"]')
 	fileName=$(echo $result | jq -r '.["fileName"]')
@@ -123,13 +130,17 @@ function upload {
 
 function paste {
 	paste_body=$(cat $1)
+	curl_data="title=$1&password=$PASSWORD&expireUnit=$EXPIRE_UNIT&expireLength=$EXPIRE_LENGTH&syntax=$SYNTAX&doNotTrack=true&hide=true"
+	curl_urlencode_data="code=$paste_body"
 
-	response=$(eval "curl $CURL_OPTIONS --data \"title=$1&password=$PASSWORD&expireUnit=$EXPIRE_UNIT&expireLength=$EXPIRE_LENGTH&syntax=$SYNTAX&doNotTrack=true&hide=true\"	--data-urlencode \"code=$paste_body\" \"$BASE_API_URL/Paste\"")
+	alias curl_with_options="curl $CURL_OPTIONS"
+
+	response=$(curl_with_options --data $curl_data --data-urlencode $curl_urlencode_data "$BASE_API_URL/Paste")
 	result=$(echo $response | jq '.["result"]')
 	url=$(echo $result | jq -r '.["url"]')
 	id=$(echo $result | jq -r '.["id"]')
-	expiration_timestamp=$(echo $result | jq -r '.["expiration"]')
-	expiration=$(date -d @$expiration_timestamp)
+	expiration_timestamp=$(echo $result | jq -r '.["expiration"]' | tr -cd '[0-9]')
+	[[ -n $expiration_timestamp ]] && expiration=$(date -d @$expiration_timestamp)
 	password=$(echo $result | jq -r '.["password"]')
 	timestamp=$(date +%s)
 
@@ -198,4 +209,4 @@ fi
 
 # Yank URLS to clipboard if xclip is installed.
 is_installed xclip && echo $URLS | xclip -selection c
-echo $URL
+echo $URLS
