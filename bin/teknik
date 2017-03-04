@@ -1,4 +1,4 @@
-#!/bin/zsh -x
+#!/bin/zsh
 
 # Upload files and paste on teknik.io
 
@@ -10,7 +10,6 @@
 
 # TODO:
 # - Yank urls to clipboard automatically.
-# - Authenticate user.
 
 source "${0%/*}/include/util.sh"
 
@@ -23,6 +22,7 @@ Usage: teknik [OPTIONS] [FILES]
 Options:
 
 -p      Paste files, or STDIN if filename is '-'.
+-a      Authenticate user.
 -s      Specify lexer to use for syntax hightlighting.
 -e      Set paste expiry in <units>.
 -u      Set paste expiry units.
@@ -44,14 +44,80 @@ exit 1
 BASE_API_URL="https://api.teknik.io/v1"
 LOG_FILE=~/.teknik_log
 OPEN=false
+SETTINGS_URL="https://user.teknik.io/Settings"
+AUTH_FILE=~/.teknik
+CURL_OPTIONS="--silent "
 
 IS_PASTE=false
 EXPIRE_UNIT=hour
 EXPIRE_LENGTH=24
 PASSWORD=""
 
-while getopts "ps:e:u:v:w:oh" opt; do
+function authenticate {
+	echo "Trying to open your browser."
+	echo "If it doesn't work, manually navigate to:"
+	echo "$SETTINGS_URL"
+	echo "Generate an authentication token under the 'Security' tab and enter it
+	here."
+
+    open_file $SETTINGS_URL
+	read token
+
+	echo "Saving details to $AUTH_FILE"
+	echo "USER=$1" > $AUTH_FILE
+	echo "TOKEN=$token" >> $AUTH_FILE
+}
+
+function teknik_log {
+	touch $LOG_FILE
+	echo $1 >> $LOG_FILE
+}
+
+function upload {
+	response=$(eval "curl $CURL_OPTIONS -F \"genDeletionKey=true\" -F \"doNotTrack=true\" -F \"file=@$1\" \"$BASE_API_URL/Upload\"")
+	result=$(echo $response | jq '.["result"]')
+	url=$(echo $result | jq -r '.["url"]')
+	fileName=$(echo $result | jq -r '.["fileName"]')
+	deletionKey=$(echo $result | jq -r '.["deletionKey"]')
+	timestamp=$(date +%s)
+
+	teknik_log "$timestamp: $1; fileName: $fileName; deletionKey: $deletionKey"
+
+	$OPEN && open_file $url
+
+	echo $url
+}
+
+function paste {
+	paste_body=$(cat $1)
+
+	response=$(eval "curl $CURL_OPTIONS --data \"title=$1&password=$PASSWORD&expireUnit=$EXPIRE_UNIT&expireLength=$EXPIRE_LENGTH&syntax=$SYNTAX&doNotTrack=true&hide=true\"	--data-urlencode \"code=$paste_body\" \"$BASE_API_URL/Paste\"")
+	result=$(echo $response | jq '.["result"]')
+	url=$(echo $result | jq -r '.["url"]')
+	id=$(echo $result | jq -r '.["id"]')
+	expiration_timestamp=$(echo $result | jq -r '.["expiration"]')
+	expiration=$(date -d @$expiration_timestamp)
+	password=$(echo $result | jq -r '.["password"]')
+	timestamp=$(date +%s)
+
+	teknik_log "$timestamp: $1; id: $id; expiration: $expiration; password:	$password"
+
+	$OPEN && open_file $url
+
+	echo $url
+}
+
+if [ -f ~/.teknik ]; then
+  source ~/.teknik
+  CURL_OPTIONS+="-u $USER:$TOKEN "
+fi
+
+while getopts "a:ps:e:u:v:w:oh" opt; do
   case $opt in
+    a)
+	  authenticate $OPTARG
+	  exit 0
+      ;;
     p)
 	  IS_PASTE=true
       ;;
@@ -82,45 +148,6 @@ done
 
 files=(${@:$OPTIND})
 file_count=${#files[@]}
-
-function teknik_log {
-	touch $LOG_FILE
-	echo $1 >> $LOG_FILE
-}
-
-function upload {
-	response=$(curl --silent -F "genDeletionKey=true" -F "doNotTrack=true" -F "file=@$1"	"$BASE_API_URL/Upload")
-	result=$(echo $response | jq '.["result"]')
-	url=$(echo $result | jq -r '.["url"]')
-	fileName=$(echo $result | jq -r '.["fileName"]')
-	deletionKey=$(echo $result | jq -r '.["deletionKey"]')
-	timestamp=$(date +%s)
-
-	teknik_log "$timestamp: $1; fileName: $fileName; deletionKey: $deletionKey"
-
-	$OPEN && open_file $url
-
-	echo $url
-}
-
-function paste {
-	paste_body=$(cat $1)
-
-	response=$(curl --silent --data "title=$1&password=$PASSWORD&expireUnit=$EXPIRE_UNIT&expireLength=$EXPIRE_LENGTH&syntax=$SYNTAX&doNotTrack=true&hide=true" --data-urlencode "code=$paste_body" "$BASE_API_URL/Paste")
-	result=$(echo $response | jq '.["result"]')
-	url=$(echo $result | jq -r '.["url"]')
-	id=$(echo $result | jq -r '.["id"]')
-	expiration_timestamp=$(echo $result | jq -r '.["expiration"]')
-	expiration=$(date -d @$expiration_timestamp)
-	password=$(echo $result | jq -r '.["password"]')
-	timestamp=$(date +%s)
-
-	teknik_log "$timestamp: $1; id: $id; expiration: $expiration; password:	$password"
-
-	$OPEN && open_file $url
-
-	echo $url
-}
 
 if $IS_PASTE; then;
 	for file in $files; do
