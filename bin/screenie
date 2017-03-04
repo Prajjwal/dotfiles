@@ -1,26 +1,25 @@
-#!/bin/sh
+#!/bin/zsh
 
 # Save a screenshot to /tmp/<timestamp>.png & write the filename to stdout.
 # Useful when you pipe the filename to various file sharing scripts, such as
 # imgurbash or a dropbox-uploader script.
 #
-# Invokes gnome-screenshot with all parameters plus a default filename of
+# Invokes scrot with all parameters plus a default filename of
 # <timestamp>.png. Will break in terrifying ways if you pass in the copy
 # to clipboard (-c) option.
 
 # Requirements:
-# gnome-screenshot
+# scrot
 
 # Usage:
-# screenie <gnome-screenshot-options>
+# screenie <scrot_options>
 #
-# Run `gnome-screenshot --help` for help on what you can pass in.
+# Run `man scrot` for help on what you can pass in.
 
-if hash gnome-screenshot 2> /dev/null; then
-	filename="/tmp/`date +%s`.png"
-	gnome-screenshot $@ --file=$filename &&
-	echo $filename
-else
-	echo "gnome-screenshot not installed"
-	exit 1
-fi
+source "include/check_dependencies.sh"
+
+ensure_presence_of scrot
+
+filename="/tmp/`date +%s`.png" &&
+scrot $@ $filename &&
+echo $filename
