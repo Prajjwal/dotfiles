@@ -1,0 +1,133 @@
+#!/bin/zsh -x
+
+# Upload files and paste on teknik.io
+
+# Dependencies:
+# - jq
+
+# Optional Dependencies:
+# - xdg-open
+
+# TODO:
+# - Yank urls to clipboard automatically.
+# - Authenticate user.
+
+source "${0%/*}/include/util.sh"
+
+ensure_presence_of jq
+
+usage() {
+cat <<EOF
+Usage: teknik [OPTIONS] [FILES]
+
+Options:
+
+-p      Paste files, or STDIN if filename is '-'.
+-s      Specify lexer to use for syntax hightlighting.
+-e      Set paste expiry in <units>.
+-u      Set paste expiry units.
+-v      Set paste expiry in # of views.
+-w      Set paste password.
+-o      Open file in browser when done.
+-h      Display this help.
+
+Examples:
+
+teknik -p test.rb
+echo "test" | teknik -p -
+
+EOF
+
+exit 1
+}
+
+BASE_API_URL="https://api.teknik.io/v1"
+LOG_FILE=~/.teknik_log
+OPEN=false
+
+IS_PASTE=false
+EXPIRE_UNIT=hour
+EXPIRE_LENGTH=24
+PASSWORD=""
+
+while getopts "ps:e:u:v:w:oh" opt; do
+  case $opt in
+    p)
+	  IS_PASTE=true
+      ;;
+    s)
+	  SYNTAX=$OPTARG
+      ;;
+    e)
+	  EXPIRE_LENGTH=$OPTARG
+      ;;
+    u)
+	  EXPIRE_UNIT=$OPTARG
+      ;;
+    v)
+	  EXPIRE_UNIT=view
+	  EXPIRE_LENGTH=$OPTARG
+      ;;
+    w)
+	  PASSWORD=$OPTARG
+      ;;
+    o)
+	  OPEN=$OPTARG
+      ;;
+    h)
+      usage
+      ;;
+  esac
+done
+
+files=(${@:$OPTIND})
+file_count=${#files[@]}
+
+function teknik_log {
+	touch $LOG_FILE
+	echo $1 >> $LOG_FILE
+}
+
+function upload {
+	response=$(curl --silent -F "genDeletionKey=true" -F "doNotTrack=true" -F "file=@$1"	"$BASE_API_URL/Upload")
+	result=$(echo $response | jq '.["result"]')
+	url=$(echo $result | jq -r '.["url"]')
+	fileName=$(echo $result | jq -r '.["fileName"]')
+	deletionKey=$(echo $result | jq -r '.["deletionKey"]')
+	timestamp=$(date +%s)
+
+	teknik_log "$timestamp: $1; fileName: $fileName; deletionKey: $deletionKey"
+
+	$OPEN && open_file $url
+
+	echo $url
+}
+
+function paste {
+	paste_body=$(cat $1)
+
+	response=$(curl --silent --data "title=$1&password=$PASSWORD&expireUnit=$EXPIRE_UNIT&expireLength=$EXPIRE_LENGTH&syntax=$SYNTAX&doNotTrack=true&hide=true" --data-urlencode "code=$paste_body" "$BASE_API_URL/Paste")
+	result=$(echo $response | jq '.["result"]')
+	url=$(echo $result | jq -r '.["url"]')
+	id=$(echo $result | jq -r '.["id"]')
+	expiration_timestamp=$(echo $result | jq -r '.["expiration"]')
+	expiration=$(date -d @$expiration_timestamp)
+	password=$(echo $result | jq -r '.["password"]')
+	timestamp=$(date +%s)
+
+	teknik_log "$timestamp: $1; id: $id; expiration: $expiration; password:	$password"
+
+	$OPEN && open_file $url
+
+	echo $url
+}
+
+if $IS_PASTE; then;
+	for file in $files; do
+	  paste $file
+	done
+else
+	for file in $files; do
+	  upload $file
+	done
+fi

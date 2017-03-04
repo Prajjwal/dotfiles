@@ -10,3 +10,7 @@ function ensure_presence_of {
 function is_installed {
 	hash $1 2> /dev/null
 }
+
+function open_file {
+	is_installed xdg-open && (xdg-open $url) &> /dev/null
+}
