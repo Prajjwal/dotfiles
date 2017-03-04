@@ -5,4 +5,8 @@
 # Requirements:
 # Expects toilet to be installed.
 
+source "include/check_dependencies.sh"
+
+ensure_presence_of toilet
+
 echo "(╯°□°）╯︵$(echo "$1" | toilet -f term -F rotate)"

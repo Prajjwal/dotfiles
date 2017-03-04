@@ -15,6 +15,10 @@
 # TODO:
 # Add support for signals other than KILL
 
+source "include/check_dependencies.sh"
+
+ensure_presence_of rageflip
+
 if killall -9 "$2"; then
 	echo
 	rageflip $2
