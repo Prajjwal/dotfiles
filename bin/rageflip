@@ -5,7 +5,7 @@
 # Requirements:
 # Expects toilet to be installed.
 
-source "${0%/*}/include/check_dependencies.sh"
+source "${0%/*}/include/util.sh"
 
 ensure_presence_of toilet
 
