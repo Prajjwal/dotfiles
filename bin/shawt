@@ -2,6 +2,13 @@
 
 # Share a screenshot on imgur.com
 
+# ---------------------------------
+# Author:
+# ---------------------------------
+# Prajjwal Singh
+# sin@prajjwal.com
+# https://prajjwal.com/about.html
+
 # Dependencies:
 # - https://github.com/RanyAlbegWein/Imgur
 # - scrot

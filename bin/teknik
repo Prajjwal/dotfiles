@@ -1,11 +1,22 @@
 #!/bin/zsh
 
 # Upload files and paste on teknik.io
-
+#
+# ---------------------------------
+# Author:
+# ---------------------------------
+# Prajjwal Singh
+# sin@prajjwal.com
+# https://prajjwal.com/about.html
+#
+# ---------------------------------
 # Dependencies:
+# ---------------------------------
 # - jq
-
+#
+# ---------------------------------
 # Optional Dependencies:
+# ---------------------------------
 # - xdg-open
 # - xclip
 

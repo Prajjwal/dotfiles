@@ -2,9 +2,16 @@
 
 # Upload one or more files to https://file.io. Also yanks the url(s) to
 # clipboard if you have `xclip` installed.
-
+#
+# ---------------------------------
+# Author:
+# ---------------------------------
+# Prajjwal Singh
+# sin@prajjwal.com
+# https://prajjwal.com/about.html
+#
 # Dependencies: jq
-
+#
 # Optional Dependencies: xclip
 
 source "${0%/*}/include/util.sh"
