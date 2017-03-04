@@ -21,7 +21,6 @@
 # - xclip
 
 # TODO:
-# - Add anonymous mode.
 
 source "${0%/*}/include/util.sh"
 
@@ -35,6 +34,7 @@ Options:
 
 -p      Paste files, or STDIN if filename is '-'.
 -a      Authenticate user.
+-n      Paste as anonymous user.
 -s      Specify lexer to use for syntax hightlighting.
 -e      Set paste expiry in <units>.
 -u      Set paste expiry units(view, minute, hour, day, month, year).
@@ -80,6 +80,7 @@ CURL_OPTIONS="--silent "
 URLS=""
 
 IS_PASTE=false
+ANONYMOUS_MODE=false
 EXPIRE_UNIT=hour
 EXPIRE_LENGTH=24
 PASSWORD=""
@@ -139,17 +140,14 @@ function paste {
 	URLS+="\n$url"
 }
 
-# If user has been authenticated, load details.
-if [ -f ~/.teknik ]; then
-  source ~/.teknik
-  CURL_OPTIONS+="-u $USER:$TOKEN "
-fi
-
-while getopts "a:ps:e:u:v:w:oh" opt; do
+while getopts "a:nps:e:u:v:w:oh" opt; do
   case $opt in
     a)
 	  authenticate $OPTARG
 	  exit 0
+      ;;
+    n)
+	  ANONYMOUS_MODE=true
       ;;
     p)
 	  IS_PASTE=true
@@ -178,6 +176,12 @@ while getopts "a:ps:e:u:v:w:oh" opt; do
       ;;
   esac
 done
+
+# If user has been authenticated, load details.
+if [[ (-f ~/.teknik) && ($ANONYMOUS_MODE != true) ]]; then
+  source ~/.teknik
+  CURL_OPTIONS+="-u $USER:$TOKEN "
+fi
 
 files=(${@:$OPTIND})
 file_count=${#files[@]}
