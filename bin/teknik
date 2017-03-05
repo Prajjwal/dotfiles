@@ -19,6 +19,7 @@
 # ---------------------------------
 # - xdg-open
 # - xclip
+# - identify (from the ImageMagick suite, to identify pngs reliably)
 
 # TODO:
 
@@ -111,10 +112,15 @@ function teknik_log {
 
 function upload {
 	curl_form_data="genDeletionKey=true&doNotTrack=true"
+	curl_multipart_data="file=@$1"
+
+	if [[ $(is_installed identify && identify $1 | cut -d' ' -f2) == 'PNG' ]]; then
+		curl_multipart_data+=";type=image/png"
+	fi
 
 	alias curl_with_options="curl $CURL_OPTIONS"
 
-	response=$(curl_with_options -F $curl_form_data -F "file=@$1" "$BASE_API_URL/Upload")
+	response=$(curl_with_options -F $curl_form_data -F $curl_multipart_data "$BASE_API_URL/Upload")
 	result=$(echo $response | jq '.["result"]')
 	url=$(echo $result | jq -r '.["url"]')
 	fileName=$(echo $result | jq -r '.["fileName"]')
