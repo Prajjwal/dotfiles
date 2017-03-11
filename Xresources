@@ -5,7 +5,7 @@ XTerm*saveLines: 4096
 XTerm*faceName: Inconsolata:size=12:antialias=true
 Xterm*selectToClipboard: true
 
-XTerm*background: #3f3f3f
+XTerm*background: #2a2a2a
 XTerm*foreground: #dcdccc
 XTerm*color0: #1E2320
 XTerm*color1: #705050
@@ -32,7 +32,7 @@ URxvt*inheritPixmap: false
 URxvt*termName: rxvt-unicode
 URxvt*saveLines: 1000
 
-URxvt*background: #3f3f3f
+URxvt*background: #2a2a2a
 URxvt*foreground: #dcdccc
 URxvt*color0: #1E2320
 URxvt*color1: #705050
