@@ -3,7 +3,7 @@ ZSH_THEME="norm"
 
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git rsync torrent extract bundler colored-man-pages)
+plugins=(git rsync torrent extract bundler colored-man-pages heroku stack yarn)
 
 export PATH=~/dotfiles/bin:$PATH
 
