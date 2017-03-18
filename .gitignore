@@ -3,3 +3,4 @@ vim/.netrw*
 *.swp
 *.spl
 *.log
+ncmpcpp/patterns.list
