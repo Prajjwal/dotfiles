@@ -21,6 +21,7 @@ Xresources ~/.Xresources
 xmonad.hs ~/.xmonad/xmonad.hs
 xmobarrc ~/.xmobarrc
 railsrc ~/.railsrc
+xbindkeysrc ~/.xbindkeysrc
 )
 
 dotDir=`pwd`

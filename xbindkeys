@@ -1,0 +1,20 @@
+"rofi -show run"
+  Super_L
+"pactl set-sink-mute 0 toggle"
+    m:0x10 + c:121
+    Mod2 + XF86AudioMute
+"pactl set-sink-volume 0 -5%"
+    m:0x10 + c:122
+    Mod2 + XF86AudioLowerVolume
+"pactl set-sink-volume 0 +5%"
+    m:0x10 + c:123
+    Mod2 + XF86AudioRaiseVolume
+"xscreensaver-command -lock"
+    m:0x14 + c:33
+    Control+Mod2 + l
+"xbacklight -dec 10"
+    m:0x10 + c:232
+    Mod2 + XF86MonBrightnessDown
+"xbacklight -inc 10"
+    m:0x10 + c:233
+    Mod2 + XF86MonBrightnessUp
