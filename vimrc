@@ -237,6 +237,9 @@ iabbrev @@ sin@prajjwal.com
 nnoremap <f1> :setlocal fo+=a<cr>
 nnoremap <f2> :setlocal fo-=a<cr>
 
+" Sudo to write
+cnoremap w!! w !sudo tee % >/dev/null
+
 " ]]
 
 " Plugins [[
