@@ -1,7 +1,3 @@
-# Tar
-alias ctar="tar cvfa"
-alias xtar="tar xvfa"
-
 # Git
 alias gus="git submodule foreach git pull origin master"
 
@@ -21,17 +17,8 @@ alias hl="heroku logs"
 alias ho="heroku open"
 alias hr="heroku run"
 
-alias rg="bin/rails generate"
-alias rri="rg rspec:install"
-alias rgc="rg controller"
-alias rgm="rg model"
-alias rgmig="rg migration"
-
-alias rd="bin/rails destroy"
-alias rdii="rd rspec:install"
-alias rdgc="rd controller"
-alias rdgm="rd model"
-alias rdgmig="rd migration"
+alias rgen="bin/rails generate"
+alias rdest="bin/rails destroy"
 
 # Maven
 # Please, just strangle me and get it over with.
@@ -56,10 +43,6 @@ alias pacs="sudo pacman -Syy"
 alias pacup="sudo pacman -Syu"
 
 # Other
-alias ls="ls --color=auto"
-alias filemanager="nemo"
-alias opn="filemanager ." # Override 'filemanager' in your .localrc, nemo by default
-alias genssh="ssh-keygen -t rsa -C"
 alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
 alias lshort="< ~/.localrc grep" # Quickly grep from the localrc
