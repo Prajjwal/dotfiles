@@ -54,7 +54,13 @@ set undolevels=500
 set cursorline
 set nospell
 set autochdir
-set guifont=Hack\ 12
+
+" Font for MacOS and Linux
+set guifont=Hack:h13
+
+if has("gui_gtk2")
+	set guifont=Hack\ 12
+endif
 " ]]
 
 " Wildmenu completion [[
