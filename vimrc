@@ -249,6 +249,7 @@ let g:UltiSnipsSnippetDirectories=["ultisnippets", "bundle/vim2hs/UltiSnips"]
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-u>"
 let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsUsePythonVersion=3
 au FileType scss UltiSnipsAddFiletypes scss.css
 
 " Syntastic
