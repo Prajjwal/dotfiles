@@ -58,7 +58,7 @@ set autochdir
 " Font for MacOS and Linux
 set guifont=Hack:h13
 
-if has("gui_gtk2")
+if has("gui_gtk3")
 	set guifont=Hack\ 12
 endif
 " ]]
