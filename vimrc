@@ -76,10 +76,15 @@ set wildignore+=*.mp4,*.webm,*.flv,*.mkv         " Video
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
-set wildignore+=*.DS_Store                       " OSX bullshit
+set wildignore+=*.DS_Store,*.tagset              " OSX bullshit
 set wildignore+=*.hi                             " GHC interface files
 set wildignore+=*.jar,*.class                    " Java nonsense
-set wildignore+=*.pdf,*.odt,*.ods,*.mobi,*.epub
+
+set wildignore+=*.pdf,*.odt,*.ods,*.mobi,*.epub  " Documents
+set wildignore+=*.docx,*.pptx,*.djvu
+
+set wildignore+=*.eot,*.ttf,*.woff,*.woff2,*.otf " Fonts
+set wildignore+=*.zip,*.tar,*.gz,*.bz2,*.rar     " Archives
 
 set wildignore+=*.luac                           " Lua byte code
 
@@ -272,7 +277,7 @@ let g:syntastic_auto_jump=1 " Automatically jump to the first error in file
 let g:ctrlp_switch_buffer = 2
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_max_height = 15
-let g:ctrlp_custom_ignore = 'node_modules'
+let g:ctrlp_custom_ignore = '\v(node_modules|bower_components|tmp|Library)$'
 
 " slimv
 let g:slimv_impl = 'sbcl'
