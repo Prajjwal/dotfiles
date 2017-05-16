@@ -64,3 +64,6 @@
 [submodule "vim/bundle/slimv"]
 	path = vim/bundle/slimv
 	url = https://github.com/kovisoft/slimv.git
+[submodule "vim/bundle/polyglot"]
+	path = vim/bundle/polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
