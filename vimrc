@@ -272,6 +272,7 @@ let g:syntastic_echo_current_error=1
 let g:syntastic_enable_balloons=1 " Display error messages in balloons on hover
 let g:syntastic_auto_loc_list=1
 let g:syntastic_auto_jump=1 " Automatically jump to the first error in file
+let g:syntastic_ignore_files=['.hbs']
 
 " Ctrlp
 let g:ctrlp_switch_buffer = 2
