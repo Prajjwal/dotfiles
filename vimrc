@@ -72,7 +72,9 @@ set wildmode=list:longest
 set wildignore+=.hg,.git,.svn                    " Version control
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
+set wildignore+=*.JPG,*.psd,*.ai
 set wildignore+=*.mp4,*.webm,*.flv,*.mkv         " Video
+set wildignore+=*.mp3,*.amr,*.flac,*.ogg         " Audio
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
 set wildignore+=*.spl                            " compiled spelling word lists
 set wildignore+=*.sw?                            " Vim swap files
@@ -80,11 +82,15 @@ set wildignore+=*.DS_Store,*.tagset              " OSX bullshit
 set wildignore+=*.hi                             " GHC interface files
 set wildignore+=*.jar,*.class                    " Java nonsense
 
-set wildignore+=*.pdf,*.odt,*.ods,*.mobi,*.epub  " Documents
-set wildignore+=*.docx,*.pptx,*.djvu
+set wildignore+=*.pdf,*.PDF,*.odt,*.ods          " Documents
+set wildignore+=*.docx,*.doc,*.ppt,*.pptx
+set wildignore+=*.xlsx,*.djvu
 
 set wildignore+=*.eot,*.ttf,*.woff,*.woff2,*.otf " Fonts
-set wildignore+=*.zip,*.tar,*.gz,*.bz2,*.rar     " Archives
+set wildignore+=*.zip,*.tar,*.gz,*.tgz,*.bz2     " Archives
+set wildignore+=*.rar,*.lzma
+
+set wildignore+=*.torrent,*.dat
 
 set wildignore+=*.luac                           " Lua byte code
 
