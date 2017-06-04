@@ -3,6 +3,7 @@ alias gus="git submodule foreach git pull origin master"
 
 # Ruby/Rails stuff
 alias rh="rbenv rehash"
+alias rbenvup="cd ~/.rbenv/ && git pull && cd ~/.rbenv/plugins/ruby-build/ && git pull && popd; popd"
 
 alias biwp="bundle install --without production"
 
