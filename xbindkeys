@@ -1,4 +1,4 @@
-"rofi -show run"
+"zsh -c 'rofi -show run'"
   Super_L
 "pactl set-sink-mute 0 toggle"
     m:0x10 + c:121
