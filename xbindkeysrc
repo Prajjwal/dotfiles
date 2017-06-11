@@ -10,8 +10,8 @@
     m:0x10 + c:123
     Mod2 + XF86AudioRaiseVolume
 "xscreensaver-command -lock"
-    m:0x14 + c:33
-    Control+Mod2 + l
+    m:0x50 + c:33
+    Mod2+Mod4 + l
 "xbacklight -dec 10"
     m:0x10 + c:232
     Mod2 + XF86MonBrightnessDown
