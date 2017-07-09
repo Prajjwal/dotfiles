@@ -3,23 +3,41 @@ import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
 
--- The main function.
-main = xmonad =<< statusBar myBar myPP toggleStrutsKey myConfig
-
 -- Command to launch the bar.
 myBar = "xmobar"
 
--- Custom PP.
-myPP = xmobarPP { ppCurrent = xmobarColor "#657b83" "" . wrap "[" "]"
-                , ppOrder = \(ws:_) -> [ws]
-                }
+-- Use urxvt as my terminal.
+myTerminal = "urxvt"
+
+-- Window Borders.
+myBorderWidth = 1
+myNormalBorderColor  = "#C4CAD3"
+myFocusedBorderColor = "#C4CAD3"
+
+-- Window Rules.
+myManageHook = composeAll
+    [ className =? "mpv" --> doFloat]
+
+-- XMobar PrettyPrint.
+
+myXmobarPP = xmobarPP { ppCurrent   = xmobarColor "#F3F4F5" "" . wrap " " ""
+                      , ppHidden    = xmobarColor "#747C84" "" . wrap " " ""
+                      , ppTitle     = (\str -> "")
+                      , ppLayout    = (\str -> "")
+                      }
 
 -- Key binding to toggle the gap for the bar.
 toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
--- Main configuration, override the defaults to your liking.
+--------------------------------------------------------------------------------
+main = xmonad =<< statusBar myBar myXmobarPP toggleStrutsKey myConfig
+
+-- Main configuration.
 myConfig = defaultConfig
-    { terminal = "urxvt"
-    , borderWidth = 3
+    { terminal = myTerminal
+    , borderWidth = myBorderWidth
+    , normalBorderColor = myNormalBorderColor
+    , focusedBorderColor = myFocusedBorderColor
+    , manageHook = myManageHook
     }
 

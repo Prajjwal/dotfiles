@@ -1,7 +1,7 @@
 Config {
 
    -- appearance
-     font =         "xft:Hack:size=12:bold:antialias=true"
+     font =         "xft:Hack:size=11:bold:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#657b83"
    , position =     Top
@@ -12,7 +12,7 @@ Config {
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% | %battery% | %multicpu% | %coretemp% | %memory% | %dynnetwork% }{ %date% || %kbd% "
+   , template = "%StdinReader% }{ PPC :: -> %battery% -> %kbd% -> %multicpu% -> %coretemp% -> %memory% -> %dynnetwork% || %date% "
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
