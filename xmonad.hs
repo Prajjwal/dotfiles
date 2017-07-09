@@ -12,7 +12,7 @@ myTerminal = "urxvt"
 -- Window Borders.
 myBorderWidth = 1
 myNormalBorderColor  = "#C4CAD3"
-myFocusedBorderColor = "#C4CAD3"
+myFocusedBorderColor = "#666666"
 
 -- Window Rules.
 myManageHook = composeAll
