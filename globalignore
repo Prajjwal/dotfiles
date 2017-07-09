@@ -29,3 +29,6 @@
 # Haskell
 *.hi
 *.chi
+
+# MacOS Bullshit
+.DS_Store
