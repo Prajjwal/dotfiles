@@ -3,7 +3,7 @@
 	email = sin@prajjwal.com
 [core]
 	autocrlf = input
-	excludesfile = /home/prajjwal/.globalignore
+	excludesfile = ~/.globalignore
 	editor = vim
 [push]
 	default = simple
