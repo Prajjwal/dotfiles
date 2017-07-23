@@ -279,6 +279,7 @@ let g:syntastic_enable_balloons=1 " Display error messages in balloons on hover
 let g:syntastic_auto_loc_list=1
 let g:syntastic_auto_jump=1 " Automatically jump to the first error in file
 let g:syntastic_ignore_files=['.hbs']
+SyntasticToggleMode
 
 " Ctrlp
 let g:ctrlp_switch_buffer = 2
@@ -306,6 +307,12 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 5
 let g:neocomplete#enable_auto_select = 1
+
+" Asynchronous Lint Engine
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_delay = 1000
 
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 
