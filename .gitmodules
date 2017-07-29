@@ -19,9 +19,6 @@
 [submodule "vim/bundle/html5-syntax"]
 	path = vim/bundle/html5-syntax
 	url = git://github.com/othree/html5-syntax.vim.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = git://github.com/scrooloose/syntastic.git
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = git://github.com/kien/ctrlp.vim.git
