@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Upload one or more files to https://file.io. Also yanks the url(s) to
-# clipboard if you have `xclip` installed.
+# clipboard if you have `xclip, or pbcopy` installed.
 #
 # ---------------------------------
 # Author:
@@ -10,9 +10,11 @@
 # sin@prajjwal.com
 # https://prajjwal.com/about.html
 #
-# Dependencies: jq
+# Dependencies:
+# - jq
 #
-# Optional Dependencies: xclip
+# Optional Dependencies:
+# - xclip | pbcopy (MacOS)
 
 source "${0%/*}/include/util.sh"
 
@@ -89,7 +91,7 @@ for file in $files; do
     upload $file
 done
 
-# Copy url to clipboard if xclip is installed
-is_installed xclip && echo $links | xclip -selection c
+# Copy URLS to clipboard
+copy_to_clipboard $links
 
 echo $links
