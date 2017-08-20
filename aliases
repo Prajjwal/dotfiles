@@ -57,3 +57,4 @@ alias bazs='basename -azs'
 alias aesenc="openssl enc -aes-256-cbc -salt"
 alias aesdec="openssl enc -d -aes-256-cbc"
 alias unrarall="basename -azs .rar *.rar | xargs -I{} -0 unrar e {}.rar"
+alias fucking='sudo'
