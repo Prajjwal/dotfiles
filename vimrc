@@ -54,6 +54,7 @@ set undolevels=500
 set cursorline
 set nospell
 set autochdir
+set hlsearch
 
 " Font for MacOS and Linux
 set guifont=Hack:h13

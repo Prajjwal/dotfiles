@@ -1,6 +1,5 @@
 # Logs & Databases
 *.log
-*.sql
 *.sqlite
 
 # Compressed Files

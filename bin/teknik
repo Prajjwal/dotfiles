@@ -33,17 +33,17 @@ Usage: teknik [OPTIONS] [FILES]
 
 Options:
 
--p      Paste files, or STDIN if filename is '-'.
--t      Specify paste title, if pasting from STDIN.
 -a      Authenticate user.
--n      Paste as anonymous user.
--s      Specify lexer to use for syntax hightlighting.
 -e      Set paste expiry in <units>.
+-h      Display this help.
+-n      Paste as anonymous user.
+-o      Open file in browser when done.
+-p      Paste files, or STDIN if filename is '-'.
+-s      Specify lexer to use for syntax hightlighting.
+-t      Specify paste title, if pasting from STDIN.
 -u      Set paste expiry units(view, minute, hour, day, month, year).
 -v      Set paste expiry in # of views.
 -w      Set paste password.
--o      Open file in browser when done.
--h      Display this help.
 
 Examples:
 
