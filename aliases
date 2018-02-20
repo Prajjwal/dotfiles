@@ -1,5 +1,7 @@
 # Git
 alias gus="git submodule foreach git pull origin master"
+alias sstash="git add . && git commit -am --allow-empty && git push"
+alias gaca="git add --all && git diff --cached"
 
 # Ruby/Rails stuff
 alias rh="rbenv rehash"
