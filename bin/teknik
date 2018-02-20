@@ -116,7 +116,7 @@ function upload {
 	curl_form_data="genDeletionKey=true&doNotTrack=true"
 	curl_multipart_data="file=@$1"
 
-	if [[ $(is_installed identify && identify $1 | cut -d' ' -f2) == 'PNG' ]]; then
+	if [[ $(is_installed identify && identify -format '%m' $1) == 'PNG' ]]; then
 		curl_multipart_data+=";type=image/png"
 	fi
 
