@@ -11,6 +11,18 @@ function is_installed {
 	hash $1 2> /dev/null
 }
 
+function ensure_presence_of_any {
+	for dependency in $@; do
+		if hash $dependency 2> /dev/null; then
+			echo $dependency
+			return 0;
+		fi
+	done
+
+	echo "You need at least one of the following dependencies installed: [ $@ ]"
+	exit 1
+}
+
 # Attempt to open a file with a default associated program
 function open_file {
 	is_installed xdg-open && (xdg-open $url) &> /dev/null

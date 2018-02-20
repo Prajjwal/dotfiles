@@ -10,8 +10,8 @@
 # https://prajjwal.com/about.html
 
 # Dependencies:
-# - https://github.com/RanyAlbegWein/Imgur
-# - scrot
+# - https://github.com/Prajjwal/dotfiles/blob/master/bin/teknik
+# - scrot || screencapture
 
 # Optional Dependencies:
 # - xclip
@@ -19,14 +19,12 @@
 
 source "${0%/*}/include/util.sh"
 
-ensure_presence_of imgur scrot
+ensure_presence_of teknik
+SCREENSHOT_PROGRAM=$(ensure_presence_of_any scrot screencapture)
+
+echo $UPLOAD_PROGRAM
 
 filename=$(mktemp /tmp/screenshot-XXXXXXX.jpg)
-scrot $@ $filename &&
-url=$(imgur -f $filename)
+$SCREENSHOT_PROGRAM $@ $filename &&
+url=$(teknik -o $filename)
 rm $filename
-
-copy_to_clipboard $url
-echo $url
-
-notify "shawt" "URL Copied To Clipboard"
