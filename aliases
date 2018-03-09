@@ -2,6 +2,8 @@
 alias gus="git submodule foreach git pull origin master"
 alias sstash="git add . && git commit -am --allow-empty && git push"
 alias gaca="git add --all && git diff --cached"
+alias munstable="git checkout master && git merge unstable && git push"
+alias fuckme="git reset HEAD~1 && git add . && !git commit"
 
 # Ruby/Rails stuff
 alias rh="rbenv rehash"
