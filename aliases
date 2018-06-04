@@ -1,6 +1,6 @@
 # Git
 alias gus="git submodule foreach git pull origin master"
-alias sstash="git add . && git commit -am --allow-empty && git push"
+alias sstash="git add . && git commit --allow-empty -am 'moar' && git push"
 alias gaca="git add --all && git diff --cached"
 alias munstable="git checkout master && git merge unstable && git push"
 alias fuckme="git reset HEAD~1 && git add . && !git commit"
@@ -51,6 +51,7 @@ alias pacup="sudo pacman -Syu"
 alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
 alias lshort="< ~/.localrc grep" # Quickly grep from the localrc
+alias qgrep="< ~/.psql_history grep"
 alias serve="python -m SimpleHTTPServer"
 alias grepsel="dpkg --get-selections | grep"
 alias copy="xclip -selection c"
