@@ -55,6 +55,7 @@ set cursorline
 set nospell
 set autochdir
 set hlsearch
+set tildeop
 
 " Font for MacOS and Linux
 set guifont=Hack:h13
