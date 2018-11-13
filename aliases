@@ -4,6 +4,7 @@ alias sstash="git add . && git commit --allow-empty -am 'moar' && git push"
 alias gaca="git add --all && git diff --cached"
 alias munstable="git checkout master && git merge unstable && git push"
 alias fuckme="git reset HEAD~1 && git add . && !git commit"
+alias strip="grep -oE ''"
 
 # Ruby/Rails stuff
 alias rh="rbenv rehash"
