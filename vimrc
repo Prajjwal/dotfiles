@@ -152,7 +152,7 @@ set softtabstop=4
 set shiftwidth=4
 set noexpandtab
 
-au FileType ruby,coffee,cucumber,eruby,haml,sass,scss,yaml,markdown,vim,handlebars,jade,javascript setlocal expandtab tabstop=2 shiftwidth=2
+au FileType ruby,coffee,cucumber,eruby,haml,sass,scss,yaml,markdown,vim,handlebars,jade,javascript,vue setlocal expandtab tabstop=2 shiftwidth=2
 au FileType python,perl setlocal expandtab
 au FileType gitcommit set textwidth=72
 au FileType haskell setlocal expandtab
@@ -300,6 +300,9 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_delay = 1000
+
+" Vue
+let g:vue_disable_pre_processors=1
 
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 
