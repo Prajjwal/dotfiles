@@ -176,9 +176,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" Enable autoformat by default for markdown files
-autocmd FileType markdown setlocal fo+=a
-
 " Mappings and Abbreviations [[
 
 " Change the default dir
