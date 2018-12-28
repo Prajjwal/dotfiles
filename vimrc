@@ -144,6 +144,7 @@ filetype plugin on
 filetype indent on
 
 autocmd BufNewFile,BufRead *.html.erb set filetype=eruby.html
+au BufRead /tmp/psql.edit.* set filetype=sql
 
 " Indentation [[
 

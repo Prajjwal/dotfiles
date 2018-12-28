@@ -14,6 +14,7 @@ oh-my-zsh ~/.oh-my-zsh
 zshrc ~/.zshrc
 devilspie2 ~/.config/devilspie2
 gemrc ~/.gemrc
+psqlrc ~/.psqlrc
 mpdconf ~/.mpdconf
 ncmpcpp ~/.ncmpcpp
 globalignore ~/.globalignore
