@@ -302,6 +302,10 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_delay = 1000
 
+" Vim Wiki
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
+noremap <leader>i <plug>VimwikiDiaryIndex
+
 " Vue
 let g:vue_disable_pre_processors=1
 
