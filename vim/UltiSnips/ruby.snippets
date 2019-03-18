@@ -1,0 +1,43 @@
+snippet fsl
+# frozen_string_literal: true
+endsnippet
+
+snippet r
+require '${1}'
+endsnippet
+
+snippet c
+# ${2: Documentation}
+class ${1}
+  def initialize
+    ${3}
+  end
+end
+endsnippet
+
+snippet ci
+# ${3: Documentation}
+class ${1}
+  def initialize(${2})
+    @$2 = $2
+  end
+end
+endsnippet
+
+snippet d
+def ${1}
+  ${2:puts 'Hello, World'}
+end
+endsnippet
+
+snippet da
+def ${1}(${2})
+  ${3}
+end
+endsnippet
+
+snippet argf
+ARGF.each_line do |${1:line}|
+  ${2:puts $1}
+end
+endsnippet

@@ -262,12 +262,14 @@ cnoremap w!! w !sudo tee % >/dev/null
 " Plugins [[
 
 " UltiSnips
-let g:UltiSnipsSnippetDirectories=["ultisnippets", "bundle/vim2hs/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "bundle/vim2hs/UltiSnips"]
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-u>"
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsUsePythonVersion=3
 au FileType scss UltiSnipsAddFiletypes scss.css
+
+noremap <silent> <f6> :UltiSnipsEdit
 
 " Ctrlp
 let g:ctrlp_switch_buffer = 2
@@ -301,6 +303,11 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_delay = 1000
+
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+noremap <silent> <leader>d :ALEDetail<cr>
+noremap <f8> :ALEToggleBuffer<cr>
 
 " Vim Wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]

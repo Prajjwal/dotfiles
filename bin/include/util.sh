@@ -53,3 +53,7 @@ function notify {
 	is_installed notify-send && notify-send $2
 	is_installed osascript && osascript -e "display notification \"$1\" with title \"$2\""
 }
+
+function strip {
+	grep -oE '\S.+\S'
+}
