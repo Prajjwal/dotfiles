@@ -24,6 +24,13 @@ XTerm*color13: #ec93d3
 XTerm*color14: #93e0e3
 XTerm*color15: #ffffff
 
+URxvt.perl-ext-common: default,matcher
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 1
+URxvt.matcher.rend.0: Bold fg6
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
+
 URxvt*font: xft:Hack:size=12:antialias=true
 URxvt*scrollBar: false
 URxvt*depth: 32
@@ -31,25 +38,28 @@ URxvt*cursorBlink: true
 URxvt*inheritPixmap: false
 URxvt*termName: rxvt-unicode
 URxvt*saveLines: 1000
+URxvt.transparent: true
+URxvt.shading: 10
+URxvt.fading: 40
 
-URxvt*background: #2a2a2a
-URxvt*foreground: #dcdccc
-URxvt*color0: #1E2320
-URxvt*color1: #705050
-URxvt*color2: #60b48a
-URxvt*color3: #dfaf8f
-URxvt*color4: #506070
-URxvt*color5: #dc8cc3
-URxvt*color6: #8cd0d3
-URxvt*color7: #dcdccc
-URxvt*color8: #709080
-URxvt*color9: #dca3a3
-URxvt*color10: #c3bf9f
-URxvt*color11: #f0dfaf
-URxvt*color12: #94bff3
-URxvt*color13: #ec93d3
-URxvt*color14: #93e0e3
-URxvt*color15: #ffffff
+URxvt.foreground: #C8C8C8
+URxvt.background: #323232
+URxvt.color0:     #2E3436
+URxvt.color1:     #CC0000
+URxvt.color2:     #4E9A06
+URxvt.color3:     #C4A000
+URxvt.color4:     #3465A4
+URxvt.color5:     #75507B
+URxvt.color6:     #06989A
+URxvt.color7:     #D3D7CF
+URxvt.color8:     #555753
+URxvt.color9:     #EF2929
+URxvt.color10:    #8AE234
+URxvt.color11:    #FCE94F
+URxvt.color12:    #729FCF
+URxvt.color13:    #AD7FA8
+URxvt.color14:    #34E2E2
+URxvt.color15: #EEEEEC
 
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
