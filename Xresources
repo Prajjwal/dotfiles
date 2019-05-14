@@ -31,7 +31,7 @@ URxvt.matcher.rend.0: Bold fg6
 URxvt.keysym.C-Delete: perl:matcher:last
 URxvt.keysym.M-Delete: perl:matcher:list
 
-URxvt*font: xft:Hack:size=12:antialias=true
+URxvt*font: xft:Hack:size=11:antialias=true,xft:Noto Emoji:size=11:antialias=true
 URxvt*scrollBar: false
 URxvt*depth: 32
 URxvt*cursorBlink: true
@@ -65,6 +65,6 @@ Xft.autohint: 0
 Xft.lcdfilter: lcddefault
 Xft.hintstyle: hintslight
 Xft.hinting: 1
-Xft.dpi: 89
+Xft.dpi: 101
 Xft.antialias: 1
 Xft.rgba: none

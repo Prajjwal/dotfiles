@@ -58,7 +58,7 @@ set hlsearch
 set tildeop
 
 " Font for MacOS and Linux
-set guifont=Hack:h13
+set guifont=Hack:h12
 
 if has("gui_gtk3")
 	set guifont=Hack\ 12
@@ -303,6 +303,14 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_delay = 1000
+
+let g:ale_fixers = { }
+let g:ale_fixers['c'] = ['clang-format']
+let g:ale_fixers['cpp'] = ['clang-format']
+
+let g:ale_linters = { }
+let g:ale_linters['c'] = ['clangtidy']
+let g:ale_linters['cpp'] = ['clangtidy']
 
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)

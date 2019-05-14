@@ -4,7 +4,6 @@
 # TODO:
 # - Read list of long running branches from a file
 # - Default to master,unstable,development
-# - Shove in dotfiles
 
 source "${0%/*}/include/util.sh"
 

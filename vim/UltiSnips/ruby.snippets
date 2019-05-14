@@ -41,3 +41,14 @@ ARGF.each_line do |${1:line}|
   ${2:puts $1}
 end
 endsnippet
+
+snippet ibundle
+require 'bundler/inline'
+
+gemfile do
+  source 'https://rubygems.org'
+  gem '${1:nokogiri}', '~> ${2}'
+end
+
+puts 'Inline Dependencies Loaded!'
+endsnippet

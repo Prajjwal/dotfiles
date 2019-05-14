@@ -36,7 +36,7 @@ function open_file {
 # - xclip
 # - pbpaste
 function copy_to_clipboard {
-	is_installed xclip && echo $1 | xclip-selection c
+	is_installed xclip && echo $1 | xclip -selection c
 	is_installed pbcopy && echo $1 | pbcopy
 }
 
