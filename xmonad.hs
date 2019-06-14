@@ -2,6 +2,9 @@
 import System.IO
 import XMonad
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.EwmhDesktops(fullscreenEventHook,ewmh)
+import XMonad.Hooks.ManageHelpers(doFullFloat,isFullscreen)
+import XMonad.Layout.NoBorders
 
 -- Command to launch the bar.
 myBar = "xmobar"
@@ -16,7 +19,8 @@ myFocusedBorderColor = "#666666"
 
 -- Window Rules.
 myManageHook = composeAll
-    [ className =? "mpv" --> doFloat]
+    [ className =? "mpv" --> doFloat
+    , isFullscreen --> doFullFloat ]
 
 -- XMobar PrettyPrint.
 
@@ -33,7 +37,7 @@ toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 main = xmonad =<< statusBar myBar myXmobarPP toggleStrutsKey myConfig
 
 -- Main configuration.
-myConfig = defaultConfig
+myConfig = ewmh $ defaultConfig
     { terminal = myTerminal
     , borderWidth = myBorderWidth
     , normalBorderColor = myNormalBorderColor
