@@ -21,6 +21,7 @@ globalignore ~/.globalignore
 Xresources ~/.Xresources
 xmonad.hs ~/.xmonad/xmonad.hs
 xmobarrc ~/.xmobarrc
+xmobar ~/.xmobar
 railsrc ~/.railsrc
 xbindkeysrc ~/.xbindkeysrc
 )

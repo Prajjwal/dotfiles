@@ -42,6 +42,7 @@ set cindent
 set nowrap
 set lazyredraw
 set guioptions-=T
+set guioptions-=r
 set guioptions-=m
 set hidden
 set history=1000

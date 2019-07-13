@@ -43,23 +43,23 @@ URxvt.shading: 10
 URxvt.fading: 40
 
 URxvt.foreground: #C8C8C8
-URxvt.background: #323232
+URxvt.background: #1C1B1A
 URxvt.color0:     #2E3436
-URxvt.color1:     #CC0000
+URxvt.color1:     #FF2C4B
 URxvt.color2:     #4E9A06
-URxvt.color3:     #C4A000
+URxvt.color3:     #C7915B
 URxvt.color4:     #3465A4
 URxvt.color5:     #75507B
 URxvt.color6:     #06989A
 URxvt.color7:     #D3D7CF
 URxvt.color8:     #555753
-URxvt.color9:     #EF2929
-URxvt.color10:    #8AE234
-URxvt.color11:    #FCE94F
-URxvt.color12:    #729FCF
-URxvt.color13:    #AD7FA8
-URxvt.color14:    #34E2E2
-URxvt.color15: #EEEEEC
+URxvt.color9:     #FF2C4B
+URxvt.color10:    #AAEE00
+URxvt.color11:    #FADE3E
+URxvt.color12:    #67C2FF
+URxvt.color13:    #FF9EB8
+URxvt.color14:    #8CFFBA
+URxvt.color15:    #EEEEEC
 
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault

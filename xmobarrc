@@ -2,24 +2,25 @@ Config {
 
    -- appearance
      font =         "xft:Hack:size=11:bold:antialias=true"
-   , bgColor =      "black"
-   , fgColor =      "#657b83"
+   , bgColor =      "#141413"
+   , fgColor =      "#D9CEC3"
    , position =     Top
-   , border =       NoBorder
+   , border =       BottomB
    , borderColor =  "black"
-   , alpha = 128
+   , alpha = 224
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{ PPC :: -> %battery% -> %kbd% -> %multicpu% -> %coretemp% -> %memory% -> %dynnetwork% || %date% "
+   , template = "%StdinReader% }{ (<fc=#b88853>define</fc> <fc=#0A9DFF>wraith</fc> (<fc=#b88853>λ</fc> () (<fc=#b88853>let</fc> ((kbd %kbd%) (%multicpu%) (%memory%) (%dynnetwork%) <fc=#ff2c4b>#t</fc>)))) || %date% "
 
    -- general behavior
+   , iconRoot = "/home/prajjwal/.xmobar/icons/icons"
    , lowerOnStart =     True    -- send to bottom of window stack on start
    , hideOnStart =      False   -- start with window unmapped (hidden)
    , allDesktops =      True    -- show on all desktops
    , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
-   , pickBroadest =     True   -- choose widest display (multi-monitor)
+   , pickBroadest =     True    -- choose widest display (multi-monitor)
    , persistent =       True    -- enable/disable hiding (True = disabled)
 
    -- plugins
@@ -39,65 +40,46 @@ Config {
    , commands =
 
         -- network activity monitor (dynamic interface resolution)
-        [ Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
-                             , "--Low"      , "1000"       -- units: kB/s
-                             , "--High"     , "5000"       -- units: kB/s
-                             , "--low"      , "#C7AE95"
-                             , "--normal"   , "grey"
-                             , "--high"     , "#95C7AE"
+        [ Run DynNetwork     [ "--template" , "eth0 [<tx> <txipat><rxipat> <rx>]"
+                             , "--Low"      , "1000"        -- units: kB/s
+                             , "--High"     , "10000"       -- units: kB/s
+                             , "--low"      , "#aeee00"
+                             , "--normal"   , "#ffa724"
+                             , "--high"     , "#ff2c4b"
+                             , "--"
+                               , "--tx-icon-pattern", "<icon=network/tx/network_tx_%%.xpm/>"
+                               , "--rx-icon-pattern", "<icon=network/rx/network_rx_%%.xpm/>"
                              ] 10
 
         -- cpu activity monitor
-        , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
+        , Run MultiCpu       [ "--template" , "<ipat> [<bar>]"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
-                             , "--low"      , "#C7AE95"
-                             , "--normal"   , "grey"
-                             , "--high"     , "#95C7AE"
+                             , "--low"      , "#aeee00"
+                             , "--normal"   , "#ffa724"
+                             , "--high"     , "#ff2c4b"
+                             , "--"
+                               , "--load-icon-pattern" , "<icon=cpu/cpu_%%.xpm/>"
                              ] 10
-
-        -- cpu core temperature monitor
-        , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
-                             , "--Low"      , "70"        -- units: °C
-                             , "--High"     , "80"        -- units: °C
-                             , "--low"      , "#C7AE95"
-                             , "--normal"   , "grey"
-                             , "--high"     , "#95C7AE"
-                             ] 50
 
         -- memory usage monitor
-        , Run Memory         [ "--template" ,"Mem: <usedratio>%"
-                             , "--Low"      , "20"        -- units: %
-                             , "--High"     , "90"        -- units: %
-                             , "--low"      , "#C7AE95"
-                             , "--normal"   , "grey"
-                             , "--high"     , "#95C7AE"
+        , Run Memory         [ "--template" ,"<usedipat> <used>M"
+                             , "--Low"      , "4000"        -- units: %
+                             , "--High"     , "14000"        -- units: %
+                             , "--low"      , "#aeee00"
+                             , "--normal"   , "#ffa724"
+                             , "--high"     , "#ff2c4b"
+                             , "--"
+                               , "--used-icon-pattern" , "<icon=ram/ram_%%.xpm/>"
                              ] 10
-
-        -- battery monitor
-        , Run Battery        [ "--template" , "Batt: <acstatus>"
-                             , "--Low"      , "10"        -- units: %
-                             , "--High"     , "80"        -- units: %
-                             , "--low"      , "#C7AE95"
-                             , "--normal"   , "grey"
-                             , "--high"     , "#95C7AE"
-
-                             , "--" -- battery specific options
-                                       -- discharging status
-                                       , "-o"	, "<left>% (<timeleft>)"
-                                       -- AC "on" status
-                                       , "-O"	, "<fc=#dAA520>Charging</fc>"
-                                       -- charged status
-                                       , "-i"	, "<fc=#60B48A>Charged</fc>"
-                             ] 50
 
         -- time and date indicator
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "<fc=#ABABAB>%F (%a) %T</fc>" "date" 10
+        , Run Date           "<fc=#b88853>%F <fc=#88633f>(%a)</fc> %T</fc>" "date" 10
 
         -- keyboard layout indicator
-        , Run Kbd            [ ("us(dvorak)" , "<fc=lightblue>DV</fc>")
-                             , ("us"         , "<fc=lightblue>US</fc>")
+        , Run Kbd            [ ("us(dvorak)" , "<fc=#aeee00>DV</fc>")
+                             , ("us"         , "<fc=#aeee00>US</fc>")
                              ]
 		, Run StdinReader
         ]

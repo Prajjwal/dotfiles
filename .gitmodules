@@ -55,3 +55,6 @@
 [submodule "vim/bundle/vimwiki"]
 	path = vim/bundle/vimwiki
 	url = https://github.com/vimwiki/vimwiki.git
+[submodule "xmobar/icons"]
+	path = xmobar/icons
+	url = https://github.com/jumper149/xpm-status-icons
