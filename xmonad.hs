@@ -4,23 +4,27 @@ import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.EwmhDesktops(fullscreenEventHook,ewmh)
 import XMonad.Hooks.ManageHelpers(doFullFloat,isFullscreen)
+import XMonad.Layout.Spacing
 import XMonad.Layout.NoBorders
 
 -- Command to launch the bar.
 myBar = "xmobar"
 
--- Use urxvt as my terminal.
-myTerminal = "urxvt"
+-- Window Borders
+myBorderWidth = 2
+myNormalBorderColor  = "#666666"
+myFocusedBorderColor = "#C4CAD3"
 
--- Window Borders.
-myBorderWidth = 1
-myNormalBorderColor  = "#C4CAD3"
-myFocusedBorderColor = "#666666"
+-- Use kitty as my terminal.
+myTerminal = "kitty"
 
 -- Window Rules.
 myManageHook = composeAll
     [ className =? "mpv" --> doFloat
     , isFullscreen --> doFullFloat ]
+
+-- Layout
+myLayoutHook = smartSpacingWithEdge 2 $ smartBorders $ Tall 1 (3/100) (1/2) ||| Full
 
 -- XMobar PrettyPrint.
 
@@ -42,6 +46,7 @@ myConfig = ewmh $ defaultConfig
     , borderWidth = myBorderWidth
     , normalBorderColor = myNormalBorderColor
     , focusedBorderColor = myFocusedBorderColor
+    , layoutHook = myLayoutHook
     , manageHook = myManageHook
     }
 

@@ -12,7 +12,8 @@ syntax on
 set t_Co=256
 
 " Set colorscheme
-colorscheme badwolf
+set background=dark
+colorscheme gruvbox
 
 " Set Leader [[
 let mapleader = ","
@@ -59,10 +60,10 @@ set hlsearch
 set tildeop
 
 " Font for MacOS and Linux
-set guifont=Hack:h12
+set guifont=Fira\ Code:h12
 
 if has("gui_gtk3")
-	set guifont=Hack\ 12
+	set guifont=Fira\ Code\ 12
 endif
 " ]]
 

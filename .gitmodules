@@ -58,3 +58,6 @@
 [submodule "xmobar/icons"]
 	path = xmobar/icons
 	url = https://github.com/jumper149/xpm-status-icons
+[submodule "vim/bundle/gruvbox"]
+	path = vim/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

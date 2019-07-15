@@ -1,18 +1,18 @@
 Config {
 
    -- appearance
-     font =         "xft:Hack:size=11:bold:antialias=true"
-   , bgColor =      "#141413"
-   , fgColor =      "#D9CEC3"
+     font =         "xft:Fira Code:size=11:bold:antialias=true"
+   , bgColor =      "#282828"
+   , fgColor =      "#ebdbb2"
    , position =     Top
    , border =       BottomB
-   , borderColor =  "black"
+   , borderColor =  "#282828"
    , alpha = 224
 
    -- layout
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
-   , template = "%StdinReader% }{ (<fc=#b88853>define</fc> <fc=#0A9DFF>wraith</fc> (<fc=#b88853>λ</fc> () (<fc=#b88853>let</fc> ((kbd %kbd%) (%multicpu%) (%memory%) (%dynnetwork%) <fc=#ff2c4b>#t</fc>)))) || %date% "
+   , template = "%StdinReader% }{ (λet ((kbd %kbd%) (%multicpu%) (%memory%) (%dynnetwork%)) <fc=#458588>wraith</fc>) || %date% "
 
    -- general behavior
    , iconRoot = "/home/prajjwal/.xmobar/icons/icons"
@@ -43,7 +43,7 @@ Config {
         [ Run DynNetwork     [ "--template" , "eth0 [<tx> <txipat><rxipat> <rx>]"
                              , "--Low"      , "1000"        -- units: kB/s
                              , "--High"     , "10000"       -- units: kB/s
-                             , "--low"      , "#aeee00"
+                             , "--low"      , "#b8bb26"
                              , "--normal"   , "#ffa724"
                              , "--high"     , "#ff2c4b"
                              , "--"
@@ -55,7 +55,7 @@ Config {
         , Run MultiCpu       [ "--template" , "<ipat> [<bar>]"
                              , "--Low"      , "50"         -- units: %
                              , "--High"     , "85"         -- units: %
-                             , "--low"      , "#aeee00"
+                             , "--low"      , "#b8bb26"
                              , "--normal"   , "#ffa724"
                              , "--high"     , "#ff2c4b"
                              , "--"
@@ -66,7 +66,7 @@ Config {
         , Run Memory         [ "--template" ,"<usedipat> <used>M"
                              , "--Low"      , "4000"        -- units: %
                              , "--High"     , "14000"        -- units: %
-                             , "--low"      , "#aeee00"
+                             , "--low"      , "#b8bb26"
                              , "--normal"   , "#ffa724"
                              , "--high"     , "#ff2c4b"
                              , "--"
@@ -75,11 +75,11 @@ Config {
 
         -- time and date indicator
         --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
-        , Run Date           "<fc=#b88853>%F <fc=#88633f>(%a)</fc> %T</fc>" "date" 10
+        , Run Date           "<fc=#ebdbb2>%a</fc> <fc=#d5c4a1>%F | %T</fc>" "date" 10
 
         -- keyboard layout indicator
-        , Run Kbd            [ ("us(dvorak)" , "<fc=#aeee00>DV</fc>")
-                             , ("us"         , "<fc=#aeee00>US</fc>")
+        , Run Kbd            [ ("us(dvorak)" , "<fc=#b8bb26>DV</fc>")
+                             , ("us"         , "<fc=#b8bb26>US</fc>")
                              ]
 		, Run StdinReader
         ]

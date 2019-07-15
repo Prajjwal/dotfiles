@@ -22,6 +22,7 @@ Xresources ~/.Xresources
 xmonad.hs ~/.xmonad/xmonad.hs
 xmobarrc ~/.xmobarrc
 xmobar ~/.xmobar
+kitty ~/.config/kitty
 railsrc ~/.railsrc
 xbindkeysrc ~/.xbindkeysrc
 )
