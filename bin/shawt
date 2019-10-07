@@ -24,5 +24,5 @@ SCREENSHOT_PROGRAM=$(ensure_presence_of_any scrot screencapture)
 
 filename=$(mktemp -u /tmp/screenshot-XXXXXXX.jpg)
 $SCREENSHOT_PROGRAM $@ $filename &&
-url=$(teknik -o $filename)
+url=$(teknik $filename)
 rm $filename
