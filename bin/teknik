@@ -229,4 +229,4 @@ URLS=$(echo $URLS | grep -ve '^$')
 copy_to_clipboard $URLS
 echo $URLS
 
-notify "teknik" "URL Copied To Clipboard"
+notify "teknik" "URL Copied To Clipboard" -t 500

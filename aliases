@@ -6,25 +6,26 @@ alias munstable="git checkout master && git merge unstable && git push"
 alias fuckme="git reset HEAD~1 && git add . && !git commit"
 alias strip="grep -oE ''"
 
-# Ruby/Rails stuff
+# Ruby/Rails
 alias rh="rbenv rehash"
-alias rbenvup="cd ~/.rbenv/ && git pull && cd ~/.rbenv/plugins/ruby-build/ && git pull && popd; popd"
 
 alias biwp="bundle install --without production"
 
-alias r="bin/rake"
+alias r="bin/rails"
 alias dbm="r db:migrate && r db:migrate RAILS_ENV=test"
-alias drb="r db:rollback"
+alias dbr="r db:rollback"
 alias dtp="r db:test:prepare"
-alias dr="r db:reset"
+alias dbreset="r db:reset"
 alias dsl="r db:schema:load"
 
+alias rg="r generate"
+alias rd="r destroy"
+alias rs="r serve"
+
+# Heroku
 alias hl="heroku logs"
 alias ho="heroku open"
 alias hr="heroku run"
-
-alias rgen="bin/rails generate"
-alias rdest="bin/rails destroy"
 
 # Maven
 # Please, just strangle me and get it over with.
@@ -60,7 +61,7 @@ alias epath='echo $PATH | tr ":" "\n"'
 alias xc='xclip -selection c'
 alias xoi='xargs -0 -I{}'
 alias bazs='basename -azs'
-alias aesenc="openssl enc -aes-256-cbc -salt"
-alias aesdec="openssl enc -d -aes-256-cbc"
+alias enc="openssl enc -aes-256-cbc -salt"
+alias dec="openssl enc -d -aes-256-cbc"
 alias unrarall="basename -azs .rar *.rar | xargs -I{} -0 unrar e {}.rar"
 alias fucking='sudo'

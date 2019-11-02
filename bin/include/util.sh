@@ -41,19 +41,30 @@ function copy_to_clipboard {
 }
 
 # Attempt to display a notification to the user. Will fail silently if the
-# supported utilities are not found.
+# supported utilities are not found. Supports passing arbitrary args to
+# notify-send.
 #
 # Supports:
 # - notify-send (Linux)
 # - osascript (MacOS)
 #
 # Usage:
-# notify $title $contents
+# notify $title $contents $notify_send_args
 function notify {
-	is_installed notify-send && notify-send $2
+	is_installed notify-send && notify-send $2 $@[2,-1]
 	is_installed osascript && osascript -e "display notification \"$1\" with title \"$2\""
 }
 
 function strip {
 	grep -oE '\S.+\S'
+}
+
+# Logging utilities
+function say {
+	echo '--> ' $1
+}
+
+# ||=
+function default {
+	# TODO:
 }

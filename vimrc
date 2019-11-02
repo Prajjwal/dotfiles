@@ -313,6 +313,7 @@ let g:ale_fixers['cpp'] = ['clang-format']
 let g:ale_linters = { }
 let g:ale_linters['c'] = ['clangtidy']
 let g:ale_linters['cpp'] = ['clangtidy']
+let g:ale_linters['ruby'] = ['rubocop']
 
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
