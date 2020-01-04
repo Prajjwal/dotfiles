@@ -3,10 +3,10 @@ runtime bundle/pathogen/autoload/pathogen.vim
 
 " Pathogen
 au!
-filetype off
-call pathogen#infect()
-
+filetype plugin on
 syntax on
+
+execute pathogen#infect()
 
 " Use 256 colors in the terminal
 set t_Co=256
@@ -323,6 +323,9 @@ noremap <f8> :ALEToggleBuffer<cr>
 " Vim Wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 noremap <leader>i <plug>VimwikiDiaryIndex
+
+" Fucking thing clashes with markdown wikis
+let g:polyglot_disabled = ['markdown']
 
 " Vue
 let g:vue_disable_pre_processors=1

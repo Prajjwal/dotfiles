@@ -5,8 +5,6 @@ DISABLE_AUTO_UPDATE=true
 
 plugins=(git gitfast rsync torrent bundler colored-man-pages heroku stack yarn)
 
-export PATH=~/dotfiles/bin:$PATH
-
 source $ZSH/oh-my-zsh.sh
 
 source ~/.aliases
