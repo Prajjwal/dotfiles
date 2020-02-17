@@ -16,13 +16,26 @@
 # Optional Dependencies:
 # - xclip
 # - notify-send
+# - mogrify (for colorspace reduction)
+# - zopflipng (for better compression)
 
 source "${0%/*}/include/util.sh"
 
 ensure_presence_of teknik
 SCREENSHOT_PROGRAM=$(ensure_presence_of_any scrot screencapture)
 
-filename=$(mktemp -u /tmp/screenshot-XXXXXXX.jpg)
-$SCREENSHOT_PROGRAM $@ $filename &&
-url=$(teknik $filename)
-rm $filename
+outfile=$(mktemp -u screenshot-XXXXXXX.png)
+
+cd /tmp
+
+$SCREENSHOT_PROGRAM $@ $outfile
+
+is_installed mogrify &&
+	mogrify -colors 256 "$outfile"
+
+is_installed zopflipng &&
+	zopflipng --prefix="optimized-" "$outfile" &&
+	mv "optimized-$outfile" "$outfile"
+
+url=$(teknik $outfile)
+rm $outfile

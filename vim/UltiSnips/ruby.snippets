@@ -52,3 +52,21 @@ end
 
 puts 'Inline Dependencies Loaded!'
 endsnippet
+
+snippet testcase
+class Test$1 < Test::Unit::TestCase
+  def setup
+    $2
+  end
+
+  def test_${3:something}
+    $4
+  end
+end
+endsnippet
+
+snippet test
+def test_${1:something}
+  $2
+end
+endsnippet

@@ -1,3 +1,5 @@
+let g:ale_completion_enabled = 1
+
 set nocompatible
 runtime bundle/pathogen/autoload/pathogen.vim
 
@@ -172,7 +174,7 @@ set foldenable
 set foldlevel=100 " Dont autofold
 
 " Enable syntax completion
-set omnifunc=syntaxcomplete#Complete
+set omnifunc=ale#completion#OmniFunc
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -293,13 +295,6 @@ let g:slimv_clhs_root = 'file:///usr/local/doc/HyperSpec/Body/'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
 
-" Neocomplete
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 5
-let g:neocomplete#enable_auto_select = 1
-
 " Asynchronous Lint Engine
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
@@ -313,7 +308,7 @@ let g:ale_fixers['cpp'] = ['clang-format']
 let g:ale_linters = { }
 let g:ale_linters['c'] = ['clangtidy']
 let g:ale_linters['cpp'] = ['clangtidy']
-let g:ale_linters['ruby'] = ['rubocop']
+let g:ale_linters['ruby'] = ['solargraph']
 
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -331,8 +326,4 @@ let g:polyglot_disabled = ['markdown']
 let g:vue_disable_pre_processors=1
 
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
 " ]]

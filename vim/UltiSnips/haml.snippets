@@ -1,0 +1,16 @@
+snippet fw
+= form_with model: ${1:@model}$4 do |f|
+  = f.submit '${2:Save}', class: '${3:btn btn-primary form-control}'
+endsnippet
+
+snippet fg
+.form-group
+  = f.label :${1:field}
+  = f.${2:text}_field :$1, class: '${3:form-control}'
+endsnippet
+
+snippet fg-check
+.form-group.form-check
+  = f.check_box :${1:field}, class: 'form-check-input'
+  = f.label :$1, class: 'form-check-label'
+endsnippet

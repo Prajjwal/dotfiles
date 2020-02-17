@@ -4,7 +4,7 @@
 class Irbrc
   BLACKLIST = [ENV['HOME'], '/'].freeze
 
-  def self.load(path = Dir.pwd)
+  def self.load_local(path = Dir.pwd)
     return if BLACKLIST.include?(path)
 
     irbrc = File.join(path, '.irbrc')
@@ -15,4 +15,4 @@ class Irbrc
   end
 end
 
-Irbrc.load
+Irbrc.load_local
