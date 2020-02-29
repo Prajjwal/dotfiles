@@ -116,8 +116,8 @@ function upload {
 	curl_form_data="genDeletionKey=true&doNotTrack=true"
 	curl_multipart_data="file=@$1"
 
-	if [[ $(is_installed identify && identify -format '%m' $1) == 'PNG' ]]; then
-		curl_multipart_data+=";type=image/png"
+	if is_installed file; then
+		curl_multipart_data+=";type=$(file -b --mime-type $1)"
 	fi
 
 	alias curl_with_options="curl $CURL_OPTIONS"

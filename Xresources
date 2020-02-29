@@ -12,13 +12,13 @@ URxvt.matcher.rend.0: Bold fg6
 URxvt.keysym.C-Delete: perl:matcher:last
 URxvt.keysym.M-Delete: perl:matcher:list
 
-URxvt*font: xft:Fira Code:size=12:antialias=true,xft:Noto Emoji:size=11:antialias=true
-URxvt*scrollBar: false
-URxvt*depth: 32
-URxvt*cursorBlink: true
-URxvt*inheritPixmap: false
-URxvt*termName: rxvt-unicode
-URxvt*saveLines: 1000
+URxvt.font: xft:Fira Code:size=12:antialias=true,xft:Noto Emoji:size=11:antialias=true
+URxvt.scrollBar: false
+URxvt.depth: 32
+URxvt.cursorBlink: true
+URxvt.inheritPixmap: false
+URxvt.termName: rxvt-unicode
+URxvt.saveLines: 1000
 URxvt.transparent: true
 URxvt.shading: 10
 URxvt.fading: 40

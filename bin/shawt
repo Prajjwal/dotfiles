@@ -24,18 +24,11 @@ source "${0%/*}/include/util.sh"
 ensure_presence_of teknik
 SCREENSHOT_PROGRAM=$(ensure_presence_of_any scrot screencapture)
 
-outfile=$(mktemp -u screenshot-XXXXXXX.png)
+outfile=$(mktemp -u screenshot-XXXXXXX.webp)
 
 cd /tmp
 
 $SCREENSHOT_PROGRAM $@ $outfile
-
-is_installed mogrify &&
-	mogrify -colors 256 "$outfile"
-
-is_installed zopflipng &&
-	zopflipng --prefix="optimized-" "$outfile" &&
-	mv "optimized-$outfile" "$outfile"
 
 url=$(teknik $outfile)
 rm $outfile
