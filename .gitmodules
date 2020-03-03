@@ -61,3 +61,18 @@
 [submodule "vim/bundle/gruvbox"]
 	path = vim/bundle/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "vim/bundle/vim-grepper"]
+	path = vim/bundle/vim-grepper
+	url = git@github.com:mhinz/vim-grepper.git
+[submodule "vim/bundle/QFEnter"]
+	path = vim/bundle/QFEnter
+	url = git@github.com:yssl/QFEnter.git
+[submodule "vim/bundle/peekaboo"]
+	path = vim/bundle/peekaboo
+	url = git@github.com:junegunn/vim-peekaboo.git
+[submodule "vim/bundle/delimitmate"]
+	path = vim/bundle/delimitmate
+	url = git@github.com:Raimondi/delimitMate.git
+[submodule "vim/bundle/illuminate"]
+	path = vim/bundle/illuminate
+	url = git@github.com:RRethy/vim-illuminate.git

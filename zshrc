@@ -3,7 +3,7 @@ ZSH_THEME="norm"
 
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git gitfast rsync torrent bundler colored-man-pages heroku stack yarn)
+plugins=(git gitfast rsync torrent bundler colored-man-pages heroku yarn)
 
 source $ZSH/oh-my-zsh.sh
 
