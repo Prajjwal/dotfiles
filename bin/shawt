@@ -16,15 +16,13 @@
 # Optional Dependencies:
 # - xclip
 # - notify-send
-# - mogrify (for colorspace reduction)
-# - zopflipng (for better compression)
 
 source "${0%/*}/include/util.sh"
 
 ensure_presence_of teknik
 SCREENSHOT_PROGRAM=$(ensure_presence_of_any scrot screencapture)
 
-outfile=$(mktemp -u screenshot-XXXXXXX.webp)
+outfile=$(mktemp -u screenshot-XXXXXXX.jpg)
 
 cd /tmp
 
