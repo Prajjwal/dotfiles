@@ -76,3 +76,6 @@
 [submodule "vim/bundle/illuminate"]
 	path = vim/bundle/illuminate
 	url = git@github.com:RRethy/vim-illuminate.git
+[submodule "vim/bundle/vim-iolang"]
+	path = vim/bundle/vim-iolang
+	url = git@github.com:Prajjwal/vim-iolang
