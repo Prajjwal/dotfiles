@@ -20,6 +20,6 @@ audio_output {
 	name    "http stream"
 	encoder "lame"
 	port    "8000"
-	bitrate "256"
+	bitrate "320"
 	format  "44100:16:2"
 }

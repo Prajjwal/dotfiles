@@ -28,5 +28,6 @@ cd /tmp
 
 $SCREENSHOT_PROGRAM $@ $outfile
 
-url=$(teknik $outfile)
+url=$(curl -F"file=@$outfile" "https://0x0.st")
+copy_to_clipboard $url
 rm $outfile
