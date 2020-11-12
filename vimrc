@@ -1,5 +1,3 @@
-let g:ale_completion_enabled = 1
-
 set nocompatible
 runtime bundle/pathogen/autoload/pathogen.vim
 
@@ -7,6 +5,10 @@ runtime bundle/pathogen/autoload/pathogen.vim
 au!
 filetype plugin on
 syntax on
+
+let g:ale_completion_enabled = 1
+" Fucking thing clashes with markdown wikis
+let g:polyglot_disabled = ['markdown']
 
 execute pathogen#infect()
 
@@ -326,9 +328,6 @@ let g:qfenter_keymap.topen = ['<C-t>']
 " Vim Wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 noremap <leader>i <plug>VimwikiDiaryIndex
-
-" Fucking thing clashes with markdown wikis
-let g:polyglot_disabled = ['markdown']
 
 " Vue
 let g:vue_disable_pre_processors=1
