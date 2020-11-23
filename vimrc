@@ -1,14 +1,14 @@
 set nocompatible
 runtime bundle/pathogen/autoload/pathogen.vim
 
-" Pathogen
 au!
-filetype plugin on
+filetype plugin indent on
 syntax on
 
+" Things that need to be set before pathogen loads [[
 let g:ale_completion_enabled = 1
-" Fucking thing clashes with markdown wikis
 let g:polyglot_disabled = ['markdown']
+" ]]
 
 execute pathogen#infect()
 
@@ -145,25 +145,19 @@ noremap <silent> <leader>hi <C-W>5+
 noremap <silent> <leader>hd <C-W>5-
 " ]]
 
-" Filetypes
-filetype plugin on
-filetype indent on
-
-autocmd BufNewFile,BufRead *.html.erb set filetype=eruby.html
+au BufNewFile,BufRead *.html.erb set filetype=eruby.html
 au BufNewFile,BufRead *_spec.rb set filetype=ruby.rspec
 au BufRead /tmp/psql.edit.* set filetype=sql
 
 " Indentation [[
 
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set noexpandtab
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set expandtab
+set textwidth=80
 
-au FileType ruby,coffee,cucumber,eruby,haml,sass,scss,yaml,markdown,vim,handlebars,jade,javascript,vue setlocal expandtab tabstop=2 shiftwidth=2
-au FileType python,perl setlocal expandtab
-au FileType gitcommit set textwidth=72
-au FileType haskell setlocal expandtab
+au FileType gitcommit setlocal textwidth=72
 au FileType html setlocal textwidth=0
 " ]]
 
@@ -185,9 +179,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Mappings and Abbreviations [[
-
-" Change the default dir
-cd ~/
 
 " Unfuck my screen
 nnoremap <leader>u :syntax sync fromstart<cr>:redraw!<cr>
@@ -333,4 +324,11 @@ noremap <leader>i <plug>VimwikiDiaryIndex
 let g:vue_disable_pre_processors=1
 
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
+" ]]
+
+" Util [[
+" TODO: Move this to a lib
+
+" Semi intelligently insert comma separate a ruby/js hash.
+nnoremap <leader>c :/{/+,/}/-2s/[^,]\zs$/,/g<CR>
 " ]]
