@@ -62,6 +62,6 @@ alias xc='xclip -selection c'
 alias xoi='xargs -0 -I{}'
 alias bazs='basename -azs'
 alias enc="openssl enc -aes-256-cbc -salt -pbkdf2"
-alias dec="openssl enc -d -aes-256-cbc -pbkdf2"
+alias dec="openssl enc -d -aes-256-cbc -salt -pbkdf2"
 alias unrarall="basename -azs .rar *.rar | xargs -I{} -0 unrar e {}.rar"
 alias fucking='sudo'

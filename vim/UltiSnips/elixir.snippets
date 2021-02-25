@@ -1,0 +1,20 @@
+snippet mod
+defmodule ${1} do
+end
+endsnippet
+
+snippet fn
+fn ${1:arg} -> ${2:arg} end
+endsnippet
+
+snippet fn2
+fn ${1:arg} ->
+  ${2:arg}
+end
+endsnippet
+
+snippet unfold
+Stream.unfold ${1:initial}, fn ${2:v} ->
+  { $2, ${3:next} }
+end
+endsnippet

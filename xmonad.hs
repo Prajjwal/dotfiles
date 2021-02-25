@@ -21,6 +21,7 @@ myTerminal = "kitty"
 -- Window Rules.
 myManageHook = composeAll
     [ className =? "mpv" --> doFloat
+    , appName =? "Android Emulator" --> doFloat
     , isFullscreen --> doFullFloat ]
 
 -- Layout

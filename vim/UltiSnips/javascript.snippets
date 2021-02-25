@@ -20,6 +20,16 @@ function ${1}(${2}) {
 }
 endsnippet
 
+snippet Promise
+new Promise ((resolve, reject) => {
+  ${1:resolve (10)}
+})
+endsnippet
+
+snippet im
+import ${1} from './$1'
+endsnippet
+
 # Express [[
 snippet route
 ${0:Router}.${1:get} ('${2:/}', (request, response, next) => {

@@ -55,7 +55,7 @@ set noerrorbells
 set nobackup
 set nowritebackup
 set noswapfile
-set viminfo='20,\"80
+set viminfo='20,\"80,<50,:1000,/100
 set undolevels=500
 set cursorline
 set nospell
@@ -231,9 +231,6 @@ nnoremap <leader>P "+P
 nnoremap <tab> %
 vnoremap <tab> %
 
-" Make H and L useful in normal mode
-nnoremap H 0
-nnoremap L $
 
 " Insert current date
 nnoremap <f5> "=strftime("%b %d, %Y %X")<cr>P
