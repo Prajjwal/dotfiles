@@ -1,15 +1,20 @@
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="norm"
 
+function source_if_present () {
+	if [ -e $1 ]; then
+		source $1
+	fi
+}
+
 DISABLE_AUTO_UPDATE=true
 
 plugins=(git gitfast rsync torrent bundler colored-man-pages heroku yarn)
 
 source $ZSH/oh-my-zsh.sh
 
-source ~/.aliases
-
-source ~/.rbenv/completions/rbenv.zsh
+source_if_present ~/.aliases
+source_if_present ~/.rbenv/completions/rbenv.zsh
 
 set -o vi
 
