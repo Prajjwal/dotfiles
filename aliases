@@ -2,9 +2,19 @@
 alias gus="git submodule foreach git pull origin master"
 alias sstash="git add . && git commit --allow-empty -am 'moar' && git push"
 alias gaca="git add --all && git diff --cached"
-alias munstable="git checkout master && git merge unstable && git push"
-alias fuckme="git reset HEAD~1 && git add . && !git commit"
-alias strip="grep -oE ''"
+
+# Github
+function ghdiff () {
+  open "${$(git remote get-url origin)%.git}/compare/main..$(git branch --show-current)"
+}
+
+function ghpr () {
+  open "${$(git remote get-url origin)%.git}/compare/main...$(git branch --show-current)"
+}
+
+function ghpushref () {
+  git push -u origin "$(git branch --show-current)"
+}
 
 # Ruby/Rails
 alias rh="rbenv rehash"
@@ -21,6 +31,16 @@ alias dsl="r db:schema:load"
 alias rg="r generate"
 alias rd="r destroy"
 alias rs="r serve"
+
+function lhm_down () {
+  bin/rails lhm:revert VERSION="$(bin/rails lhm:completed | tail -n1 | cut -d' ' -f1)"
+}
+
+function packspec () {
+  grt
+  be rspec "components/$1/spec"
+  cd -
+}
 
 # Heroku
 alias hl="heroku logs"
@@ -49,6 +69,9 @@ alias pacor="pacman -Qdt"
 alias pacs="sudo pacman -Syy"
 alias pacup="sudo pacman -Syu"
 
+# dev
+alias ddus="dev down && dev up && dev server"
+
 # Other
 alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
@@ -65,3 +88,4 @@ alias enc="openssl enc -aes-256-cbc -salt -pbkdf2"
 alias dec="openssl enc -d -aes-256-cbc -salt -pbkdf2"
 alias unrarall="basename -azs .rar *.rar | xargs -I{} -0 unrar e {}.rar"
 alias fucking='sudo'
+alias strip="grep -oE ''"

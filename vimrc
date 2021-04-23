@@ -63,11 +63,10 @@ set autochdir
 set hlsearch
 set tildeop
 
-" Font for MacOS and Linux
-set guifont=Fira\ Code:h12
-
 if has("gui_gtk3")
 	set guifont=Fira\ Code\ 12
+elseif has("gui_macvim")
+	set guifont=Monaco:h16
 endif
 " ]]
 
@@ -271,6 +270,8 @@ let g:ctrlp_switch_buffer = 2
 let g:ctrlp_clear_cache_on_exit = 1
 let g:ctrlp_max_height = 15
 let g:ctrlp_custom_ignore = '\v(node_modules|bower_components|tmp|Library)$'
+let g:ctrlp_max_depth = 25
+let g:ctrlp_max_files = 25000
 
 " slimv
 let g:slimv_impl = 'sbcl'

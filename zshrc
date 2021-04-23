@@ -13,6 +13,7 @@ plugins=(git gitfast rsync torrent bundler colored-man-pages heroku yarn)
 
 source $ZSH/oh-my-zsh.sh
 
+source_if_present ~/dotfiles/bin/include/util.sh
 source_if_present ~/.aliases
 source_if_present ~/.rbenv/completions/rbenv.zsh
 
@@ -47,3 +48,7 @@ fi
 
 # Source localrc for system specific config
 [ -f ~/.localrc ] && source ~/.localrc
+
+# Work
+[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
+if [ -e /Users/prajjwal/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/prajjwal/.nix-profile/etc/profile.d/nix.sh; fi
