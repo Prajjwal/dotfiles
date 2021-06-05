@@ -52,3 +52,5 @@ fi
 # Work
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 if [ -e /Users/prajjwal/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/prajjwal/.nix-profile/etc/profile.d/nix.sh; fi
+
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"

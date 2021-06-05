@@ -16,6 +16,10 @@ function ghpushref () {
   git push -u origin "$(git branch --show-current)"
 }
 
+function ghrb () {
+  open "${$(git remote get-url origin)%.git}/tree/$(git branch --show-current)"
+}
+
 # Ruby/Rails
 alias rh="rbenv rehash"
 

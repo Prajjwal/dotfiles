@@ -260,8 +260,11 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "bundle/vim2hs/UltiSnips"]
 let g:UltiSnipsJumpForwardTrigger="<c-e>"
 let g:UltiSnipsJumpBackwardTrigger="<c-u>"
 let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsEditSplit="context"
 let g:UltiSnipsUsePythonVersion=3
+" precedence (scss -> css)
 au FileType scss UltiSnipsAddFiletypes scss.css
+au FileType typescript UltiSnipsAddFiletypes typescript.typescriptreact
 
 noremap <silent> <f6> :UltiSnipsEdit
 
@@ -285,7 +288,7 @@ let g:slimv_clhs_root = 'file:///usr/local/doc/HyperSpec/Body/'
 
 " Emmet
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,jsx,typescriptreact EmmetInstall
 
 " Asynchronous Lint Engine
 let g:ale_echo_msg_error_str = 'E'

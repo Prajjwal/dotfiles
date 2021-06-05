@@ -4,10 +4,10 @@ def ruby_init_var(varname):
 endglobal
 
 global !p
-def ruby_init_vars(snip, t):
+def ruby_init_vars(snip, t, indent=1):
   first, *rest = t.split(', ')
   snip.rv = ruby_init_var(first)
-  snip >> 2
+  snip >> indent
   for varname in rest:
     snip += ruby_init_var(varname)
 endglobal
@@ -20,7 +20,7 @@ snippet r
 require '${1}'
 endsnippet
 
-snippet c
+snippet c "a class" s
 # ${2: Documentation}
 class ${1}
   def initialize
@@ -29,16 +29,16 @@ class ${1}
 end
 endsnippet
 
-snippet ci
+snippet ci "a class with constructor"
 # ${3: Documentation}
 class ${1}
   def initialize(${2})
-    `!p ruby_init_vars(snip, t[2])`
+    `!p ruby_init_vars(snip, t[2], indent=2)`
   end
 end
 endsnippet
 
-snippet d
+snippet d "a method definition"
 def ${1}
   ${2:puts 'Hello, World'}
 end
@@ -93,4 +93,15 @@ snippet test
 def test_${1:something}
 $2
 end
+endsnippet
+
+snippet doc "a heredoc" s
+<<~${1:TEXT}
+  $2
+$1
+endsnippet
+
+snippet titelize
+${1:hi}
+${1/\w+\s*/\u$0/g}
 endsnippet

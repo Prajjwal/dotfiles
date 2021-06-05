@@ -1,0 +1,57 @@
+snippet i18
+import {useI18n} from '@shopify/react-i18n';
+endsnippet
+
+snippet u18
+const [i18n] = useI18n();
+endsnippet
+
+snippet ir
+import React from 'react';
+endsnippet
+
+snippet comp
+import React from 'react';
+import {useI18n} from '@shopify/react-i18n';
+import {Page} from '@shopify/polaris';
+
+export default function ${1:ComponentName}() {
+  const [i18n] = useI18n();
+
+  return (
+    <Page
+      fullWidth
+      breadcrumbs={[]}
+      title={i18n.translate('$1.title')}
+    />
+  );
+}
+endsnippet
+
+snippet compshell
+import React from 'react';
+
+export function ${1:ComponentName}() {
+  return <h1>$1</h1>;
+}
+endsnippet
+
+snippet t
+i18n.translate('${1}'${2})
+endsnippet
+
+snippet clog
+console.log ('--> ${1:thing}', $1)
+endsnippet
+
+snippet desc "jest describe block"
+describe('${1:<Component />}', () => {
+  $2
+});
+endsnippet
+
+snippet it "jest test"
+it('${1:does the thing}', async () => {
+  $2
+});
+endsnippet

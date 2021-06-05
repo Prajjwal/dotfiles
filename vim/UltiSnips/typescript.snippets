@@ -1,0 +1,35 @@
+snippet i
+import {$1} from '$2';
+endsnippet
+
+snippet ecomp
+export {${1:ComponentName}} from './$1';
+endsnippet
+
+snippet multiline "split a one line import {...} from 'somewhere';"
+`!p
+text = snip.v.text
+imports = re.findall(r"(\w+)[,|}]", text)
+location = re.search(r"from ['|\"].+$", text).group(0)
+
+snip.rv = "import {"
+snip >> 1
+
+for name in imports:
+    snip += f"{name},"
+
+snip.reset_indent()
+
+snip += f"}} {location}"
+`
+endsnippet
+
+snippet oneline "concatenate a multiline import"
+`!p
+text = snip.v.text
+text = re.sub(r"\s{2,}|\n", "", text)
+text = re.sub(r",(?=})", "", text)
+text = re.sub(r",", ", ", text)
+snip.rv = text
+`
+endsnippet
