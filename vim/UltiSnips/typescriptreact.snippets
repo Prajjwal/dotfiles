@@ -1,3 +1,10 @@
+extends typescript
+
+# Todo add a braceless version
+snippet im "import locally" b
+import {${1:Component}} from '$2/$1';
+endsnippet
+
 snippet i18
 import {useI18n} from '@shopify/react-i18n';
 endsnippet
@@ -36,7 +43,7 @@ export function ${1:ComponentName}() {
 }
 endsnippet
 
-snippet t
+snippet t "translate" i
 i18n.translate('${1}'${2})
 endsnippet
 

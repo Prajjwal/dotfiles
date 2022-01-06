@@ -2,6 +2,8 @@
 alias gus="git submodule foreach git pull origin master"
 alias sstash="git add . && git commit --allow-empty -am 'moar' && git push"
 alias gaca="git add --all && git diff --cached"
+alias gsi='git switch $(git branch | fzf)'
+alias gbDi='git branch -D $(git branch | fzf -m)'
 
 # Github
 function ghdiff () {
@@ -18,6 +20,10 @@ function ghpushref () {
 
 function ghrb () {
   open "${$(git remote get-url origin)%.git}/tree/$(git branch --show-current)"
+}
+
+function fetchpr () {
+  git fetch origin "pull/$1/head:pull-$1" && git checkout "pull-$1"
 }
 
 # Ruby/Rails
@@ -74,7 +80,9 @@ alias pacs="sudo pacman -Syy"
 alias pacup="sudo pacman -Syu"
 
 # dev
+alias ddu="dev down && dev up"
 alias ddus="dev down && dev up && dev server"
+alias dduc="dev down && dev up && dev console"
 
 # Other
 alias m="man"

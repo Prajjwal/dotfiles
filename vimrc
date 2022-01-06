@@ -66,7 +66,7 @@ set tildeop
 if has("gui_gtk3")
 	set guifont=Fira\ Code\ 12
 elseif has("gui_macvim")
-	set guifont=Monaco:h16
+	set guifont=Monaco:h18
 endif
 " ]]
 
@@ -88,6 +88,7 @@ set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.DS_Store,*.tagset              " OSX bullshit
 set wildignore+=*.hi                             " GHC interface files
 set wildignore+=*.jar,*.class                    " Java nonsense
+set wildignore+=*.rbi                            " Sorbet type definitions
 
 set wildignore+=*.pdf,*.PDF,*.odt,*.ods          " Documents
 set wildignore+=*.docx,*.doc,*.ppt,*.pptx
@@ -275,6 +276,7 @@ let g:ctrlp_max_height = 15
 let g:ctrlp_custom_ignore = '\v(node_modules|bower_components|tmp|Library)$'
 let g:ctrlp_max_depth = 25
 let g:ctrlp_max_files = 25000
+let g:ctrlp_lazy_update = 1
 
 " slimv
 let g:slimv_impl = 'sbcl'
@@ -288,7 +290,7 @@ let g:slimv_clhs_root = 'file:///usr/local/doc/HyperSpec/Body/'
 
 " Emmet
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,jsx,typescriptreact EmmetInstall
+autocmd FileType html,css,jsx,typescriptreact,eruby EmmetInstall
 
 " Asynchronous Lint Engine
 let g:ale_echo_msg_error_str = 'E'
@@ -296,6 +298,8 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_delay = 1000
 let g:ale_completion_delay = 300
+let g:ale_ruby_sorbet_executable = 'bundle'
+let g:ale_ruby_sorbet_options = 'tc --lsp'
 
 let g:ale_fixers = { }
 let g:ale_fixers['c'] = ['clang-format']
@@ -304,7 +308,7 @@ let g:ale_fixers['cpp'] = ['clang-format']
 let g:ale_linters = { }
 let g:ale_linters['c'] = ['clangtidy']
 let g:ale_linters['cpp'] = ['clangtidy']
-let g:ale_linters['ruby'] = ['solargraph', 'rubocop']
+let g:ale_linters['ruby'] = ['sorbet', 'rubocop']
 
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -320,6 +324,12 @@ let g:qfenter_keymap.topen = ['<C-t>']
 " Vim Wiki
 let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': '.md'}]
 noremap <leader>i <plug>VimwikiDiaryIndex
+
+" Grepper
+let g:grepper = {}
+let g:grepper.jump = 0
+let g:grepper.dir = 'repo'
+let g:grepper.stop = 500
 
 " Vue
 let g:vue_disable_pre_processors=1
