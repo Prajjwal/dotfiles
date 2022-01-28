@@ -1,0 +1,6 @@
+snippet t
+ActiveRecord::Base.transaction do
+  ${1}
+  ${2:raise ActiveRecord::Rollback}
+end
+endsnippet
