@@ -343,3 +343,8 @@ inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 " Semi intelligently insert comma separate a ruby/js hash.
 nnoremap <leader>c :/{/+,/}/-2s/[^,]\zs$/,/g<CR>
 " ]]
+
+" Source system specific configuration
+if filereadable("~/.local_vimrc")
+  source ~/.local_vimrc
+endif

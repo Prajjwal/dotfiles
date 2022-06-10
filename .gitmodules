@@ -1,30 +1,30 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
-	url = git://github.com/tpope/vim-surround.git
+	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/bundle/ack.vim"]
 	path = vim/bundle/ack.vim
-	url = git://github.com/mileszs/ack.vim.git
+	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/tcomment_vim"]
 	path = vim/bundle/tcomment_vim
-	url = git://github.com/tomtom/tcomment_vim.git
+	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "vim/bundle/bufexplorer"]
 	path = vim/bundle/bufexplorer
-	url = git://github.com/vim-scripts/bufexplorer.zip.git
+	url = https://github.com/vim-scripts/bufexplorer.zip.git
 [submodule "vim/bundle/vim-rails"]
 	path = vim/bundle/vim-rails
-	url = git://github.com/tpope/vim-rails.git
+	url = https://github.com/tpope/vim-rails.git
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
-	url = git://github.com/kien/ctrlp.vim.git
+	url = https://github.com/kien/ctrlp.vim.git
 [submodule "vim/bundle/badwolf"]
 	path = vim/bundle/badwolf
-	url = git://github.com/sjl/badwolf.git
+	url = https://github.com/sjl/badwolf.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
+	url = https://github.com/robbyrussell/oh-my-zsh.git
 [submodule "vim/bundle/vim-css3-syntax"]
 	path = vim/bundle/vim-css3-syntax
-	url = git://github.com/hail2u/vim-css3-syntax.git
+	url = https://github.com/hail2u/vim-css3-syntax.git
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/vim-scripts/UltiSnips.git
@@ -63,19 +63,19 @@
 	url = https://github.com/morhetz/gruvbox.git
 [submodule "vim/bundle/vim-grepper"]
 	path = vim/bundle/vim-grepper
-	url = git@github.com:mhinz/vim-grepper.git
+	url = https://github.com/mhinz/vim-grepper.git
 [submodule "vim/bundle/QFEnter"]
 	path = vim/bundle/QFEnter
-	url = git@github.com:yssl/QFEnter.git
+	url = https://github.com/yssl/QFEnter.git
 [submodule "vim/bundle/peekaboo"]
 	path = vim/bundle/peekaboo
-	url = git@github.com:junegunn/vim-peekaboo.git
+	url = https://github.com/junegunn/vim-peekaboo.git
 [submodule "vim/bundle/delimitmate"]
 	path = vim/bundle/delimitmate
-	url = git@github.com:Raimondi/delimitMate.git
+	url = https://github.com/Raimondi/delimitMate.git
 [submodule "vim/bundle/illuminate"]
 	path = vim/bundle/illuminate
-	url = git@github.com:RRethy/vim-illuminate.git
+	url = https://github.com/RRethy/vim-illuminate.git
 [submodule "vim/bundle/vim-iolang"]
 	path = vim/bundle/vim-iolang
-	url = git@github.com:Prajjwal/vim-iolang
+	url = https://github.com/Prajjwal/vim-iolang
