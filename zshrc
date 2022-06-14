@@ -49,12 +49,6 @@ fi
 # Source localrc for system specific config
 [ -f ~/.localrc ] && source ~/.localrc
 
-# Work
-[ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
-if [ -e /Users/prajjwal/.nix-profile/etc/profile.d/nix.sh ]; then . /Users/prajjwal/.nix-profile/etc/profile.d/nix.sh; fi
-
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-
 [[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
 
-[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)
+[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)

@@ -201,8 +201,6 @@ nnoremap <leader>nt :tabnew
 nnoremap <leader>tc :tabc<cr>
 " To quickly edit the font size for screencasts:
 nnoremap <leader>sf :set guifont=Consolas:h
-" Map rails autocomplete to <leader>rc
-inoremap <leader>rc <C-x><C-u>
 " Make 'gf' open a new file if the name under the cursor doesn't exist
 nnoremap gf :e <cfile><CR>
 
@@ -212,6 +210,7 @@ nnoremap <up> ddkP
 inoremap <up> <esc>ddkPi
 nnoremap <down> ddp
 inoremap <down> <esc>ddpi
+nnoremap <C-right> :ALEGoToDefinition<cr>
 " Move b/w tabs with the l/r arrows
 nnoremap <left> gT
 nnoremap <right> gt
@@ -230,7 +229,6 @@ nnoremap <leader>P "+P
 " Jump to matching pairs with Tab
 nnoremap <tab> %
 vnoremap <tab> %
-
 
 " Insert current date
 nnoremap <f5> "=strftime("%b %d, %Y %X")<cr>P
@@ -251,6 +249,10 @@ nnoremap <f2> :setlocal fo-=a<cr>
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
+
+" Rails utilities (depends on rails.vim)
+" command Vspec vsp | A
+" command Yspec let @* = substitute(expand("%:p"), '^.\{-}\(components\|spec\)', '\1', '')
 
 " ]]
 
@@ -298,8 +300,6 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_delay = 1000
 let g:ale_completion_delay = 300
-let g:ale_ruby_sorbet_executable = 'bundle'
-let g:ale_ruby_sorbet_options = 'tc --lsp'
 
 let g:ale_fixers = { }
 let g:ale_fixers['c'] = ['clang-format']
@@ -308,7 +308,19 @@ let g:ale_fixers['cpp'] = ['clang-format']
 let g:ale_linters = { }
 let g:ale_linters['c'] = ['clangtidy']
 let g:ale_linters['cpp'] = ['clangtidy']
-let g:ale_linters['ruby'] = ['sorbet', 'rubocop']
+
+call ale#linter#Define('ruby', {
+\   'name': 'sorbae',
+\   'aliases': ['srb'],
+\   'lsp': 'stdio',
+\   'cwd': function('ale#ruby#FindProjectRoot'),
+\   'language': 'ruby',
+\   'executable': {b -> ale#Var(b, 'ruby_sorbet_executable')},
+\   'command': function('ale_linters#ruby#sorbet#GetCommand'),
+\   'project_root': function('ale#ruby#FindProjectRoot')
+\})
+
+let g:ale_linters['ruby'] = ['sorbae']
 
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
