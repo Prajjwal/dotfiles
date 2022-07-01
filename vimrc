@@ -252,7 +252,7 @@ cnoremap w!! w !sudo tee % >/dev/null
 
 " Rails utilities (depends on rails.vim)
 " command Vspec vsp | A
-" command Yspec let @* = substitute(expand("%:p"), '^.\{-}\(components\|spec\)', '\1', '')
+command Yspec let @* = substitute(expand("%:p"), '^.\{-}\(components\|spec\)', '\1', '')
 
 " ]]
 
@@ -279,6 +279,7 @@ let g:ctrlp_custom_ignore = '\v(node_modules|bower_components|tmp|Library)$'
 let g:ctrlp_max_depth = 25
 let g:ctrlp_max_files = 25000
 let g:ctrlp_lazy_update = 1
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " slimv
 let g:slimv_impl = 'sbcl'
@@ -324,6 +325,8 @@ let g:ale_linters['ruby'] = ['sorbae']
 
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+imap <C-Space> <Plug>(ale_complete)
+nmap <S-right> <Plug>(ale_go_to_definition_in_tab)
 noremap <silent> <leader>d :ALEDetail<cr>
 noremap <f8> :ALEToggleBuffer<cr>
 
