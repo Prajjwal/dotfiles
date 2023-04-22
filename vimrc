@@ -36,6 +36,7 @@ set ignorecase
 set smartcase
 set incsearch
 set autochdir
+autocmd VimEnter * set autochdir
 set autoread
 set numberwidth=4
 set textwidth=80
@@ -210,7 +211,6 @@ nnoremap <up> ddkP
 inoremap <up> <esc>ddkPi
 nnoremap <down> ddp
 inoremap <down> <esc>ddpi
-nnoremap <C-right> :ALEGoToDefinition<cr>
 " Move b/w tabs with the l/r arrows
 nnoremap <left> gT
 nnoremap <right> gt
@@ -249,10 +249,6 @@ nnoremap <f2> :setlocal fo-=a<cr>
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
-
-" Rails utilities (depends on rails.vim)
-" command Vspec vsp | A
-command Yspec let @* = substitute(expand("%:p"), '^.\{-}\(components\|spec\)', '\1', '')
 
 " ]]
 
@@ -309,6 +305,7 @@ let g:ale_fixers['cpp'] = ['clang-format']
 let g:ale_linters = { }
 let g:ale_linters['c'] = ['clangtidy']
 let g:ale_linters['cpp'] = ['clangtidy']
+let g:ale_linters['rust'] = ['cargo']
 
 call ale#linter#Define('ruby', {
 \   'name': 'sorbae',
@@ -326,7 +323,9 @@ let g:ale_linters['ruby'] = ['sorbae']
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 imap <C-Space> <Plug>(ale_complete)
+nmap <C-right> <Plug>(ale_go_to_definition)
 nmap <S-right> <Plug>(ale_go_to_definition_in_tab)
+nmap <S-F> <Plug>(ale_find_references)
 noremap <silent> <leader>d :ALEDetail<cr>
 noremap <f8> :ALEToggleBuffer<cr>
 
@@ -345,6 +344,7 @@ let g:grepper = {}
 let g:grepper.jump = 0
 let g:grepper.dir = 'repo'
 let g:grepper.stop = 500
+noremap <C-g> :Grepper<cr>
 
 " Vue
 let g:vue_disable_pre_processors=1

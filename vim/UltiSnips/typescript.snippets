@@ -2,6 +2,14 @@ snippet i
 import {$1} from '$2';
 endsnippet
 
+snippet c "Log to console"
+console.log ('--> ${1}')
+endsnippet
+
+snippet clog
+console.log ('--> ${1:thing}', $1)
+endsnippet
+
 snippet ecomp
 export {${1:ComponentName}} from './$1';
 endsnippet

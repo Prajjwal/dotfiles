@@ -16,3 +16,5 @@ class Irbrc
 end
 
 Irbrc.load_local
+
+IRB.conf[:USE_AUTOCOMPLETE] = false

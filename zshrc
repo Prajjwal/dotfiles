@@ -19,36 +19,9 @@ source_if_present ~/.rbenv/completions/rbenv.zsh
 
 set -o vi
 
-# Powerline
-
-function powerline_precmd() {
-    PS1="$(powerline-go\
-		-error $?\
-		-newline\
-		-modules "nix-shell,venv,user,ssh,cwd,perms,git,hg,jobs,exit,root,vgo"\
-		-cwd-mode plain\
-		-mode patched\
-		-shell zsh)"
-}
-
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-	if hash powerline-go 2> /dev/null; then
-		install_powerline_precmd
-	fi
-fi
-
 # Source localrc for system specific config
 [ -f ~/.localrc ] && source ~/.localrc
 
-[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
 
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)

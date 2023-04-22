@@ -101,3 +101,5 @@ alias dec="openssl enc -d -aes-256-cbc -salt -pbkdf2"
 alias unrarall="basename -azs .rar *.rar | xargs -I{} -0 unrar e {}.rar"
 alias fucking='sudo'
 alias strip="grep -oE ''"
+alias vson="vim -c'%!jq' -"
+alias fixx='fc $(history | fzf | cut -d" " -f2)'
