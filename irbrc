@@ -16,5 +16,6 @@ class Irbrc
 end
 
 Irbrc.load_local
+Irbrc.load_local(File.join(Dir.pwd, 'tmp'))
 
 IRB.conf[:USE_AUTOCOMPLETE] = false
