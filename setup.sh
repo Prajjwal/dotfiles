@@ -34,7 +34,7 @@ echo "Initializing and updating submodules"
 git submodule init
 git submodule update
 
-echo "Setting up your dotfiles, master."
+echo "Copying dotfiles"
 
 for dotfile in ${(k)dotfiles}; do
 	dest=$dotfiles[$dotfile]
@@ -45,7 +45,13 @@ for dotfile in ${(k)dotfiles}; do
 		echo "Creating symlink to $dotfile"
 		ln -s $dotDir/$dotfile $dest
 	fi
-
 done
 
-echo "KTHXBAI"
+echo "Done copying dotfiles"
+
+if [[ $SPIN ]]; then
+	echo "Setting up SPIN"
+
+	echo "source ~/dotfiles/zshrc >> ~/.zshrc"
+	git config --global user.email "prajjwal.singh@shopify.com"
+fi
