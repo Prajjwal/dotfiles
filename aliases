@@ -103,3 +103,8 @@ alias fucking='sudo'
 alias strip="grep -oE ''"
 alias vson="vim -c'%!jq' -"
 alias fixx='fc $(history | fzf | cut -d" " -f2)'
+
+# interactive systemctl
+function isc () {
+  systemctl $@ $(systemctl list-units -t service --plain --no-legend 'proc*' | sed -E 's/\s.+//g' | fzf -m)
+}

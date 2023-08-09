@@ -52,6 +52,6 @@ echo "Done copying dotfiles"
 if [[ $SPIN ]]; then
 	echo "Setting up SPIN"
 
-	echo "source ~/dotfiles/zshrc >> ~/.zshrc"
+	echo "source ~/dotfiles/zshrc" >> ~/.zshrc
 	git config --global user.email "prajjwal.singh@shopify.com"
 fi
