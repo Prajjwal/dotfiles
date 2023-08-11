@@ -221,14 +221,24 @@ inoremap <leader>ca <C-p>
 inoremap <leader>cl <C-x><C-l>
 
 " Yank to and paste from the OS clipboard:
-nnoremap <leader>y "+y
-nnoremap <leader>Y "+yy
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
+if has("clipboard")
+	nnoremap <leader>y "+y
+	nnoremap <leader>Y "+yy
+	nnoremap <leader>p "+p
+	nnoremap <leader>P "+P
+elseif exists("$SPIN")
+	set clipboard=unnamed
 
-" Jump to matching pairs with Tab
-nnoremap <tab> %
-vnoremap <tab> %
+	nnoremap <leader>y :set opfunc=Pbcopy<cr>g@
+	vnoremap <leader>y y:silent call system("pbcopy", getreg(""))<CR>
+	nnoremap <leader>p :call setreg("", system("pbpaste"))<CR>p
+
+	function! Pbcopy(type, ...)
+		" yank whole lines, which is my most common use case
+		silent execute 'normal! `[yV`]'
+		silent call system("pbcopy", getreg(""))
+	endfunction
+endif
 
 " Insert current date
 nnoremap <f5> "=strftime("%b %d, %Y %X")<cr>P
