@@ -15,7 +15,7 @@ function source_if_present () {
 
 DISABLE_AUTO_UPDATE=true
 
-plugins=(git gitfast rsync torrent bundler colored-man-pages heroku yarn)
+plugins=(git gitfast rsync torrent bundler colored-man-pages heroku yarn z)
 
 source $ZSH/oh-my-zsh.sh
 

@@ -79,3 +79,6 @@
 [submodule "vim/bundle/vim-iolang"]
 	path = vim/bundle/vim-iolang
 	url = https://github.com/Prajjwal/vim-iolang
+[submodule "vim/bundle/copilot"]
+	path = vim/bundle/copilot
+	url = https://github.com/github/copilot.vim.git

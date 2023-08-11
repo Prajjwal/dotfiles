@@ -328,7 +328,7 @@ call ale#linter#Define('ruby', {
 \   'project_root': function('ale#ruby#FindProjectRoot')
 \})
 
-let g:ale_linters['ruby'] = ['sorbae']
+let g:ale_linters['ruby'] = ['sorbae', 'ruby']
 
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
@@ -370,6 +370,6 @@ nnoremap <leader>c :/{/+,/}/-2s/[^,]\zs$/,/g<CR>
 " ]]
 
 " Source system specific configuration
-if filereadable("~/.local_vimrc")
+if filereadable(expand("~/.local_vimrc"))
   source ~/.local_vimrc
 endif

@@ -17,3 +17,5 @@
 	autostash = true
 [pull]
 	ff = only
+[diff]
+	tool = vimdiff
