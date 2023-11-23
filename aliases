@@ -38,10 +38,6 @@ alias dtp="r db:test:prepare"
 alias dbreset="r db:reset"
 alias dsl="r db:schema:load"
 
-alias rg="r generate"
-alias rd="r destroy"
-alias rs="r serve"
-
 function lhm_down () {
   bin/rails lhm:revert VERSION="$(bin/rails lhm:completed | tail -n1 | cut -d' ' -f1)"
 }
@@ -101,10 +97,14 @@ alias dec="openssl enc -d -aes-256-cbc -salt -pbkdf2"
 alias unrarall="basename -azs .rar *.rar | xargs -I{} -0 unrar e {}.rar"
 alias fucking='sudo'
 alias strip="grep -oE ''"
-alias vson="vim -c'%!jq' -"
+alias vson="vim -c'set ft=json | %!jq' -"
 alias fixx='fc $(history | fzf | cut -d" " -f2)'
 
 # interactive systemctl
+function services () {
+  systemctl list-units -t service --all --plain --no-legend "$1" | sed -E 's/\s.+//g' | fzf -m
+}
+
 function isc () {
-  systemctl $@ $(systemctl list-units -t service --plain --no-legend 'proc*' | sed -E 's/\s.+//g' | fzf -m)
+  systemctl $@ $(services)
 }

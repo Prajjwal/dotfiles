@@ -311,6 +311,7 @@ let g:ale_completion_delay = 300
 let g:ale_fixers = { }
 let g:ale_fixers['c'] = ['clang-format']
 let g:ale_fixers['cpp'] = ['clang-format']
+let g:ale_fixers['typescript'] = ['eslint']
 
 let g:ale_linters = { }
 let g:ale_linters['c'] = ['clangtidy']
@@ -354,7 +355,11 @@ let g:grepper = {}
 let g:grepper.jump = 0
 let g:grepper.dir = 'repo'
 let g:grepper.stop = 500
+let g:grepper.tools = ['git', 'rg', 'grep']
 noremap <C-g> :Grepper<cr>
+
+" BufExplorer
+let g:bufExplorerShowNoName=1
 
 " Vue
 let g:vue_disable_pre_processors=1
