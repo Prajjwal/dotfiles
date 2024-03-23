@@ -31,3 +31,6 @@ set -o vi
 [[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
 
 [[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
+
+# opam configuration
+[[ ! -r /Users/prajjwal/.opam/opam-init/init.zsh ]] || source /Users/prajjwal/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null

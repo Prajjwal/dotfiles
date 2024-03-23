@@ -6,7 +6,7 @@
 	excludesfile = ~/.globalignore
 	editor = vim
 [push]
-	default = simple
+	default = current
 [help]
 	autocorrect = 1
 [commit]
@@ -19,3 +19,14 @@
 	ff = only
 [diff]
 	tool = vimdiff
+[merge]
+	conflictstyle = zdiff3
+[init]
+	defaultBranch = main
+[transfer]
+	fsckobjects = true
+[fetch]
+	fsckobjects = true
+	prune = true
+[receive]
+	fsckobjects = true
