@@ -240,18 +240,37 @@ elseif exists("$SPIN")
 	endfunction
 endif
 
+" Util: Send to clipboard via various means
+function! SendToClipboard(text)
+  if has("clipboard")
+    silent call setreg('*', a:text)
+  elseif executable("pbcopy")
+    silent call system("pbcopy", a:text)
+  endif
+
+	silent call setreg("", a:text)
+endfunction
+
+" Util: Find git root relative to current file
+function! GitRoot()
+  return fnameescape(fnamemodify(finddir('.git', escape(expand('%:p:h'), ' ') . ';'), ':h'))
+endfunction
+
+" Yank current file path relative to git root
+function! YankRelativeToGitRoot()
+  let l:git_root = GitRoot()
+
+  let l:relative_path = (l:git_root == '.')
+        \? expand("%")
+        \: substitute(expand("%:p"), l:git_root . '/', '', '')
+
+  silent call SendToClipboard(l:relative_path)
+endfunction
+
+nnoremap <leader>gr :call YankRelativeToGitRoot()<cr>
+
 " Insert current date
 nnoremap <f5> "=strftime("%b %d, %Y %X")<cr>P
-
-" Open the current file in firefox
-abbrev ff :!firefox %:p<cr>
-" Open the current file in chrome
-abbrev chrome :!google-chrome %:p<cr>
-" Open the current file in Gedit
-abbrev gedit :!gedit %:p<cr>
-
-" Insert my email address quickly
-iabbrev @@ sin@prajjwal.com
 
 " Turn autoformat on/off for local buffer
 nnoremap <f1> :setlocal fo+=a<cr>
@@ -334,9 +353,9 @@ let g:ale_linters['ruby'] = ['sorbae', 'ruby']
 nmap <silent> <C-j> <Plug>(ale_next_wrap)
 nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 imap <C-Space> <Plug>(ale_complete)
-nmap <C-right> <Plug>(ale_go_to_definition)
-nmap <S-right> <Plug>(ale_go_to_definition_in_tab)
-nmap <S-F> <Plug>(ale_find_references)
+nmap <leader>ag <Plug>(ale_go_to_definition)
+nmap <leader>at <Plug>(ale_go_to_definition_in_tab)
+nmap <leader>af <Plug>(ale_find_references)
 noremap <silent> <leader>d :ALEDetail<cr>
 noremap <f8> :ALEToggleBuffer<cr>
 

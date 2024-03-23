@@ -29,8 +29,6 @@ function fetchpr () {
 # Ruby/Rails
 alias rh="rbenv rehash"
 
-alias biwp="bundle install --without production"
-
 alias r="bin/rails"
 alias dbm="r db:migrate && r db:migrate RAILS_ENV=test"
 alias dbr="r db:rollback"
@@ -41,22 +39,6 @@ alias dsl="r db:schema:load"
 function lhm_down () {
   bin/rails lhm:revert VERSION="$(bin/rails lhm:completed | tail -n1 | cut -d' ' -f1)"
 }
-
-function packspec () {
-  grt
-  be rspec "components/$1/spec"
-  cd -
-}
-
-# Heroku
-alias hl="heroku logs"
-alias ho="heroku open"
-alias hr="heroku run"
-
-# Maven
-# Please, just strangle me and get it over with.
-alias mi="mvn install"
-alias sbr="mvn spring-boot:run"
 
 # Apt
 alias agi="sudo apt-get install"
@@ -85,9 +67,6 @@ alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
 alias lshort="< ~/.localrc grep" # Quickly grep from the localrc
 alias qgrep="< ~/.psql_history grep"
-alias serve="ruby -run -e httpd . -p 9090"
-alias grepsel="dpkg --get-selections | grep"
-alias copy="xclip -selection c"
 alias epath='echo $PATH | tr ":" "\n"'
 alias xc='xclip -selection c'
 alias xoi='xargs -0 -I{}'
@@ -101,10 +80,10 @@ alias vson="vim -c'set ft=json | %!jq' -"
 alias fixx='fc $(history | fzf | cut -d" " -f2)'
 
 # interactive systemctl
-function services () {
+function units () {
   systemctl list-units -t service --all --plain --no-legend "$1" | sed -E 's/\s.+//g' | fzf -m
 }
 
-function isc () {
-  systemctl $@ $(services)
+function procs () {
+  units 'proc*'
 }

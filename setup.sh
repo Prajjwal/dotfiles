@@ -53,5 +53,5 @@ if [[ $SPIN ]]; then
 	echo "Setting up SPIN"
 
 	echo "source ~/dotfiles/zshrc" >> ~/.zshrc
-	git config --global user.email "prajjwal.singh@shopify.com"
+	git config --global user.email $(cat /etc/spin/secrets/email)
 fi
