@@ -1,9 +1,12 @@
 #!/bin/zsh
 
+set -euf -o pipefail
+
 cd ~/src
 
 curl --silent -L "https://github.com/vim/vim/archive/refs/heads/master.zip" > vim.zip
-unzip vim.zip
+unzip -q vim.zip
+
 cd vim-master/src
 
 sudo apt install make clang libtool-bin libpython3-dev libruby
@@ -15,5 +18,5 @@ sudo apt install make clang libtool-bin libpython3-dev libruby
 	--enable-rubyinterp \
 	--with-ruby-command=/usr/local/bin/ruby
 
-make -j 8
+make -j $(nproc)
 sudo make install
