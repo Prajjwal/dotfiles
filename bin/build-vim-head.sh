@@ -5,11 +5,11 @@ set -euf -o pipefail
 cd ~/src
 
 curl --silent -L "https://github.com/vim/vim/archive/refs/heads/master.zip" > vim.zip
-unzip -q vim.zip
+unzip -oq vim.zip
 
 cd vim-master/src
 
-sudo apt install make clang libtool-bin libpython3-dev libruby
+sudo apt install -y make clang libtool-bin libpython3-dev libruby
 ./configure \
 	--with-features=huge \
 	--enable-python3interp \
