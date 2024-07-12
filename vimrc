@@ -215,6 +215,11 @@ inoremap <down> <esc>ddpi
 nnoremap <left> gT
 nnoremap <right> gt
 
+" Move visual block
+" https://vimrcfu.com/snippet/77
+vnoremap <down> :m '>+1<CR>gv=gv
+vnoremap <up> :m '<-2<CR>gv=gv
+
 " Completion
 inoremap <leader>c <C-x><C-o>
 inoremap <leader>ca <C-p>
@@ -240,34 +245,10 @@ elseif exists("$SPIN")
 	endfunction
 endif
 
-" Util: Send to clipboard via various means
-function! SendToClipboard(text)
-  if has("clipboard")
-    silent call setreg('*', a:text)
-  elseif executable("pbcopy")
-    silent call system("pbcopy", a:text)
-  endif
-
-	silent call setreg("", a:text)
-endfunction
-
-" Util: Find git root relative to current file
-function! GitRoot()
-  return fnameescape(fnamemodify(finddir('.git', escape(expand('%:p:h'), ' ') . ';'), ':h'))
-endfunction
-
-" Yank current file path relative to git root
-function! YankRelativeToGitRoot()
-  let l:git_root = GitRoot()
-
-  let l:relative_path = (l:git_root == '.')
-        \? expand("%")
-        \: substitute(expand("%:p"), l:git_root . '/', '', '')
-
-  silent call SendToClipboard(l:relative_path)
-endfunction
-
-nnoremap <leader>gr :call YankRelativeToGitRoot()<cr>
+" Git
+nnoremap <leader>gr :silent call git#yank_relative_to_root()<cr>
+nnoremap <leader>gb :call git#browse()<cr>
+vnoremap <leader>gb :call git#browse()<cr>
 
 " Insert current date
 nnoremap <f5> "=strftime("%b %d, %Y %X")<cr>P
@@ -380,18 +361,10 @@ noremap <C-g> :Grepper<cr>
 " BufExplorer
 let g:bufExplorerShowNoName=1
 
-" Vue
-let g:vue_disable_pre_processors=1
-
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-" ]]
-
-" Util [[
-" TODO: Move this to a lib
-
-" Semi intelligently insert comma separate a ruby/js hash.
-nnoremap <leader>c :/{/+,/}/-2s/[^,]\zs$/,/g<CR>
-" ]]
+" Copilot
+" Disable by default, enable per-system in local vimrc
+let g:copilot_filetypes = { '*': v:false }
+au BufReadPost * let b:workspace_folder = fnamemodify(git#root(), ':~')
 
 " Source system specific configuration
 if filereadable(expand("~/.local_vimrc"))

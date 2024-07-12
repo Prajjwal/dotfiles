@@ -1,9 +1,6 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/ack.vim"]
-	path = vim/bundle/ack.vim
-	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/bundle/tcomment_vim"]
 	path = vim/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
@@ -16,24 +13,15 @@
 [submodule "vim/bundle/ctrlp"]
 	path = vim/bundle/ctrlp
 	url = https://github.com/kien/ctrlp.vim.git
-[submodule "vim/bundle/badwolf"]
-	path = vim/bundle/badwolf
-	url = https://github.com/sjl/badwolf.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
-[submodule "vim/bundle/vim-css3-syntax"]
-	path = vim/bundle/vim-css3-syntax
-	url = https://github.com/hail2u/vim-css3-syntax.git
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/vim-scripts/UltiSnips.git
 [submodule "vim/bundle/pathogen"]
 	path = vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "vim/bundle/vim2hs"]
-	path = vim/bundle/vim2hs
-	url = https://github.com/dag/vim2hs.git
 [submodule "vim/bundle/emmet"]
 	path = vim/bundle/emmet
 	url = https://github.com/mattn/emmet-vim.git
@@ -79,6 +67,6 @@
 [submodule "vim/bundle/vim-iolang"]
 	path = vim/bundle/vim-iolang
 	url = https://github.com/Prajjwal/vim-iolang
-[submodule "vim/bundle/copilot"]
-	path = vim/bundle/copilot
+[submodule "vim/pack/plugins/opt/copilot"]
+	path = vim/pack/plugins/opt/copilot
 	url = https://github.com/github/copilot.vim.git

@@ -54,4 +54,6 @@ if [[ $SPIN ]]; then
 
 	echo "source ~/dotfiles/zshrc" >> ~/.zshrc
 	git config --global user.email $(cat /etc/spin/secrets/email)
+
+	zsh ~/dotfiles/bin/build-vim-head.sh
 fi
