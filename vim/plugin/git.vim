@@ -29,7 +29,7 @@ function! git#browse() abort range
 	let l:remote_url = l:base_remote_url . '/blob/' . l:git_branch . '/' . l:path
 
 	if (a:firstline != a:lastline)
-		let l:remote_url += '#L' . a:firstline . '-L' . a:lastline
+		let l:remote_url .= '#L' . a:firstline . '-L' . a:lastline
 	endif
 
 	silent call util#send_to_clipboard(l:remote_url)
