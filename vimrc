@@ -226,20 +226,20 @@ inoremap <leader>ca <C-p>
 inoremap <leader>cl <C-x><C-l>
 
 " Yank to and paste from the OS clipboard:
-if has("clipboard")
+if has("clipboard_working")
 	nnoremap <leader>y "+y
 	nnoremap <leader>Y "+yy
 	nnoremap <leader>p "+p
 	nnoremap <leader>P "+P
-elseif exists("$SPIN")
+elseif executable("pbcopy")
 	set clipboard=unnamed
 
 	nnoremap <leader>y :set opfunc=Pbcopy<cr>g@
-	vnoremap <leader>y y:silent call system("pbcopy", getreg(""))<CR>
-	nnoremap <leader>p :call setreg("", system("pbpaste"))<CR>p
+	nnoremap <leader>yy :set opfunc=Pbcopy<cr>g@_
+	vnoremap <leader>y y:call util#send_to_clipboard(getreg(""))<cr>
+	nnoremap <leader>p :call setreg("", system("pbpaste"))<cr>p
 
 	function! Pbcopy(type, ...)
-		" yank whole lines, which is my most common use case
 		silent execute 'normal! `[yV`]'
 		silent call system("pbcopy", getreg(""))
 	endfunction

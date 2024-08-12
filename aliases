@@ -1,5 +1,5 @@
 # Git
-alias gus="git submodule foreach git pull origin master"
+alias gus='git submodule foreach git pull origin $(git symbolic-ref --short HEAD)'
 alias sstash="git add . && git commit --allow-empty -am 'moar' && git push"
 alias gaca="git add --all && git diff --cached"
 alias gsi='git switch $(git branch | fzf)'
@@ -78,6 +78,7 @@ alias fucking='sudo'
 alias strip="grep -oE ''"
 alias vson="vim -c'set ft=json | %!jq' -"
 alias fixx='fc $(history | fzf | cut -d" " -f2)'
+alias quote="pbpaste | sed 's/[[:space:]]*$//; s/^/> /' | pbcopy"
 
 # interactive systemctl
 function units () {
