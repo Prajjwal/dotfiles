@@ -54,7 +54,7 @@ if [[ $SPIN ]]; then
 	echo "source ~/dotfiles/zshrc" >> ~/.zshrc
 	git config --global user.email $(cat /etc/spin/secrets/email)
 
-	$copilot_dir="~/.config/github-copilot"
+	copilot_dir="~/.config/github-copilot"
 	mkdir -p $copilot_dir
 	cat /etc/spin/secrets/copilot-hosts > "$copilot_dir/hosts.json"
 
