@@ -31,8 +31,7 @@ xbindkeysrc ~/.xbindkeysrc
 dotDir=`pwd`
 
 echo "Initializing and updating submodules"
-git submodule init
-git submodule update
+(git submodule init && git submodule update) &
 
 echo "Copying dotfiles"
 
@@ -55,5 +54,11 @@ if [[ $SPIN ]]; then
 	echo "source ~/dotfiles/zshrc" >> ~/.zshrc
 	git config --global user.email $(cat /etc/spin/secrets/email)
 
-	zsh ~/dotfiles/bin/build-vim-head.sh
+	$copilot_dir="~/.config/github-copilot"
+	mkdir -p $copilot_dir
+	cat /etc/spin/secrets/copilot-hosts > "$copilot_dir/hosts.json"
+
+	zsh ~/dotfiles/bin/build-vim-head.sh &
 fi
+
+wait
