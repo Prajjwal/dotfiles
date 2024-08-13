@@ -1,9 +1,12 @@
 # Git
-alias gus='git submodule foreach git pull origin $(git symbolic-ref --short HEAD)'
 alias sstash="git add . && git commit --allow-empty -am 'moar' && git push"
 alias gaca="git add --all && git diff --cached"
 alias gsi='git switch $(git branch | fzf)'
 alias gbDi='git branch -D $(git branch | fzf -m)'
+
+function gus () {
+  git submodule foreach 'git fetch origin && git pull origin $(git remote show origin | sed -n "/HEAD branch/s/.*: //p")'
+}
 
 # Github
 function ghdiff () {
