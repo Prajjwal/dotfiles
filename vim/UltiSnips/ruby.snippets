@@ -135,6 +135,10 @@ snip += ')'
 `
 endsnippet
 
-snippet p
+snippet trace
 puts "--> #{File.basename(__FILE__)}:#{__LINE__} ${1:thing} = #{$1}"
+endsnippet
+
+snippet p
+puts "--> ${1:thing} = #{$1}"
 endsnippet

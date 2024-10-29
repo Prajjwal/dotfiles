@@ -208,17 +208,18 @@ nnoremap gf :e <cfile><CR>
 " Make the arrow keys useful:
 " Move lines up and down in both normal and insert mode with the up/down arrows
 nnoremap <up> ddkP
-inoremap <up> <esc>ddkPi
 nnoremap <down> ddp
-inoremap <down> <esc>ddpi
 " Move b/w tabs with the l/r arrows
 nnoremap <left> gT
 nnoremap <right> gt
+" move up/down the quickfix list
+nnoremap <C-k> :cprev<cr>
+nnoremap <C-j> :cnext<cr>
 
 " Move visual block
 " https://vimrcfu.com/snippet/77
-vnoremap <down> :m '>+1<CR>gv=gv
-vnoremap <up> :m '<-2<CR>gv=gv
+vnoremap <down> :m '>+1<cr>gv=gv
+vnoremap <up> :m '<-2<cr>gv=gv
 
 " Completion
 inoremap <leader>c <C-x><C-o>
@@ -226,12 +227,13 @@ inoremap <leader>ca <C-p>
 inoremap <leader>cl <C-x><C-l>
 
 " Yank to and paste from the OS clipboard:
-if has("clipboard_working")
+if has("clipboard")
 	nnoremap <leader>y "+y
-	nnoremap <leader>Y "+yy
 	nnoremap <leader>p "+p
 	nnoremap <leader>P "+P
-elseif executable("pbcopy")
+endif
+
+if exists("$SPIN")
 	set clipboard=unnamed
 
 	nnoremap <leader>y :set opfunc=Pbcopy<cr>g@
@@ -252,10 +254,6 @@ vnoremap <leader>gb :call git#browse()<cr>
 
 " Insert current date
 nnoremap <f5> "=strftime("%b %d, %Y %X")<cr>P
-
-" Turn autoformat on/off for local buffer
-nnoremap <f1> :setlocal fo+=a<cr>
-nnoremap <f2> :setlocal fo-=a<cr>
 
 " Sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
@@ -331,14 +329,12 @@ call ale#linter#Define('ruby', {
 
 let g:ale_linters['ruby'] = ['sorbae', 'ruby']
 
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
 imap <C-Space> <Plug>(ale_complete)
 nmap <leader>ag <Plug>(ale_go_to_definition)
 nmap <leader>at <Plug>(ale_go_to_definition_in_tab)
 nmap <leader>af <Plug>(ale_find_references)
-noremap <silent> <leader>d :ALEDetail<cr>
-noremap <f8> :ALEToggleBuffer<cr>
+noremap <silent> <leader>d <Plug>(ale_detail)
+noremap <f1> <Plug>(ale_hover)
 
 " QFEnter
 let g:qfenter_keymap = {}

@@ -58,5 +58,7 @@ if [[ $SPIN ]]; then
 	mkdir -p ~/.config/github-copilot
 	cat /etc/spin/secrets/copilot-hosts > ~/.config/github-copilot/hosts.json
 
+	ln -s $dotDir/local_vimrc_spin ~/.local_vimrc
+
 	zsh ~/dotfiles/bin/build-vim-head.sh
 fi

@@ -1,0 +1,8 @@
+let g:copilot_filetypes = {
+  \ '*': v:false,
+  \ 'ruby': v:true,
+  \ 'javascript': v:true,
+  \ 'typescript': v:true,
+  \ 'typescriptreact': v:true,
+  \ 'sh': v:true,
+\}
