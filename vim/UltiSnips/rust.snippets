@@ -5,17 +5,17 @@ fn main() {
 endsnippet
 
 snippet p
-println!(${1:"hello, world!"});
+println!("${1:Hello, world}");
 endsnippet
 
-snippet plog
-println!("${1} = {$1}");
+snippet e
+eprintln!("${1:Error: {err}}");
+endsnippet
+
+snippet d
+dbg!(${1:xs});
 endsnippet
 
 snippet dd
 #[derive(Debug)]
-endsnippet
-
-snippet d
-println!("${1} = {:?}", $1);
 endsnippet

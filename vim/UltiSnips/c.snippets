@@ -60,3 +60,7 @@ snippet ifdef "single definition constants"
 #define ${1:CONSTANT} ${2:VALUE}
 #endif
 endsnippet
+
+snippet val
+ruby_debug_print_value(0, 1, "${1:value}", $1);
+endsnippet

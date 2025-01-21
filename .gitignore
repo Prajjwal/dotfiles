@@ -4,3 +4,4 @@ vim/.netrw*
 *.spl
 *.log
 ncmpcpp/patterns.list
+.DS_Store
