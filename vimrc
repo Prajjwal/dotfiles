@@ -250,7 +250,7 @@ endif
 " Git
 nnoremap <leader>gr :silent call git#yank_relative_to_root()<cr>
 nnoremap <leader>gb :call git#browse()<cr>
-vnoremap <leader>gb :call git#browse()<cr>
+vnoremap <leader>gb :call git#browse_selection()<cr>
 
 " Insert current date
 nnoremap <f5> "=strftime("%b %d, %Y %X")<cr>P
@@ -284,6 +284,11 @@ let g:ctrlp_max_depth = 25
 let g:ctrlp_max_files = 25000
 let g:ctrlp_lazy_update = 1
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+let g:ctrlp_by_filename = 1
+
+if filereadable(expand("~/dotfiles/ctrlp-git-excludes"))
+  let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard | grep -vf ~/dotfiles/ctrlp-git-excludes']
+endif
 
 " slimv
 let g:slimv_impl = 'sbcl'
@@ -329,10 +334,10 @@ call ale#linter#Define('ruby', {
 
 let g:ale_linters['ruby'] = ['sorbae', 'ruby']
 
-imap <C-Space> <Plug>(ale_complete)
-nmap <leader>ag <Plug>(ale_go_to_definition)
-nmap <leader>at <Plug>(ale_go_to_definition_in_tab)
-nmap <leader>af <Plug>(ale_find_references)
+inoremap <C-Space> <Plug>(ale_complete)
+noremap <leader>ag <Plug>(ale_go_to_definition)
+noremap <leader>at <Plug>(ale_go_to_definition_in_tab)
+noremap <leader>af <Plug>(ale_find_references)
 noremap <silent> <leader>d <Plug>(ale_detail)
 noremap <f1> <Plug>(ale_hover)
 
@@ -361,6 +366,9 @@ let g:bufExplorerShowNoName=1
 " Disable by default, enable per-system in local vimrc
 let g:copilot_filetypes = { '*': v:false }
 au BufReadPost * let b:workspace_folder = fnamemodify(git#root(), ':~')
+
+inoremap <silent> <D-]> <Plug>(copilot-next)
+inoremap <silent> <D-[> <Plug>(copilot-previous)
 
 " Source system specific configuration
 if filereadable(expand("~/.local_vimrc"))
