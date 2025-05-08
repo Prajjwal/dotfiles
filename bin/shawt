@@ -10,7 +10,6 @@
 # https://prajjwal.com/about.html
 
 # Dependencies:
-# - https://github.com/Prajjwal/dotfiles/blob/master/bin/teknik
 # - scrot || screencapture
 
 # Optional Dependencies:
@@ -22,11 +21,17 @@ source "${0%/*}/include/util.sh"
 SCREENSHOT_PROGRAM=$(ensure_presence_of_any scrot screencapture)
 
 outfile=$(mktemp -u screenshot-XXXXXXX.webp)
+trap 'rm -f "$outfile"' EXIT
 
 cd /tmp
 
 $SCREENSHOT_PROGRAM $@ $outfile
 
-url=$(curl -F"file=@$outfile" "https://0x0.st")
+url=$(curl --silent -F"file=@$outfile" "https://0x0.st")
+
+if [[ $url =~ Error ]]; then
+  fallback_url=$(curl --silent -F"file=@$outfile" "https://c-v.sh")
+  url=${fallback_url% *}
+fi
+
 copy_to_clipboard $url
-rm $outfile
