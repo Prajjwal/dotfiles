@@ -36,7 +36,6 @@ set ignorecase
 set smartcase
 set incsearch
 set autochdir
-autocmd VimEnter * set autochdir
 set autoread
 set numberwidth=4
 set textwidth=80
@@ -167,9 +166,8 @@ au bufwritepost .vimrc source $MYVIMRC
 
 " Folding
 set foldenable
-" set foldmethod={,}
-" Fold on the marker
-set foldlevel=100 " Dont autofold
+set foldmethod=syntax
+set foldlevel=99 " Start with all folds open
 
 " Enable syntax completion
 set omnifunc=ale#completion#OmniFunc
@@ -231,20 +229,6 @@ if has("clipboard")
 	nnoremap <leader>y "+y
 	nnoremap <leader>p "+p
 	nnoremap <leader>P "+P
-endif
-
-if exists("$SPIN")
-	set clipboard=unnamed
-
-	nnoremap <leader>y :set opfunc=Pbcopy<cr>g@
-	nnoremap <leader>yy :set opfunc=Pbcopy<cr>g@_
-	vnoremap <leader>y y:call util#send_to_clipboard(getreg(""))<cr>
-	nnoremap <leader>p :call setreg("", system("pbpaste"))<cr>p
-
-	function! Pbcopy(type, ...)
-		silent execute 'normal! `[yV`]'
-		silent call system("pbcopy", getreg(""))
-	endfunction
 endif
 
 " Git
@@ -337,7 +321,8 @@ let g:ale_linters['ruby'] = ['sorbae', 'ruby']
 inoremap <C-Space> <Plug>(ale_complete)
 noremap <leader>ag <Plug>(ale_go_to_definition)
 noremap <leader>at <Plug>(ale_go_to_definition_in_tab)
-noremap <leader>af <Plug>(ale_find_references)
+nnoremap <silent> <Plug>(ale_find_references_qf) :ALEFindReferences -quickfix<cr>
+noremap <leader>af <Plug>(ale_find_references_qf)
 noremap <silent> <leader>d <Plug>(ale_detail)
 noremap <f1> <Plug>(ale_hover)
 

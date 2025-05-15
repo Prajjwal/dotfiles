@@ -39,7 +39,7 @@ echo "Copying dotfiles"
 for dotfile in ${(k)dotfiles}; do
 	dest=$dotfiles[$dotfile]
 
-	if [ -e $dest ]; then
+	if [[ -e $dest ]]; then
 		echo "$dest already exists."
 	else
 		echo "Creating symlink to $dotfile"
@@ -48,17 +48,3 @@ for dotfile in ${(k)dotfiles}; do
 done
 
 echo "Done copying dotfiles"
-
-if [[ $SPIN ]]; then
-	echo "Setting up SPIN"
-
-	echo "source ~/dotfiles/zshrc" >> ~/.zshrc
-	git config --global user.email $(cat /etc/spin/secrets/email)
-
-	mkdir -p ~/.config/github-copilot
-	cat /etc/spin/secrets/copilot-hosts > ~/.config/github-copilot/hosts.json
-
-	ln -s $dotDir/local_vimrc_spin ~/.local_vimrc
-
-	zsh ~/dotfiles/bin/build-vim-head.sh
-fi

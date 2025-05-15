@@ -1,7 +1,7 @@
 # Git
 alias sstash="git add . && git commit --allow-empty -am 'moar' && git push"
 alias gaca="git add --all && git diff --cached"
-alias gsi='git switch $(git branch | fzf)'
+alias gsi='git switch $(git branch --sort=-committerdate --format="%(refname:short)" | fzf)'
 alias gbDi='git branch -D $(git branch | fzf -m)'
 
 function gus () {
@@ -51,14 +51,6 @@ alias agg="sudo apt-get upgrade"
 alias agu="sudo apt-get update"
 alias agc="sudo apt-get autoclean"
 alias aga="sudo apt-get autoremove"
-
-# Pacman
-alias pacin="sudo pacman -S"
-alias pacf="pacman -Ss"
-alias pacrm="sudo pacman -Rns"
-alias pacor="pacman -Qdt"
-alias pacs="sudo pacman -Syy"
-alias pacup="sudo pacman -Syu"
 
 # dev
 alias ddu="dev down && dev up"
