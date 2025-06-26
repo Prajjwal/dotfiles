@@ -59,7 +59,7 @@ endfunction
 
 function! git#remote_url() abort
 	let l:base_remote_url = substitute(system('git ls-remote --get-url origin'), '.git\n$', '', '')
-	let l:git_branch = trim(system('git branch --show-current'))
+	let l:git_branch = exists('g:git_branch_remote') ? g:git_branch_remote : trim(system('git branch --show-current'))
 	let l:path = git#path_for_github()
 	let l:remote_url = l:base_remote_url . '/blob/' . l:git_branch . '/' . l:path
 

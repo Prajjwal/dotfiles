@@ -5,3 +5,5 @@ vim/.netrw*
 *.log
 ncmpcpp/patterns.list
 .DS_Store
+.claude
+CLAUDE.local.md

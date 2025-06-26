@@ -8,6 +8,13 @@ function gus () {
   git submodule update --remote --checkout
 }
 
+function sync-remote () {
+  current=$(git branch --show-current)
+
+  git fetch origin "$current"
+  git reset --hard FETCH_HEAD
+}
+
 # Github
 function ghdiff () {
   open "${$(git remote get-url origin)%.git}/compare/main..$(git branch --show-current)"
@@ -23,6 +30,10 @@ function ghpushref () {
 
 function ghrb () {
   open "${$(git remote get-url origin)%.git}/tree/$(git branch --show-current)"
+}
+
+function ghcommit () {
+  open "${$(git remote get-url origin)%.git}/commit/$1"
 }
 
 function fetchpr () {
@@ -60,7 +71,6 @@ alias dduc="dev down && dev up && dev console"
 # Other
 alias m="man"
 alias short="< ~/.aliases grep" # Quickly see aliases that I want
-alias lshort="< ~/.localrc grep" # Quickly grep from the localrc
 alias qgrep="< ~/.psql_history grep"
 alias epath='echo $PATH | tr ":" "\n"'
 alias xc='xclip -selection c'

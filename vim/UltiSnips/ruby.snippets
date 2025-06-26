@@ -141,6 +141,10 @@ snippet p
 puts "--> ${1:thing} = #{$1}"
 endsnippet
 
-snippet tap "tap" i
-.tap { puts "--> ${1:_1} => #{$1}" }
+snippet .tap "tap" i
+.tap { |$1| puts "--> ${1:thing} => #{$1}"
+endsnippet
+
+snippet br
+binding.break
 endsnippet

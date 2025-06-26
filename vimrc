@@ -356,6 +356,6 @@ inoremap <silent> <D-]> <Plug>(copilot-next)
 inoremap <silent> <D-[> <Plug>(copilot-previous)
 
 " Source system specific configuration
-if filereadable(expand("~/.local_vimrc"))
-  source ~/.local_vimrc
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
 endif
