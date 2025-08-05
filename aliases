@@ -3,6 +3,7 @@ alias sstash="git add . && git commit --allow-empty -am 'moar' && git push"
 alias gaca="git add --all && git diff --cached"
 alias gsi='git switch $(git branch --sort=-committerdate --format="%(refname:short)" | fzf)'
 alias gbDi='git branch -D $(git branch | fzf -m)'
+alias gwDi="git worktree list | cut -d' ' -f1 | fzf -m | xargs -I{} git worktree remove --force {}"
 
 function gus () {
   git submodule update --remote --checkout
@@ -16,10 +17,6 @@ function sync-remote () {
 }
 
 # Github
-function ghdiff () {
-  open "${$(git remote get-url origin)%.git}/compare/main..$(git branch --show-current)"
-}
-
 function ghpr () {
   open "${$(git remote get-url origin)%.git}/compare/main...$(git branch --show-current)"
 }
@@ -28,15 +25,15 @@ function ghpushref () {
   git push -u origin "$(git branch --show-current)"
 }
 
-function ghrb () {
+function gh-view-tree () {
   open "${$(git remote get-url origin)%.git}/tree/$(git branch --show-current)"
 }
 
-function ghcommit () {
+function gh-view-commit () {
   open "${$(git remote get-url origin)%.git}/commit/$1"
 }
 
-function fetchpr () {
+function gh-fetch-pr () {
   git fetch origin "pull/$1/head:pull-$1" && git checkout "pull-$1"
 }
 
@@ -49,10 +46,6 @@ alias dbr="r db:rollback"
 alias dtp="r db:test:prepare"
 alias dbreset="r db:reset"
 alias dsl="r db:schema:load"
-
-function lhm_down () {
-  bin/rails lhm:revert VERSION="$(bin/rails lhm:completed | tail -n1 | cut -d' ' -f1)"
-}
 
 # Apt
 alias agi="sudo apt-get install"
@@ -69,16 +62,13 @@ alias ddus="dev down && dev up && dev server"
 alias dduc="dev down && dev up && dev console"
 
 # Other
-alias m="man"
-alias short="< ~/.aliases grep" # Quickly see aliases that I want
-alias qgrep="< ~/.psql_history grep"
+alias short="< ~/.aliases grep"
 alias epath='echo $PATH | tr ":" "\n"'
 alias xc='xclip -selection c'
 alias xoi='xargs -0 -I{}'
 alias bazs='basename -azs'
 alias enc="openssl enc -aes-256-cbc -salt -pbkdf2"
 alias dec="openssl enc -d -aes-256-cbc -salt -pbkdf2"
-alias unrarall="basename -azs .rar *.rar | xargs -I{} -0 unrar e {}.rar"
 alias fucking='sudo'
 alias strip="grep -oE ''"
 alias vson="vim -c'set ft=json | %!jq' -"

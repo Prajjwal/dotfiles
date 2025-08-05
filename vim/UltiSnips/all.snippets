@@ -6,7 +6,12 @@ snippet today
 `!v strftime("%A, %B %d %Y")`
 endsnippet
 
-# A smart TODO
-snippet sodo
-# TODO(on: date('${2:`date -v +30d +%Y-%m-%d`}'), to: '${1:prajjwal.singh@shopify.com}')
+snippet sodo "Smart TODO" b
+# TODO(on: date('${2:`date -v +30d +%Y-%m-%d`}'), to: '${1:`git config get user.email`}')
+endsnippet
+
+snippet box
++-${1/./-/g}-+
+| ${1:text} |
++-${1/./-/g}-+
 endsnippet

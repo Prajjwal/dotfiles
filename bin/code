@@ -1,9 +1,0 @@
-#!/usr/bin/zsh
-
-(
-  echo "<code>"
-  echo "<pre>"
-  xclip -selection c -o
-  echo "</code>"
-  echo "</pre>"
-) | xclip -selection c

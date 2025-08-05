@@ -52,8 +52,13 @@ function! git#path_for_github()
 endfunction
 
 " Yank current file path relative to git root
-function! git#yank_relative_to_root()
+function! git#yank_relative_to_root(append_lineno = v:false)
 	let l:path = git#path_relative_to_root()
+
+  if a:append_lineno
+    let l:path .= ":" . getpos('.')[1]
+  endif
+
   silent call util#send_to_clipboard(l:path)
 endfunction
 

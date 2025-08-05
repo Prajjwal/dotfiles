@@ -166,7 +166,7 @@ au bufwritepost .vimrc source $MYVIMRC
 
 " Folding
 set foldenable
-set foldmethod=syntax
+set foldmethod=manual
 set foldlevel=99 " Start with all folds open
 
 " Enable syntax completion
@@ -229,10 +229,14 @@ if has("clipboard")
 	nnoremap <leader>y "+y
 	nnoremap <leader>p "+p
 	nnoremap <leader>P "+P
+	vnoremap <leader>y "+y
+	vnoremap <leader>p "+p
+	vnoremap <leader>P "+P
 endif
 
 " Git
 nnoremap <leader>gr :silent call git#yank_relative_to_root()<cr>
+nnoremap <leader>gl :silent call git#yank_relative_to_root(v:true)<cr>
 nnoremap <leader>gb :call git#browse()<cr>
 vnoremap <leader>gb :call git#browse_selection()<cr>
 
